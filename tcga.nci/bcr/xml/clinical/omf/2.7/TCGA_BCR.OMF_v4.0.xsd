@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+ xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+ xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+ xmlns:omf_shared="http://tcga.nci/bcr/xml/clinical/shared/omf/2.7"
+ xmlns="http://tcga.nci/bcr/xml/clinical/omf/2.7/4.0" 
+ targetNamespace="http://tcga.nci/bcr/xml/clinical/omf/2.7/4.0">
+      
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            Schema to define other malignancy data, which includes any malignancy diagnosed prior to or at the same time as the diagnosis of the tumor submitted for TCGA.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/omf/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.OMF_Clinical_Elements.xsd" />
+	
+	<xs:element name="omf">
+        <xs:complexType>
+          <xs:sequence>
+			<xs:element ref="omf_shared:bcr_omf_barcode" />
+            <xs:element ref="omf_shared:bcr_omf_uuid" />
+			<xs:element ref="omf_shared:malignancy_type" />
+			<xs:element ref="omf_shared:other_malignancy_anatomic_site" />
+			<xs:element ref="omf_shared:other_malignancy_anatomic_site_text" />
+			<xs:element ref="omf_shared:other_malignancy_laterality" />
+			<xs:element ref="omf_shared:other_malignancy_histological_type" />
+			<xs:element ref="omf_shared:other_malignancy_histological_type_text" />
+			
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="omf_shared:day_of_other_malignancy_dx" />
+					<xs:element ref="omf_shared:month_of_other_malignancy_dx" />
+					<xs:element ref="omf_shared:year_of_other_malignancy_dx" />
+				</xs:sequence>
+				<xs:element ref="omf_shared:days_to_other_malignancy_dx" />
+			</xs:choice>
+			
+			<xs:element ref="omf_shared:surgery" />
+			<xs:element ref="omf_shared:drug_tx" />
+			<xs:element ref="omf_shared:radiation_tx" />
+			<xs:element ref="omf_shared:omf_staging" minOccurs="0" maxOccurs="1"/>
+			
+			<xs:choice>
+                <xs:sequence>
+                    <xs:element ref="clin_shared:day_of_form_completion" />
+                    <xs:element ref="clin_shared:month_of_form_completion" />
+                    <xs:element ref="clin_shared:year_of_form_completion" />
+                </xs:sequence>
+                <xs:element ref="clin_shared:days_to_form_completion" />
+            </xs:choice>
+
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

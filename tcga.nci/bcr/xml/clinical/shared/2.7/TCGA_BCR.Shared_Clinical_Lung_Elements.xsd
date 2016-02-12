@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+           xmlns="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
+           targetNamespace="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
+           elementFormDefault="qualified"
+           version="2.7.2">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7"
+               schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+
+    <xs:element name="egfr_mutation_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="G719X"/>
+                    <xs:enumeration value="Exon 19 Deletion"/>
+                    <xs:enumeration value="Exon 20 Insertion"/>
+                    <xs:enumeration value="T790M"/>
+                    <xs:enumeration value="L858R"/>
+                    <xs:enumeration value="L861Q"/>
+                    <xs:enumeration value="Other"/>
+                    <xs:attribute name="cde" type="xs:string" default="3147627"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eml4_alk_translocation_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="Variant 1"/>
+                    <xs:enumeration value="Variant 2"/>
+                    <xs:enumeration value="Variant 3"/>
+                    <xs:enumeration value="Variant 4"/>
+                    <xs:enumeration value="Variant 5"/>
+                    <xs:attribute name="cde" type="xs:string" default="3139445"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eml4_alk_translocation_method" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="IHC"/>
+                    <xs:enumeration value="FISH"/>
+                    <xs:enumeration value="NGS"/>
+                    <xs:enumeration value="Nuclear Staining"/>
+                    <xs:enumeration value="RT-PCR"/>
+                    <xs:enumeration value="Southern"/>
+                    <xs:enumeration value="Other"/>
+                    <xs:attribute name="cde" type="xs:string" default="3139449"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eml4_alk_translocation_method_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default=""/> <!--TODO: Procure CDE -->
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_performed" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3139429"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_identified" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4588601"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eml4_alk_translocation_performed" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3139437"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eml4_alk_translocation_identified" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4588602"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="diagnosis" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3081932"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="location_in_lung_parenchyma" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="Peripheral Lung"/>
+                    <xs:enumeration value="Central Lung"/>
+                    <xs:attribute name="cde" type="xs:string" default="3139453"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="kras_mutation_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="G12A"/>
+                    <xs:enumeration value="G12C"/>
+                    <xs:enumeration value="G12D"/>
+                    <xs:enumeration value="G12R"/>
+                    <xs:enumeration value="G12S"/>
+                    <xs:enumeration value="G12V"/>
+                    <xs:enumeration value="G13D"/>
+                    <xs:enumeration value="Other"/>
+                    <xs:attribute name="cde" type="xs:string" default="3147614"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="kras_mutation_found" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2932340"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="kras_gene_analysis_performed" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3123147"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pulmonary_function_test_performed" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2556486"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pre_bronchodilator_fev1_percent" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3302947"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="post_bronchodilator_fev1_percent" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3302948"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pre_bronchodilator_fev1_fvc_percent" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3302955"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="post_bronchodilator_fev1_fvc_percent" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3302956"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dlco_predictive_percent" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="2180255"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_exon19_deletion" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173794"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_l858r" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4172300"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_t790m" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4172299"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_exon20_insertion" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173866"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_g719a_g719c_g719s" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173801"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_l861q" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173802"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173867"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="egfr_mutation_specify" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4173882"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="alk_mutation_detected_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="Negative"/>
+                    <xs:enumeration value="Positive"/>
+                    <xs:attribute name="cde" type="xs:string" default="3774202"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="mediastinal_lymph_node_exam_type" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="Complete mediastinal lymph node dissection"/>
+                    <xs:enumeration value="Incomplete sampling"/>
+                    <xs:enumeration value="None"/>
+                    <xs:enumeration value="Other"/>
+                    <xs:enumeration value="Simple sampling"/>
+                    <xs:enumeration value="Systematic sampling"/>
+                    <xs:attribute name="cde" type="xs:string" default="2440058"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lung_surgical_procedure_administered" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value=""/>
+                    <xs:enumeration value="Bronchoscopy"/>
+                    <xs:enumeration value="Fine Needle Aspirate"/>
+                    <xs:enumeration value="Mediastinoscopy"/>
+                    <xs:enumeration value="Other"/>
+                    <xs:enumeration value="Supraclavicular biopsy"/>
+                    <xs:enumeration value="thoracoscopy"/>
+                    <xs:enumeration value="Thoracoscopy / Video-assisted (VATS)"/>
+                    <xs:enumeration value="Thoracoscopy / Video-assisted (VATS), with conversion to Thoracotomy"/>
+                    <xs:enumeration value="thoracotomy"/>
+                    <xs:attribute name="cde" type="xs:string" default="2807"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_on_study_form" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_epidemiology" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_general_information" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_surgery" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_exposures" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cycle_smoking_history" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2072"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="family_history_lung_cancer_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4207501"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="age_at_first_dx_of_lung_cancer" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:integer_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="4207549" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="age_at_first_dx_of_lung_cancer_unknown" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="4207550"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+    xmlns="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7"
+    targetNamespace="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+
+    <xs:element name="relation_testicular_cancer_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="relation_testicular_cancer" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postoperative_tx_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="postoperative_tx" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="synchronous_tumor_histology_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="synchronous_tumor_histology" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_serum_marker_info">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_pre_orchi_serum_test" />
+                        <xs:element ref="month_of_pre_orchi_serum_test" />
+                        <xs:element ref="year_of_pre_orchi_serum_test" />
+                    </xs:sequence>
+                    <xs:element ref="days_to_pre_orchi_serum_test" />
+                </xs:choice>
+                <xs:element ref="pre_orchi_ldh" />
+                <xs:element ref="pre_orchi_hcg" />
+                <xs:element ref="pre_orchi_afp" />
+                <xs:element ref="pre_orchi_lh" />
+                <xs:element ref="pre_orchi_testosterone" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_serum_marker_info">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_post_orchi_serum_test" />
+                        <xs:element ref="month_of_post_orchi_serum_test" />
+                        <xs:element ref="year_of_post_orchi_serum_test" />
+                    </xs:sequence>
+                    <xs:element ref="days_to_post_orchi_serum_test" />
+                </xs:choice>
+                <xs:element ref="post_orchi_ldh" />
+                <xs:element ref="post_orchi_hcg" />
+                <xs:element ref="post_orchi_afp" />
+                <xs:element ref="post_orchi_lh" />
+                <xs:element ref="post_orchi_testosterone" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="history_of_undescended_testis">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Yes; left testicle only" />
+                    <xs:enumeration value="Yes; right testicle only" />
+                    <xs:enumeration value="Yes; bilateral" />
+                    <xs:enumeration value="Yes; laterality unknown" />
+                    <xs:enumeration value="No" />
+                    <xs:attribute name="cde" type="xs:string" default="3896542" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="level_of_non_descent">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Non-palpable - high" />
+                    <xs:enumeration value="Inguinal" />
+                    <xs:attribute name="cde" type="xs:string" default="3896671" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="undescended_testis_corrected">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3896672" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="undescended_testis_corrected_age">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="2-11 months" />
+                    <xs:enumeration value="1-2 years" />
+                    <xs:enumeration value="3-9 years" />
+                    <xs:enumeration value="10-14 years" />
+                    <xs:enumeration value="> or = 15 years" />
+                    <xs:attribute name="cde" type="xs:string" default="3896673" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="undescended_testis_method_left">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Spontaneous descent" />
+                    <xs:enumeration value="Orchiopexy" />
+                    <xs:enumeration value="Hormones" />
+                    <xs:enumeration value="Testis Removed" />
+                    <xs:enumeration value="Not Applicable (right only)" />
+                    <xs:attribute name="cde" type="xs:string" default="4340449" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="undescended_testis_method_right">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Spontaneous descent" />
+                    <xs:enumeration value="Orchiopexy" />
+                    <xs:enumeration value="Hormones" />
+                    <xs:enumeration value="Testis Removed" />
+                    <xs:enumeration value="Not Applicable (left only)" />
+                    <xs:attribute name="cde" type="xs:string" default="4340450" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="history_hypospadias">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3896751" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="history_fertility">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Did not attempt to reproduce" />
+                    <xs:enumeration value="Fathered > or = 1 child by natural conception" />
+                    <xs:enumeration value="Fathered > or = 1 child by assisted reproduction" />
+                    <xs:enumeration value="Fathered > or = 1 child by unspecified method" />
+                    <xs:enumeration value="Did not achieve pregnancy following > or = 12 months of unprotected intercourse" />
+                    <xs:attribute name="cde" type="xs:string" default="3896771" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="family_history_testicular_cancer">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3896777" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relation_testicular_cancer">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Great-Grandfather" />
+                    <xs:enumeration value="Grandfather" />
+                    <xs:enumeration value="Father" />
+                    <xs:enumeration value="Brother" />
+                    <xs:enumeration value="Nephew" />
+                    <xs:enumeration value="Uncle" />
+                    <xs:enumeration value="Cousin" />
+                    <xs:enumeration value="Son" />
+                    <xs:attribute name="cde" type="xs:string" default="3901751"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="family_history_other_cancer">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3901752"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relative_family_cancer_hx_text">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3613444" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postoperative_tx">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Radiation" />
+                    <xs:enumeration value="Pharmaceutical" />
+                    <xs:enumeration value="None" />
+                    <xs:attribute name="cde" type="xs:string" default="3913861" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bilateral_diagnosis_timing_type">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Synchronous" />
+                    <xs:enumeration value="Metachronous" />
+                    <xs:attribute name="cde" type="xs:string" default="3901753" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_bilateral_tumor_dx">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901760" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_bilateral_tumor_dx">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901759" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_bilateral_tumor_dx">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901761" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_bilateral_tumor_dx">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3966995" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="synchronous_tumor_histology">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="synchronous_tumor_histology_type" />
+                <xs:element ref="synchronous_tumor_histology_pct" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="synchronous_tumor_histology_type">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Non-Seminoma - Choriocarcinoma" />
+                    <xs:enumeration value="Non-Seminoma - Embryonal Carcinoma" />
+                    <xs:enumeration value="Non-Seminoma - Teratoma (Immature)" />
+                    <xs:enumeration value="Non-Seminoma - Teratoma (Mature)" />
+                    <xs:enumeration value="Non-Seminoma - Yolk Sac Tumor" />
+                    <xs:enumeration value="Seminoma"/>
+                    <xs:attribute name="cde" type="xs:string" default="3901762" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="synchronous_tumor_histology_pct">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:integer_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3913863" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="testis_tumor_macroextent">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Involves extratesticular structures: Epididymis" />
+                    <xs:enumeration value="Involves extratesticular structures: NOS" />
+                    <xs:enumeration value="Involves extratesticular structures: Other" />
+                    <xs:enumeration value="Involves extratesticular structures: Spermatic Cord" />
+                    <xs:enumeration value="Involves extratesticular structures: Tunica albuginea" />
+                    <xs:enumeration value="Involves testis only"/>
+                    <xs:attribute name="cde" type="xs:string" default="3901766" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="testis_tumor_macroextent_other">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                        <xs:attribute name="cde" type="xs:string" default="3901768" />
+                        <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                        <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="testis_tumor_microextent">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Epididymis" />
+                    <xs:enumeration value="Hilar Fat" />
+                    <xs:enumeration value="Rete Testis" />
+                    <xs:enumeration value="Scrotum" />
+                    <xs:enumeration value="Spermatic Cord" />
+                    <xs:enumeration value="Tunica Vaginalis"/>
+                    <xs:attribute name="cde" type="xs:string" default="3901767" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="intratubular_germ_cell_neoplasm">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Absent" />
+                    <xs:enumeration value="Present" />
+                    <xs:attribute name="cde" type="xs:string" default="3901770" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_pre_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901774" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_pre_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901773" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_pre_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901781" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_pre_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="4348005" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_ldh" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <!-- TODO: Procure the correct CDE -->
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <!--TODO: Populate based off of CADSR -->
+                    <xs:attribute name="units" type="xs:string" fixed="" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_hcg" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901798" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="mIU/mL" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_afp" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901799" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="ng/ml" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_lh" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901800" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pre_orchi_testosterone" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3913864" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="ng/dl" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_post_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901841" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_post_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901840" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_post_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901844" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_post_orchi_serum_test">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="4348007" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_ldh" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901823" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_hcg" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901824" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="mIU/mL" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_afp" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901825" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="ng/ml" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_lh" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901836" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="post_orchi_testosterone" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3901839" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                    <xs:attribute name="units" type="xs:string" fixed="ng/dl" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="post_orchi_lymph_node_dissection">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="No" />
+                    <xs:enumeration value="Yes - After chemotherapy" />
+                    <xs:enumeration value="Yes - Prior to chemotherapy" />
+                    <xs:attribute name="cde" type="xs:string" default="3953323" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="first_treatment_success">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Elevated Tumor Markers and Residual Mass" />
+                    <xs:enumeration value="No Measureable Tumor or Tumor Markers" />
+                    <xs:enumeration value="Normalization of Tumor Markers, but Residual Tumor Mass" />
+                    <xs:enumeration value="Progressive Tumor Mass and Tumor Markers" />
+                    <xs:attribute name="cde" type="xs:string" default="4030393" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="molecular_test_result">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Alpha Fetaprotein (AFP) - Elevated" />
+                    <xs:enumeration value="Alpha Fetaprotein (AFP) - Normal" />
+                    <xs:enumeration value="Alpha Fetaprotein (AFP) - Progressed" />
+                    <xs:enumeration value="Human Chorionic Gonadotropin (HCG) - Elevated" />
+                    <xs:enumeration value="Human Chorionic Gonadotropin (HCG) - Normal" />
+                    <xs:enumeration value="Human Chorionic Gonadotropin (HCG) - Progressed" />
+                    <xs:enumeration value="Lactate Dehydrogenase (LDH) - Elevated" />
+                    <xs:enumeration value="Lactate Dehydrogenase (LDH) - Normal" />
+                    <xs:enumeration value="Lactate Dehydrogenase (LDH) - Progressed" />
+                    <xs:enumeration value="Luteinizing Hormone (LH) - Elevated" />
+                    <xs:enumeration value="Luteinizing Hormone (LH) - Normal" />
+                    <xs:enumeration value="Luteinizing Hormone (LH) - Progressed" />
+                    <xs:enumeration value="Testosterone - Elevated" />
+                    <xs:enumeration value="Testosterone - Normal" />
+                    <xs:enumeration value="Testosterone - Progressed" />
+                    <xs:attribute name="cde" type="xs:string" default="3953322" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

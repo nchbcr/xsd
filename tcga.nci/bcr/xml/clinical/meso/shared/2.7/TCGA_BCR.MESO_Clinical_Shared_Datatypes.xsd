@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/meso/shared/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/meso/shared/2.7">
+  
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+
+	<xs:element name="pleurodesis_performed_90_days">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="No" />
+                    <xs:enumeration value="Yes" />
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3646080" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="history_asbestos_exposure">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="No" />
+                    <xs:enumeration value="Yes" />
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="1253" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="asbestos_exposure_type">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Actinolite" />
+                    <xs:enumeration value="Amosite" />
+					<xs:enumeration value="Anthophyllite" />
+                    <xs:enumeration value="Chrysotile" />
+					<xs:enumeration value="Crocidolite" />
+                    <xs:enumeration value="Erionite" />
+					<xs:enumeration value="Tremolite" />
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3629989" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="asbestos_exposure_source">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Occupational" />
+                    <xs:enumeration value="Secondary" />
+					<xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3629990" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="asbestos_exposure_age" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:integer_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629991"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="asbestos_exposure_years" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629992"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+ 
+	<xs:element name="asbestos_exposure_age_last" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:integer_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629993"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="serum_mesothelin_prior_tx" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629985"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="nmol/L"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="serum_mesothelin_lower_limit" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629986"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="nmol/L"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="serum_mesothelin_upper_limit" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3629987"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="nmol/L"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="creatinine_prior_tx" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="58318"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="mg/dL"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="creatinine_norm_range_lower" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2234697"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="mg/dL"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="creatinine_norm_range_upper" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2004064"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="mg/dL"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="suv_of_pleura_max" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2716767"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="mesothelioma_detection_method">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Biopsy" />
+                    <xs:enumeration value="Cytology" />
+					<xs:enumeration value="Other" />
+                    <xs:enumeration value="Thoracentesis" />
+					<xs:enumeration value="Thorascopy" />
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3629988" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="primary_occupation">
+		<xs:complexType>
+			<xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Architecture and Engineering" />
+                    <xs:enumeration value="Arts, Design, Entertainment, Sports and Media" />
+					<xs:enumeration value="Asbestos Mining" />
+					<xs:enumeration value="Automotive" />
+                    <xs:enumeration value="Building and Grounds Clearing and Maintenance" />
+					<xs:enumeration value="Business and Financial Operations" />
+                    <xs:enumeration value="Community and Social Services" />
+					<xs:enumeration value="Computer and Mathematical" />
+                    <xs:enumeration value="Construction and Extraction" />
+					<xs:enumeration value="Don't Work" />
+                    <xs:enumeration value="Education, Training and Library" />
+					<xs:enumeration value="Farming, Fishing, and Forestry" />
+                    <xs:enumeration value="Food Preparation and Serving, Related" />
+					<xs:enumeration value="Healthcare Practitioners and Technical Occupations" />
+                    <xs:enumeration value="Healthcare Support" />
+					<xs:enumeration value="Homemaker" />
+                    <xs:enumeration value="Installation, Maintenance and Repair" />
+					<xs:enumeration value="Legal" />
+                    <xs:enumeration value="Life, Physical, and Social Science" />
+					<xs:enumeration value="Management" />
+                    <xs:enumeration value="Military Specific" />
+					<xs:enumeration value="Office and Administrative Support" />
+                    <xs:enumeration value="Other" />
+					<xs:enumeration value="Other, please specify" />
+                    <xs:enumeration value="Personal Care and Service" />
+					<xs:enumeration value="Production" />
+                    <xs:enumeration value="Protective Service" />
+					<xs:enumeration value="Retired" />
+                    <xs:enumeration value="Sales and Related" />
+					<xs:enumeration value="Student" />
+                    <xs:enumeration value="Transportation and Material Moving" />
+					<xs:enumeration value="Welding" />
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3259240" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="primary_occupation_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5714" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+   <xs:element name="family_history_cancer_type" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value="" />
+					<xs:enumeration value="Melanoma" />
+					<xs:enumeration value="Mesothelioma" />
+					<xs:enumeration value="Other, specify" />
+					<xs:enumeration value="Uveal Melanoma" />
+					<xs:attribute name="cde" type="xs:string" default="3838107" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+					<xs:attribute name="tier" type="xs:string" default="2" />
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="family_history_cancer_type_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3813653" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

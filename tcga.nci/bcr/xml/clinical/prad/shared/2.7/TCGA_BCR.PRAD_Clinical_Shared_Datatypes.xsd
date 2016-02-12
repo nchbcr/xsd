@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/prad/shared/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/prad/shared/2.7">
+  
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    
+	<xs:element name="tumor_progression_post_ht" nillable="true">
+		<xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3158820" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="type_of_progression_after_ht" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Biochemical Recurrence"/>
+					<xs:enumeration value="Distant Metastases"/>
+					<xs:attribute name="cde" type="xs:string" default="3354944"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

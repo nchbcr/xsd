@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+           xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+           xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+           xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+           xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+           xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+           xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+           xmlns:tgct_shared="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7"
+           xmlns:tgct_nte="http://tcga.nci/bcr/xml/clinical/tgct/shared/new_tumor_event/2.7/1.0"
+           xmlns:follow_up_v4.0="http://tcga.nci/bcr/xml/clinical/tgct/followup/2.7/4.0"
+           xmlns="http://tcga.nci/bcr/xml/clinical/tgct/2.7"
+           targetNamespace="http://tcga.nci/bcr/xml/clinical/tgct/2.7">
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the TGCT study.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/tgct/shared/2.7/TCGA_BCR.TGCT_Clinical_Shared_Datatypes.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/tgct/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/tgct/shared/2.7/TCGA_BCR.TGCT_Clinical_NTEs_v1.0.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/tgct/followup/2.7/4.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/tgct/followup/2.7/TCGA_BCR.TGCT_Clinical_FollowUp_v4.0.xsd" />
+
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin"/>
+                <xs:element ref="patient"/>
+            </xs:sequence>
+
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="shared:tissue_source_site"/>
+                <xs:element ref="shared:patient_id"/>
+                <xs:element ref="shared:bcr_patient_barcode"/>
+                <xs:element ref="shared:bcr_patient_uuid"/>
+                <xs:element ref="clin_shared:informed_consent_verified"/>
+                <xs:element ref="clin_shared:icd_o_3_site"/>
+                <xs:element ref="clin_shared:icd_o_3_histology"/>
+                <xs:element ref="clin_shared:icd_10"/>
+
+                <xs:element ref="clin_shared:tissue_prospective_collection_indicator"/>
+                <xs:element ref="clin_shared:tissue_retrospective_collection_indicator"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_birth"/>
+                        <xs:element ref="clin_shared:month_of_birth"/>
+                        <xs:element ref="clin_shared:year_of_birth"/>
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_birth"/>
+                </xs:choice>
+
+                <xs:element ref="shared:gender"/>
+                <xs:element ref="clin_shared:race_list"/>
+                <xs:element ref="clin_shared:ethnicity"/>
+                <xs:element ref="shared:other_dx"/>
+                <xs:element ref="shared:history_of_neoadjuvant_treatment"/>
+                <xs:element ref="tgct_shared:history_of_undescended_testis"/>
+                <xs:element ref="tgct_shared:level_of_non_descent"/>
+                <xs:element ref="tgct_shared:undescended_testis_corrected"/>
+                <xs:element ref="tgct_shared:undescended_testis_corrected_age"/>
+                <xs:element ref="tgct_shared:undescended_testis_method_left"/>
+                <xs:element ref="tgct_shared:undescended_testis_method_right"/>
+                <xs:element ref="tgct_shared:history_hypospadias"/>
+                <xs:element ref="tgct_shared:history_fertility"/>
+                <xs:element ref="tgct_shared:family_history_testicular_cancer"/>
+                <xs:element ref="tgct_shared:relation_testicular_cancer_list"/>
+                <xs:element ref="tgct_shared:family_history_other_cancer"/>
+                <xs:element ref="blood_relative_cancer_history_list"/>
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status"/>
+                <xs:element ref="clin_shared:vital_status"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup"/>
+                        <xs:element ref="clin_shared:month_of_last_followup"/>
+                        <xs:element ref="clin_shared:year_of_last_followup"/>
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_last_followup"/>
+                </xs:choice>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death"/>
+                        <xs:element ref="clin_shared:month_of_death"/>
+                        <xs:element ref="clin_shared:year_of_death"/>
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_death"/>
+                </xs:choice>
+
+                <xs:element ref="clin_shared:patient_death_reason"/>
+                <xs:element ref="clin_shared:source_of_patient_death_reason"/>
+                <xs:element ref="tgct_shared:postoperative_tx_list"/>
+                <xs:element ref="clin_shared:radiation_therapy"/>
+                <xs:element ref="clin_shared:postoperative_rx_tx"/>
+
+                <xs:element ref="shared_stage:stage_event"/>
+
+                <xs:element ref="primary_pathology"/>
+
+                <xs:element ref="tgct_nte:new_tumor_events" minOccurs="1" maxOccurs="1"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion"/>
+                        <xs:element ref="clin_shared:month_of_form_completion"/>
+                        <xs:element ref="clin_shared:year_of_form_completion"/>
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_form_completion"/>
+                </xs:choice>
+
+                <xs:element ref="follow_ups"/>
+                <xs:element ref="rx:drugs"/>
+                <xs:element ref="rad:radiations"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="primary_pathology" nillable="true">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:tumor_tissue_site"/>
+                <xs:element ref="clin_shared:laterality"/>
+                <xs:element ref="tgct_shared:bilateral_diagnosis_timing_type"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="tgct_shared:day_of_bilateral_tumor_dx"/>
+                        <xs:element ref="tgct_shared:month_of_bilateral_tumor_dx"/>
+                        <xs:element ref="tgct_shared:year_of_bilateral_tumor_dx"/>
+                    </xs:sequence>
+
+                    <xs:element ref="tgct_shared:days_to_bilateral_tumor_dx"/>
+                </xs:choice>
+                <xs:element ref="tgct_shared:synchronous_tumor_histology_list"/>
+
+                <xs:element ref="tgct_shared:testis_tumor_macroextent"/>
+                <xs:element ref="tgct_shared:testis_tumor_macroextent_other"/>
+                <xs:element ref="tgct_shared:testis_tumor_microextent"/>
+
+                <xs:element ref="histology_list"/>
+
+                <xs:element ref="tgct_shared:intratubular_germ_cell_neoplasm"/>
+                <xs:element ref="clin_shared:lymphovascular_invasion_present"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis"/>
+                        <xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis"/>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:days_to_initial_pathologic_diagnosis"/>
+                        <xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis"/>
+                    </xs:sequence>
+                </xs:choice>
+                <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis"/>
+
+                <xs:element ref="clin_shared:initial_pathologic_diagnosis_method"/>
+                <xs:element ref="clin_shared:init_pathology_dx_method_other"/>
+
+                <xs:element ref="tgct_shared:pre_orchi_serum_marker_info"/>
+                <xs:element ref="tgct_shared:post_orchi_serum_marker_info"/>
+
+                <xs:element ref="tgct_shared:post_orchi_lymph_node_dissection"/>
+                <xs:element ref="molecular_test_result_list"/>
+                <xs:element ref="tgct_shared:first_treatment_success" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="follow_ups">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                We are using namespaces and version numbers to distinguish one version of followup from another.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="follow_up_v4.0:follow_up" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:element name="blood_relative_cancer_history_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="blood_relative_cancer_history" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="blood_relative_cancer_history">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:family_member_relationship_type"/>
+                <xs:element ref="tgct_shared:relative_family_cancer_hx_text"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="histology_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="histology" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="histology">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="shared:histological_type"/>
+                <xs:element ref="shared:histological_percentage"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="molecular_test_result_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tgct_shared:molecular_test_result" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

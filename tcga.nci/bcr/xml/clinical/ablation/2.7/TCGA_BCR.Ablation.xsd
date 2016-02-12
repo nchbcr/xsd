@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.0" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/ablation/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/ablation/2.7">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+
+	<xs:element name="ablations">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ablation" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:element name="ablation">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="bcr_ablation_barcode" />
+                <xs:element ref="bcr_ablation_uuid" />
+				
+                <xs:element ref="ablation_treatments" />
+			    <xs:element ref="embolization_treatments" />
+				
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="ablation_treatments">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="ablation_performed_indicator" />
+                <xs:element ref="ablation_treatment" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="embolization_treatments">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="embolization_performed_indicator" />
+                <xs:element ref="embolization_treatment" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="ablation_treatment">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="ablation_type" />
+				<xs:element ref="ablation_type_other" />
+				<xs:element ref="treatment_cycles_count" />
+				
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_ablation_performed" />
+                        <xs:element ref="month_of_ablation_performed" />
+                        <xs:element ref="year_of_ablation_performed" />
+                    </xs:sequence>
+                    <xs:element ref="days_to_ablation_performed" />
+                </xs:choice>
+				
+				<xs:element ref="lesions_count" />
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="embolization_treatment">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="embolization_type" />
+				
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_embolization_performed" />
+                        <xs:element ref="month_of_embolization_performed" />
+                        <xs:element ref="year_of_embolization_performed" />
+                    </xs:sequence>
+                    <xs:element ref="days_to_embolization_performed" />
+                </xs:choice>
+				
+				<xs:element ref="embolization_therapy_drug_name" />
+				<xs:element ref="embolization_therapy_drug_name_other" />
+				<xs:element ref="embolizing_agent_utilized" />
+				<xs:element ref="embolizing_agent_utilized_other" />
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="ablation_performed_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225709"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="embolization_performed_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225713"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="bcr_ablation_barcode">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NCName">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bcr_ablation_uuid">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ablation_type">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Ethanol Injection"/>
+					<xs:enumeration value="Microwave"/>
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="Radiofrequency Ablation"/>
+					<xs:enumeration value="Radiosurgical Ablation"/>
+					<xs:attribute name="cde" type="xs:string" default="3225702"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ablation_type_other">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3225705"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="treatment_cycles_count">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2199"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="month_of_ablation_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225707"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="day_of_ablation_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225706"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="year_of_ablation_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225708"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="days_to_ablation_performed">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default="5043518"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="lesions_count">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3225710"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="embolization_type">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Chemoembolization"/>
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="Radioembolization"/>
+					<xs:attribute name="cde" type="xs:string" default="3225722"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="month_of_embolization_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225715"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="day_of_embolization_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225714"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="year_of_embolization_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3225716"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="days_to_embolization_performed">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default="5043521"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="embolization_therapy_drug_name">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Cisplatin"/>
+					<xs:enumeration value="Doxorubicin"/> 
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="Doxorubicin Drug Eluting Beads"/>
+					<xs:enumeration value="Mitomycin C"/>
+					<xs:attribute name="cde" type="xs:string" default="3225736"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="embolization_therapy_drug_name_other">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2975232"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="embolizing_agent_utilized">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Gelfoam"/>
+					<xs:enumeration value="Plastic Beads"/> 
+					<xs:enumeration value="Other, specify"/>
+					<xs:enumeration value="Y-90 Sirsphere"/>
+					<xs:enumeration value="Y-90 Therasphere"/>
+					<xs:attribute name="cde" type="xs:string" default="3247288"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="embolizing_agent_utilized_other">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3225739"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

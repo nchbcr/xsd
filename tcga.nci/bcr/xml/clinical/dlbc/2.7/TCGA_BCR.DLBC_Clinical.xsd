@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns="http://tcga.nci/bcr/xml/clinical/dlbc/2.7"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+  xmlns:ocg_shared="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7"
+  xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+  xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+  xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  xmlns:follow_up_v4.4="http://tcga.nci/bcr/xml/clinical/dlbc/followup/2.7/4.4"
+  xmlns:dlbc_nte="http://tcga.nci/bcr/xml/clinical/dlbc/shared/new_tumor_event/2.7/1.0"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/dlbc/2.7">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema to define the elements of the DLBC study.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.OCG_Shared_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/dlbc/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/dlbc/shared/2.7/TCGA_BCR.DLBC_Clinical_NTEs_v1.0.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/dlbc/followup/2.7/4.4" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/dlbc/followup/2.7/TCGA_BCR.DLBC_Clinical_FollowUp_v4.4.xsd"/>
+	<xs:element name="tcga_bcr">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="admin:admin"/>
+			<xs:element ref="patient"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+	</xs:complexType>
+	</xs:element>
+	<xs:element name="patient">
+	<xs:complexType>
+	  <xs:sequence>
+		<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+		<xs:element ref="shared:tissue_source_site"/>
+		<xs:element ref="shared:patient_id"/>
+		<xs:element ref="shared:bcr_patient_barcode"/>
+		<xs:element ref="shared:bcr_patient_uuid"/>
+		<xs:element ref="clin_shared:informed_consent_verified"/>
+		<xs:element ref="clin_shared:icd_o_3_site"/>
+		<xs:element ref="clin_shared:icd_o_3_histology"/>
+		<xs:element ref="clin_shared:icd_10"/>
+		<xs:element ref="shared:histological_type"/>
+		<xs:element ref="shared:other_dx"/>
+		<xs:element ref="shared:history_of_neoadjuvant_treatment"/>
+		<xs:element ref="clin_shared:tissue_prospective_collection_indicator"/>
+		<xs:element ref="clin_shared:tissue_retrospective_collection_indicator"/>
+		<xs:element ref="shared:gender"/>
+		
+		<xs:choice>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:day_of_birth"/>
+			<xs:element ref="clin_shared:month_of_birth"/>
+			<xs:element ref="clin_shared:year_of_birth"/>
+		  </xs:sequence>
+		  <xs:element ref="clin_shared:days_to_birth"/>
+		</xs:choice>
+		
+		<xs:element ref="clin_shared:race_list"/>
+		<xs:element ref="clin_shared:ethnicity"/>
+		<xs:element ref="clin_shared:weight"/>
+		<xs:element ref="clin_shared:height"/>
+		
+		<xs:choice>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis"/>
+			<xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis"/>
+		  </xs:sequence>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:days_to_initial_pathologic_diagnosis"/>
+			<xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis"/>
+		  </xs:sequence>
+		</xs:choice>
+		<xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis"/>
+		
+		<xs:element ref="shared_stage:stage_event"/>
+		<xs:element ref="clin_shared:eastern_cancer_oncology_group"/>
+		<xs:element ref="clin_shared:karnofsky_performance_score" minOccurs="0"/>
+		<xs:element ref="clin_shared:vital_status"/>
+		
+		<xs:choice>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:day_of_last_followup"/>
+			<xs:element ref="clin_shared:month_of_last_followup"/>
+			<xs:element ref="clin_shared:year_of_last_followup"/>
+		  </xs:sequence>
+		  <xs:element ref="clin_shared:days_to_last_followup"/>
+		</xs:choice>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element ref="clin_shared:day_of_last_known_alive" minOccurs="0"/>
+				<xs:element ref="clin_shared:month_of_last_known_alive" minOccurs="0"/>
+				<xs:element ref="clin_shared:year_of_last_known_alive" minOccurs="0"/>
+			</xs:sequence>
+			<xs:element ref="clin_shared:days_to_last_known_alive" minOccurs="0"/>
+		</xs:choice>
+		<xs:choice>
+		  <xs:annotation>
+			<xs:documentation xml:lang="en">The date_of_death question is asked in both the initial enrollment form and the follow-up form(s).</xs:documentation>
+		  </xs:annotation>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:day_of_death"/>
+			<xs:element ref="clin_shared:month_of_death"/>
+			<xs:element ref="clin_shared:year_of_death"/>
+		  </xs:sequence>
+		  <xs:element ref="clin_shared:days_to_death"/>
+		</xs:choice>
+		
+		<xs:element ref="clin_shared:patient_death_reason" minOccurs="0"/>
+		<xs:element ref="clin_shared:death_cause_text" minOccurs="0"/>
+		<xs:element ref="clin_shared:person_neoplasm_cancer_status"/>
+		<xs:element ref="clin_shared:radiation_therapy"/>
+		<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0"/>
+		<xs:element ref="dlbc_nte:pet_scan_results" minOccurs="0"/>
+		<xs:element ref="clin_shared:targeted_molecular_therapy"/>
+		<xs:element ref="clin_shared:primary_therapy_outcome_success"/>
+		<xs:element ref="shared:tobacco_smoking_history" minOccurs="0"/>
+		<xs:element ref="clin_shared:age_began_smoking_in_years" minOccurs="0"/>
+		<xs:element ref="clin_shared:stopped_smoking_year" minOccurs="0"/>
+		<xs:element ref="clin_shared:number_pack_years_smoked" minOccurs="0"/>
+		
+		<xs:element ref="history_of_disease" minOccurs="0" maxOccurs="1"/>
+		<xs:element ref="primary_pathology" minOccurs="0" maxOccurs="1"/>
+		<xs:element ref="tests_performed" minOccurs="0" maxOccurs="1"/>
+		
+		<xs:element ref="dlbc_nte:new_tumor_events" minOccurs="1" maxOccurs="1"/>
+		<xs:choice>
+		  <xs:annotation>
+			<xs:documentation xml:lang="en">
+				Date the interviewer originally completed the corresponding TCGA Clinical Data Form.
+				If modifications are made after the form is marked complete, this date should not change.
+			</xs:documentation>
+		  </xs:annotation>
+		  <xs:sequence>
+			<xs:element ref="clin_shared:day_of_form_completion"/>
+			<xs:element ref="clin_shared:month_of_form_completion"/>
+			<xs:element ref="clin_shared:year_of_form_completion"/>
+		  </xs:sequence>
+		  <xs:element ref="clin_shared:days_to_form_completion"/>
+		</xs:choice>
+		<xs:element ref="follow_ups"/>
+		<xs:element ref="rx:drugs"/>
+		<xs:element ref="rad:radiations"/>
+		
+	  </xs:sequence>
+	</xs:complexType>
+	</xs:element>
+
+	<xs:element name="tests_performed" nillable="true">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ocg_shared:ldh_level" />
+				<xs:element ref="ocg_shared:ldh_norm_range_upper" />
+				
+				<xs:element ref="genetic_testing_results" />
+				
+				<xs:element ref="ocg_shared:mib1_positive_percentage_range"/>
+				<xs:element ref="ocg_shared:b_lymphocyte_genotyping_method"/>
+				<xs:element ref="ocg_shared:igh_genotype_results"/>
+				<xs:element ref="ocg_shared:igk_genotype_results"/>
+				
+				<xs:element ref="genetic_abnormalities" />
+				
+				<xs:element ref="ocg_shared:ebv_status_malignant_cells_method" />
+				<xs:element ref="ocg_shared:epstein_barr_viral_status" />
+				<xs:element ref="ocg_shared:ebv_positive_malignant_cells_percent" />
+			</xs:sequence>		
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="genetic_testing_results">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="genetic_testing_result" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_testing_result">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="shared:immunophenotypic_analysis_tested" />
+				<xs:element ref="shared:immunophenotypic_analysis_method" />
+				<xs:element ref="shared:immunophenotypic_analysis_results" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="genetic_abnormalities">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="genetic_abnormality_testing_result" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_abnormality_testing_result">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="shared:genetic_abnormality_tested" />
+				<xs:element ref="shared:genetic_abnormality_tested_other" />
+				<xs:element ref="shared:genetic_abnormality_method" />
+				<xs:element ref="shared:genetic_abnormality_method_other" />
+				<xs:element ref="shared:genetic_abnormality_results" />
+				<xs:element ref="shared:genetic_abnormality_results_other" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="history_of_disease" nillable="true">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="shared:hiv_status" />
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="ocg_shared:day_of_hiv_diagnosis" />
+						<xs:element ref="ocg_shared:month_of_hiv_diagnosis" />
+						<xs:element ref="ocg_shared:year_of_hiv_diagnosis" />
+					</xs:sequence>
+					<xs:element ref="ocg_shared:days_to_hiv_diagnosis" />
+				</xs:choice>
+				
+				<xs:element ref="ocg_shared:nadir_cd4_counts" />
+				<xs:element ref="ocg_shared:cd4_counts_at_diagnosis" />
+				<xs:element ref="ocg_shared:hiv_rna_load_at_diagnosis" />
+				<xs:element ref="ocg_shared:prior_aids_conditions" />
+				
+				<xs:element ref="ocg_shared:hbv_test" />
+				<xs:element ref="ocg_shared:hcv_test" />
+				<xs:element ref="ocg_shared:hpv_test" />
+				<xs:element ref="ocg_shared:kshv_hhv8_test" />
+				
+				<xs:element ref="ocg_shared:on_haart_therapy_prior_to_cancer_diagnosis" />
+				<xs:element ref="ocg_shared:on_haart_therapy_at_cancer_diagnosis" />
+				<xs:element ref="ocg_shared:cdc_hiv_risk_group" />
+				
+				<xs:element ref="ocg_shared:history_of_other_malignancy" />
+				
+				<xs:element ref="history_immunological_diseases" />
+				<xs:element ref="ocg_shared:history_immunological_disease_other" />
+				<xs:element ref="history_immunosuppresive_rx_types" />
+				<xs:element ref="ocg_shared:history_immunosuppressive_rx_other" />
+				
+				<xs:element ref="ocg_shared:history_relevant_infectious_dx" />
+				<xs:element ref="ocg_shared:history_relevant_infectious_dx_other" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="primary_pathology" nillable="true">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="shared:follicular_percent"/>
+				<xs:element ref="lymph_node_involvement_sites" />
+				<xs:element ref="tumor_tissue_sites" />
+				<xs:element ref="ocg_shared:extranodal_involvment_site_other" />
+				<xs:element ref="ocg_shared:extranodal_sites_involvement_number" />
+				<xs:element ref="shared:maximum_tumor_dimension" />
+				<xs:element ref="ocg_shared:maximum_tumor_bulk_anatomic_site" />
+				
+				<xs:element ref="clin_shared:initial_pathologic_diagnosis_method" /> 
+				<xs:element ref="clin_shared:init_pathology_dx_method_other" />
+				
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="shared:day_of_sample_procurement"/>
+						<xs:element ref="shared:month_of_sample_procurement"/>
+						<xs:element ref="shared:year_of_sample_procurement"/>
+					</xs:sequence>
+					<xs:element ref="shared:days_to_sample_procurement"/>
+				</xs:choice>
+				
+				<xs:element ref="clin_shared:primary_lymph_node_presentation_assessment" />
+				<xs:element ref="clin_shared:lymph_node_examined_count" />
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_he" />
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_ihc" />
+				<xs:element ref="pos_lymph_node_locations" />
+				<xs:element ref="ocg_shared:pos_lymph_node_location_other" />
+				
+				<xs:element ref="ocg_shared:bone_marrow_biopsy_done"/>
+				<xs:element ref="ocg_shared:bone_marrow_involvement" />
+				<xs:element ref="ocg_shared:bone_marrow_sample_histology" />
+			</xs:sequence>		
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="history_immunological_diseases">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ocg_shared:history_immunological_disease" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="history_immunosuppresive_rx_types">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ocg_shared:history_immunosuppresive_rx" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="pos_lymph_node_locations">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ocg_shared:pos_lymph_node_location" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="lymph_node_involvement_sites">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ocg_shared:lymph_node_involvement_site" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="tumor_tissue_sites">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="clin_shared:tumor_tissue_site" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+  <xs:element name="follow_ups">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+      We are using namespaces and version numbers to distinguish one version of followup from another.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="follow_up_v4.4:follow_up" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

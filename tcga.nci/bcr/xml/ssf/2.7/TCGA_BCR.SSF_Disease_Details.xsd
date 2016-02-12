@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+	xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+	xmlns="http://tcga.nci/bcr/xml/ssf_disease/2.7" 
+	targetNamespace="http://tcga.nci/bcr/xml/ssf_disease/2.7" 
+	elementFormDefault="qualified" 
+	version="2.7.2">
+	
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
+	
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema to define the elements of the Sample Submission Form that are perticular to only a subset of studies.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="disease_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="gleason_score_combined" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="gleason_score_primary" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="gleason_score_secondary" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="highest_gleason_score" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="psa_result_preop" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:sequence>
+						<xs:element ref="day_of_preop_psa"/>
+						<xs:element ref="month_of_preop_psa"/>
+						<xs:element ref="year_of_preop_psa"/>
+					</xs:sequence>
+					<xs:element ref="days_to_preop_psa"/>
+				</xs:choice>
+				<xs:element ref="bladder_cancer_history_list" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="bcg_treatment_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:sequence>
+						<xs:element ref="day_of_bcg_treatment"/>
+						<xs:element ref="month_of_bcg_treatment"/>
+						<xs:element ref="year_of_bcg_treatment"/>
+					</xs:sequence>
+					<xs:element ref="days_to_bcg_treatment"/>
+				</xs:choice>
+				<xs:element ref="diagnosis_subtype"  minOccurs="0" maxOccurs="1"/> 
+				<xs:element ref="shared:follicular_percent" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="b_cell_tumor_slide_submitted" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="t_cell_tumor_slide_submitted" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="cytogenetic_report_submitted" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="prior_biopsy" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="prior_procedure" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="prior_procedure_extent" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:sequence>
+						<xs:element ref="day_of_prior_biopsy"/>
+						<xs:element ref="month_of_prior_biopsy"/>
+						<xs:element ref="year_of_prior_biopsy"/>
+					</xs:sequence>
+					<xs:element ref="days_to_prior_biopsy"/>
+				</xs:choice>
+				<xs:element ref="treatment_after_biopsy" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:pleurodesis_performed" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:sequence>
+						<xs:element ref="day_of_pleurodesis"/>
+						<xs:element ref="month_of_pleurodesis"/>
+						<xs:element ref="year_of_pleurodesis"/>
+					</xs:sequence>
+					<xs:element ref="days_to_pleurodesis"/>
+				</xs:choice>
+				<xs:element ref="shared:tobacco_smoking_history" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:adenocarcinoma_invasion" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="ipm_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mucinous_cystic_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:metastatic_diagnosis" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:germline_testing_performed" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="biochemical_testing_performed" minOccurs="0" maxOccurs="1"/> 
+				<xs:element ref="biochemical_phenotype_list" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="testicular_cancer_history" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="oncocytic_variant_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="percent_myeloblasts_for_submitted_specimen" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="total_cells_submitted" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="differential_report_submitted" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="day_of_preop_psa">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3333727"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="month_of_preop_psa">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3333542"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_preop_psa">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3333729"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="days_to_preop_psa">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3335436"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="psa_result_preop">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="1806"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="ng/ml"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="gleason_score_primary">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="1"/>
+					<xs:enumeration value="2"/>
+					<xs:enumeration value="3"/>
+					<xs:enumeration value="4"/>
+					<xs:enumeration value="5"/>
+					<xs:enumeration value="9"/>
+					<xs:attribute name="cde" type="xs:string" default="1282"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="gleason_score_secondary">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="1"/>
+					<xs:enumeration value="2"/>
+					<xs:enumeration value="3"/>
+					<xs:enumeration value="4"/>
+					<xs:enumeration value="5"/>
+					<xs:enumeration value="9"/>
+					<xs:attribute name="cde" type="xs:string" default="1284"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="gleason_score_combined">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="2"/>
+					<xs:enumeration value="3"/>
+					<xs:enumeration value="4"/>
+					<xs:enumeration value="5"/>
+					<xs:enumeration value="6"/>
+					<xs:enumeration value="7"/>
+					<xs:enumeration value="8"/>
+					<xs:enumeration value="9"/>
+					<xs:enumeration value="10"/>
+					<xs:attribute name="cde" type="xs:string" default="2634976"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="highest_gleason_score">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2548509"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="bladder_cancer_history_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bladder_cancer_history" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="bladder_cancer_history">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="T1"/>
+					<xs:enumeration value="Ta"/>
+					<xs:enumeration value="Tis"/>
+					<xs:enumeration value="No Known history of non-muscle invasive bladder cancer"/>
+					<xs:attribute name="cde" type="xs:string" default="3288513"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="bcg_treatment_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3436248"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="month_of_bcg_treatment">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3288242"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="day_of_bcg_treatment">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3288248"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="year_of_bcg_treatment">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3288249"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="days_to_bcg_treatment">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default="3440606"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.8"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="diagnosis_subtype">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Non-papillary"/>
+					<xs:enumeration value="Papillary"/>
+					<xs:attribute name="cde" type="xs:string" default="2783887"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="b_cell_tumor_slide_submitted">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:yes_or_no">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3320292"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="t_cell_tumor_slide_submitted">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:yes_or_no">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3320295"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="cytogenetic_report_submitted">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3297384"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="prior_biopsy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3857794"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="month_of_prior_biopsy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3857887"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="day_of_prior_biopsy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3857890"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="year_of_prior_biopsy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3857893"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="days_to_prior_biopsy">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default=""/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="prior_procedure">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Biopsy only"/>
+					<xs:enumeration value="Craniotomy"/>
+					<xs:enumeration value="Debulking"/>
+					<xs:enumeration value="Orchiectomy only"/>
+					<xs:enumeration value="Other surgery"/>
+					<xs:enumeration value="Removal of extra-abdominal metastatic lesion"/>
+					<xs:enumeration value="Stereotactic biopsy"/>
+					<xs:enumeration value="Unilateral retroperitoneal lymph node dissection and orchiectomy"/>
+					<xs:enumeration value="Unknown"/>
+					<xs:attribute name="cde" type="xs:string" default="3857971"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="prior_procedure_extent">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3857896"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="treatment_after_biopsy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3857881"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="month_of_pleurodesis">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3646090"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="day_of_pleurodesis">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3646083"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="year_of_pleurodesis">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3646091"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="days_to_pleurodesis">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default=""/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ipm_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="2483560"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="mucinous_cystic_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3407712"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="biochemical_testing_performed">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3641292"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="biochemical_phenotype_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="biochemical_phenotype" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="biochemical_phenotype">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Dopamine-secreting"/>
+					<xs:enumeration value="Epinephrine-secreting"/>
+					<xs:enumeration value="Metanephrine-secreting"/>
+					<xs:enumeration value="Methoxytyramine-secreting"/>
+					<xs:enumeration value="Norepinephrine-secreting"/>
+					<xs:enumeration value="Normetanephrine-secreting"/>
+					<xs:attribute name="cde" type="xs:string" default="3645883"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="testicular_cancer_history">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="No"/>
+					<xs:enumeration value="Yes, history of metachronous contralateral testicular cancer"/>
+					<xs:enumeration value="Yes, history of synchronous contralateral testicular cancer"/>
+					<xs:attribute name="cde" type="xs:string" default="3729780"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="oncocytic_variant_indicator">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default="3630771"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                    <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="percent_myeloblasts_for_submitted_specimen">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3297383"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="total_cells_submitted">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3297382"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="differential_report_submitted">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="utility:yes_or_no">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3297386"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>
+

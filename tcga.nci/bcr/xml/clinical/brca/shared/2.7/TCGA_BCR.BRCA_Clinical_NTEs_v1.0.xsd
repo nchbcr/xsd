@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+   xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
+   xmlns:brca_shared="http://tcga.nci/bcr/xml/clinical/brca/shared/2.7"  
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://tcga.nci/bcr/xml/clinical/brca/shared/new_tumor_event/2.7/1.0"
+   targetNamespace="http://tcga.nci/bcr/xml/clinical/brca/shared/new_tumor_event/2.7/1.0">
+
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/shared/2.7/TCGA_BCR.BRCA_Clinical_Shared_Datatypes.xsd" />
+   
+   <xs:annotation>
+      <xs:documentation xml:lang="en">The new_tumor_event section for BRCA clinical xml.</xs:documentation>
+   </xs:annotation>
+   
+   <xs:element name="new_tumor_events">
+		<xs:complexType>
+		  <xs:sequence>
+			<xs:element ref="nte:new_tumor_event_after_initial_treatment" />
+			<xs:element ref="new_tumor_event" minOccurs="0" maxOccurs="unbounded" />
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+   <xs:element name="new_tumor_event">   
+      <xs:complexType>
+         <xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="nte:day_of_new_tumor_event_after_initial_treatment" />
+					<xs:element ref="nte:month_of_new_tumor_event_after_initial_treatment" />
+					<xs:element ref="nte:year_of_new_tumor_event_after_initial_treatment" />
+				</xs:sequence>
+				<xs:element ref="nte:days_to_new_tumor_event_after_initial_treatment" />
+			</xs:choice>
+			<xs:element ref="nte:new_neoplasm_event_type" />
+			<xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" />
+			<xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" />
+			
+			<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" />
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="nte:day_of_new_tumor_event_additional_surgery_procedure" />
+					<xs:element ref="nte:month_of_new_tumor_event_additional_surgery_procedure" />
+					<xs:element ref="nte:year_of_new_tumor_event_additional_surgery_procedure" />
+				</xs:sequence>
+				<xs:element ref="nte:days_to_new_tumor_event_additional_surgery_procedure" />
+			</xs:choice>
+
+			<xs:element ref="nte:additional_radiation_therapy" />
+			<xs:element ref="nte:additional_pharmaceutical_therapy" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_status" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_level_cell_percent_category" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_er_positive_finding_scale_type" />	
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_er_pos_cell_score" />
+			<xs:element ref="brca_shared:pos_finding_metastatic_breast_carcinoma_estrogen_receptor_other_measuremenet_scale_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_detection_method_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_status" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_level_cell_percent_category" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_progesterone_receptor_positive_finding_scale_type" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_pr_pos_cell_score" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_progesterone_receptor_other_measure_scale_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_detection_method_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_lab_proc_her2_neu_immunohistochemistry_receptor_status" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_pos_finding_cell_percent_category" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_erbb2_immunohistochemistry_level_result" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_her2_erbb2_other_measure_scale_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_method_calculation_method_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_lab_proc_her2_neu_in_situ_hybridization_outcome_type" />
+			<xs:element ref="brca_shared:her2_neu_metastatic_breast_carcinoma_copy_analysis_input_total_number" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_fluorescence_in_situ_hybridization_diagnostic_proc_centromere_17_signal_result_range" />
+			<xs:element ref="brca_shared:her2_neu_and_centromere_17_copy_number_metastatic_breast_carcinoma_analysis_input_total_number_count" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_neu_chromosone_17_signal_ratio_value" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_other_scale_measurement_text" />
+			<xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_pos_finding_fluorescence_in_situ_hybridization_calculation_method_text" />
+		 </xs:sequence>
+	  </xs:complexType>
+   </xs:element>
+</xs:schema>

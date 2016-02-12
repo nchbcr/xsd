@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
+	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+	xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7" 
+	xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+    xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+	xmlns:cesc_shared="http://tcga.nci/bcr/xml/clinical/cesc/shared/2.7"
+	xmlns:cesc_nte="http://tcga.nci/bcr/xml/clinical/cesc/shared/new_tumor_event/2.7/1.0" 
+	xmlns="http://tcga.nci/bcr/xml/clinical/cesc/followup/2.7/4.0" 
+	targetNamespace="http://tcga.nci/bcr/xml/clinical/cesc/followup/2.7/4.0">
+	
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/cesc/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/cesc/shared/2.7/TCGA_BCR.CESC_Clinical_Shared_Datatypes.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/cesc/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/cesc/shared/2.7/TCGA_BCR.CESC_Clinical_NTEs_v1.0.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the TCGA Clinical Data Follow-up Form within the CESC study.</xs:documentation>
+    </xs:annotation>
+    <xs:element name="follow_up">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:bcr_followup_barcode" />
+                <xs:element ref="clin_shared:bcr_followup_uuid" />
+			
+				<xs:element ref="clin_shared:lost_follow_up" />
+				<xs:element ref="clin_shared:radiation_therapy" />
+				<xs:element ref="clin_shared:postoperative_rx_tx" />
+				<xs:element ref="clin_shared:person_neoplasm_cancer_status" />
+				<xs:element ref="clin_shared:vital_status" />
+
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+                <xs:choice minOccurs="0" >
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_known_alive" />
+                        <xs:element ref="clin_shared:month_of_last_known_alive" />
+                        <xs:element ref="clin_shared:year_of_last_known_alive" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_last_known_alive" />
+                </xs:choice>
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death" />
+                        <xs:element ref="clin_shared:month_of_death" />
+                        <xs:element ref="clin_shared:year_of_death" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_death" />
+                </xs:choice>
+
+				<xs:element ref="clin_shared:patient_death_reason" />
+				<xs:element ref="cesc_shared:death_cause_text" />
+				<xs:element ref="clin_shared:eastern_cancer_oncology_group" />
+				<xs:element ref="clin_shared:performance_status_scale_timing" />
+				<xs:element ref="clin_shared:assessment_timepoint_category" />
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_performance_status_assessment" />
+                        <xs:element ref="clin_shared:month_of_performance_status_assessment" />
+                        <xs:element ref="clin_shared:year_of_performance_status_assessment" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_performance_status_assessment" />
+                </xs:choice>
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
+                <xs:element ref="clin_shared:additional_treatment_completion_success_outcome" />
+
+				<xs:element ref="cesc_shared:treatment" />
+                <xs:element ref="cesc_shared:radiation_therapy_not_administered_reason" minOccurs="0" />
+                <xs:element ref="cesc_shared:radiation_therapy_not_administered_specify" minOccurs="0" />
+                <xs:element ref="cesc_shared:brachytherapy_method_type" minOccurs="0" />
+                <xs:element ref="cesc_shared:brachytherapy_method_other_specify_text" minOccurs="0" />
+                <xs:element ref="cesc_shared:brachytherapy_first_reference_point_administered_total_dose" minOccurs="0" />
+                <xs:element ref="cesc_shared:rt_administered_type" minOccurs="0" />
+                <xs:element ref="rad:radiation_type_notes" minOccurs="0" />
+                <xs:element ref="cesc_shared:rt_pelvis_administered_total_dose" minOccurs="0" />
+                <xs:element ref="cesc_shared:external_beam_radiation_therapy_administered_paraaortic_region_lymph_node_dose" minOccurs="0" />
+                <xs:element ref="cesc_shared:concurrent_rad_tx_chemo_admin" minOccurs="0" />
+                <xs:element ref="cesc_shared:chemotherapy_negation_radiation_therapy_concurrent_not_administered_reason" minOccurs="0" />
+                <xs:element ref="cesc_shared:chemotherapy_negation_radiation_therapy_concurrent_administered_text" minOccurs="0" />
+                <xs:element ref="cesc_shared:chemotherapy_regimen_types" minOccurs="0" />
+                <xs:element ref="cesc_shared:other_chemotherapy_agent_administration_specify" minOccurs="0" />
+                <xs:element ref="cesc_shared:concurrent_chemotherapy_dose" minOccurs="0" />
+                <xs:element ref="rx:prescribed_dose_units" minOccurs="0" />
+                <xs:element ref="cesc_shared:dose_frequency_text" minOccurs="0" />
+                <xs:element ref="cesc_shared:agent_total_dose_count" minOccurs="0" />
+
+				<xs:element ref="cesc_nte:new_tumor_events" minOccurs="1" maxOccurs="1" />
+				
+                <xs:choice>
+                    <xs:annotation>
+                        <xs:documentation>
+							Date the interviewer originally completed the corresponding TCGA Clinical Data Form. 
+							If modifications are made after the form is marked complete, this date should not change.
+						</xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" default="4.0" use="optional"/>
+			<xs:attribute name="sequence" type="xs:integer" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

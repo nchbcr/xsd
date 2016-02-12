@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+ xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+ xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+ xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+ xmlns:omf_v4.0="http://tcga.nci/bcr/xml/clinical/omf/2.7/4.0"
+ xmlns="http://tcga.nci/bcr/xml/clinical/omf/2.7" 
+ targetNamespace="http://tcga.nci/bcr/xml/clinical/omf/2.7">
+      
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            Schema to define other malignancy data, which includes any malignancy diagnosed prior to or at the same time as the diagnosis of the tumor submitted for TCGA.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/omf/2.7/4.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/omf/2.7/TCGA_BCR.OMF_v4.0.xsd" />
+	
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin" />
+                <xs:element ref="patient" />
+            </xs:sequence>
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
+                <xs:element ref="shared:bcr_patient_barcode" />
+                <xs:element ref="shared:bcr_patient_uuid" />
+                <xs:element ref="omfs" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="omfs">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">We are using namespaces and version numbers to distinguish one version of OMF from another.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+		  <xs:sequence>
+			<xs:element ref="omf_v4.0:omf" minOccurs="1" maxOccurs="unbounded" />
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

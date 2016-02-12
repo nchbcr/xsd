@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+  xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+  xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+  xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  xmlns:brca_shared="http://tcga.nci/bcr/xml/clinical/brca/shared/2.7"  
+  xmlns:brca_nte="http://tcga.nci/bcr/xml/clinical/brca/shared/new_tumor_event/2.7/1.0" 
+  xmlns:follow_up_v1.5="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/1.5"
+  xmlns:follow_up_v2.1="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/2.1"
+  xmlns:follow_up_v4.0="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/4.0"
+  xmlns="http://tcga.nci/bcr/xml/clinical/brca/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/brca/2.7">
+  
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the BRCA study.</xs:documentation>
+    </xs:annotation>
+  
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/shared/2.7/TCGA_BCR.BRCA_Clinical_Shared_Datatypes.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/shared/2.7/TCGA_BCR.BRCA_Clinical_NTEs_v1.0.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/1.5" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/followup/2.7/TCGA_BCR.BRCA_Clinical_FollowUp_v1.5.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/2.1" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/followup/2.7/TCGA_BCR.BRCA_Clinical_FollowUp_v2.1.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/brca/followup/2.7/4.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/brca/followup/2.7/TCGA_BCR.BRCA_Clinical_FollowUp_v4.0.xsd" />
+    
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin" />
+                <xs:element ref="patient" />
+            </xs:sequence>
+            
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="clin_shared:tumor_tissue_site" />
+				<xs:element ref="clin_shared:tumor_tissue_site_other" />
+                <xs:element ref="shared:other_dx" />
+                <xs:element ref="shared:gender" />
+                
+                <xs:element ref="clin_shared:vital_status">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">The vital_status question is asked in both the initial enrollment form and the follow-up form(s).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_birth" />
+                        <xs:element ref="clin_shared:month_of_birth" />
+                        <xs:element ref="clin_shared:year_of_birth" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_birth" />
+                </xs:choice>
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_known_alive" />
+                        <xs:element ref="clin_shared:month_of_last_known_alive" />
+                        <xs:element ref="clin_shared:year_of_last_known_alive" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_last_known_alive" />
+                </xs:choice>
+                
+                <xs:choice>
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">The date_of_death question is asked in both the initial enrollment form and the follow-up form(s).</xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death" /> 
+                        <xs:element ref="clin_shared:month_of_death" /> 
+                        <xs:element ref="clin_shared:year_of_death" /> 
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_death" />
+                </xs:choice>
+               
+                <xs:choice>
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">The date_of_last_followup question is asked in both the initial enrollment form and the follow-up form(s).</xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" /> 
+                        <xs:element ref="clin_shared:month_of_last_followup" /> 
+                        <xs:element ref="clin_shared:year_of_last_followup" /> 
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+
+                <xs:element ref="clin_shared:patient_progression_status" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:progression_dates" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="clin_shared:race_list"/>
+                <xs:element ref="shared:bcr_patient_barcode" />
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
+                <xs:element ref="shared:bcr_patient_uuid" />
+                <xs:element ref="shared:history_of_neoadjuvant_treatment" />
+                <xs:element ref="clin_shared:history_prior_surgery_indicator" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:history_prior_surgery_type" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:history_prior_surgery_type_other" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:informed_consent_verified" />
+                <xs:element ref="clin_shared:history_of_radiation_primary_site" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:history_of_radiation_metastatic_site" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:icd_o_3_site" />
+                <xs:element ref="clin_shared:icd_o_3_histology" />
+                <xs:element ref="clin_shared:icd_10" />
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis" />
+                        <xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis" />
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:days_to_initial_pathologic_diagnosis" />
+                        <xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis" />
+                    </xs:sequence>
+                </xs:choice>
+                <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis" /> 
+                <xs:element ref="clin_shared:ethnicity" /> 
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">The person_neoplasm_cancer_status question is asked in both the initial enrollment form and the follow-up form(s).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+				<xs:element ref="clin_shared:primary_lymph_node_presentation_assessment" />
+                <xs:element ref="clin_shared:lymph_node_examined_count" />
+                <xs:element ref="brca_shared:er_detection_method_text" />
+                <xs:element ref="brca_shared:pgr_detection_method_text" />
+				<xs:element ref="anatomic_neoplasm_subdivisions" />
+                <xs:element ref="brca_shared:her2_neu_chromosone_17_signal_ratio_value" />
+                <xs:element ref="axillary_lymph_node_stage_method_type" />
+                <xs:element ref="axillary_lymph_node_stage_other_method_descriptive_text" />
+                <xs:element ref="breast_carcinoma_surgical_procedure_name" />
+                <xs:element ref="breast_neoplasm_other_surgical_procedure_descriptive_text" />
+                <xs:element ref="breast_carcinoma_primary_surgical_procedure_name" />
+                <xs:element ref="surgical_procedure_purpose_other_text" />
+                <xs:element ref="shared:histological_type"/>
+                <xs:element ref="shared:histological_type_other"/>
+                <xs:element ref="clin_shared:menopause_status" />
+                
+                <xs:element ref="brca_shared:breast_carcinoma_progesterone_receptor_status" />
+                <xs:element ref="cytokeratin_immunohistochemistry_staining_method_micrometastasis_indicator" />
+				<xs:element ref="breast_carcinoma_immunohistochemistry_er_pos_finding_scale" />
+                <xs:element ref="brca_shared:immunohistochemistry_positive_cell_score" />
+                <xs:element ref="brca_shared:her2_immunohistochemistry_level_result" />
+                <xs:element ref="breast_cancer_surgery_margin_status" />
+                <xs:element ref="clin_shared:margin_status" />
+                <xs:element ref="clin_shared:initial_pathologic_diagnosis_method" />
+                <xs:element ref="clin_shared:init_pathology_dx_method_other" />
+                <xs:element ref="brca_shared:lab_procedure_her2_neu_in_situ_hybrid_outcome_type" />
+                <xs:element ref="brca_shared:breast_carcinoma_estrogen_receptor_status" />
+                <xs:element ref="brca_shared:lab_proc_her2_neu_immunohistochemistry_receptor_status" />
+                <xs:element ref="clin_shared:number_of_lymphnodes_positive_by_ihc" />
+                <xs:element ref="clin_shared:number_of_lymphnodes_positive_by_he" />
+                <xs:element ref="brca_shared:pos_finding_progesterone_receptor_other_measurement_scale_text" />
+                <xs:element ref="brca_shared:positive_finding_estrogen_receptor_other_measurement_scale_text" />
+                <xs:element ref="brca_shared:her2_erbb_pos_finding_cell_percent_category" />
+                <xs:element ref="brca_shared:pos_finding_her2_erbb2_other_measurement_scale_text" />
+                <xs:element ref="brca_shared:her2_erbb_method_calculation_method_text" />
+                <xs:element ref="brca_shared:her2_neu_and_centromere_17_copy_number_analysis_input_total_number_count" />
+                <xs:element ref="brca_shared:her2_and_centromere_17_positive_finding_other_measurement_scale_text" />
+                <xs:element ref="brca_shared:her2_erbb_pos_finding_fluorescence_in_situ_hybridization_calculation_method_text" />
+                <xs:element ref="clin_shared:tissue_prospective_collection_indicator" />
+                <xs:element ref="clin_shared:tissue_retrospective_collection_indicator" />
+                <xs:element ref="brca_shared:fluorescence_in_situ_hybridization_diagnostic_procedure_chromosome_17_signal_result_range" />
+                <xs:element ref="first_nonlymph_node_metastasis_anatomic_sites" />
+                <xs:element ref="brca_shared:er_level_cell_percentage_category" />
+                <xs:element ref="brca_shared:progesterone_receptor_level_cell_percent_category" />
+				<xs:element ref="distant_metastasis_present_ind2" />  
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_status" />               
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_level_cell_percent_category" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_er_pos_cell_score" /> 
+                <xs:element ref="brca_shared:pos_finding_metastatic_breast_carcinoma_estrogen_receptor_other_measuremenet_scale_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_estrogen_receptor_detection_method_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_status" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_lab_proc_her2_neu_immunohistochemistry_receptor_status" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_level_cell_percent_category" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_immunohistochemistry_pr_pos_cell_score" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_progesterone_receptor_other_measure_scale_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_progesterone_receptor_detection_method_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_pos_finding_cell_percent_category" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_erbb2_immunohistochemistry_level_result" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_her2_erbb2_other_measure_scale_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_method_calculation_method_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_lab_proc_her2_neu_in_situ_hybridization_outcome_type" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_fluorescence_in_situ_hybridization_diagnostic_proc_centromere_17_signal_result_range" /> 
+                <xs:element ref="brca_shared:her2_neu_and_centromere_17_copy_number_metastatic_breast_carcinoma_analysis_input_total_number_count" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_neu_chromosone_17_signal_ratio_value" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_pos_finding_other_scale_measurement_text" /> 
+                <xs:element ref="brca_shared:metastatic_breast_carcinoma_her2_erbb_pos_finding_fluorescence_in_situ_hybridization_calculation_method_text" /> 
+                <xs:element ref="brca_shared:her2_neu_metastatic_breast_carcinoma_copy_analysis_input_total_number" /> 
+                <xs:element ref="brca_shared:her2_neu_breast_carcinoma_copy_analysis_input_total_number" />  
+				<xs:element ref="breast_carcinoma_immunohistochemistry_progesterone_receptor_pos_finding_scale" />
+                <xs:element ref="brca_shared:breast_carcinoma_immunohistochemistry_pos_cell_score" /> 
+				
+				<xs:element ref="shared_stage:stage_event" />
+
+                <xs:element ref="molecular_markers" minOccurs="0" maxOccurs="1" />
+				
+				<!-- The following was added on the v4 enrollment form. -->
+				<!-- Find the order in which these should go into this XSD -->
+				<xs:element ref="clin_shared:postoperative_rx_tx" />
+				<xs:element ref="clin_shared:radiation_therapy" />
+				
+				<xs:element ref="brca_nte:new_tumor_events" minOccurs="1" maxOccurs="1" />
+				
+				<xs:choice>
+					<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Date the interviewer originally completed the corresponding TCGA Clinical Data Form. 
+						If modifications are made after the form is marked complete, this date should not change.
+					</xs:documentation>
+					</xs:annotation>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+
+                <xs:element ref="clin_shared:response" minOccurs="0" maxOccurs="1" />
+
+				<xs:element ref="follow_ups" />
+                <xs:element ref="rx:drugs" />
+                <xs:element ref="rad:radiations" />
+                
+                <xs:element ref="clin_shared:unstructured" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="follow_ups">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">We are using namespaces and version numbers to distinguish one version of followup from another.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+		  <xs:sequence>
+			<xs:element ref="follow_up_v1.5:follow_up" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element ref="follow_up_v2.1:follow_up" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element ref="follow_up_v4.0:follow_up" minOccurs="0" maxOccurs="unbounded" />
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+    <xs:element name="anatomic_neoplasm_subdivisions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="axillary_lymph_node_stage_method_type" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="No axillary staging" />
+                    <xs:enumeration value="Sentinel node biopsy alone" />
+                    <xs:enumeration value="Sentinel lymph node biopsy plus axillary dissection" />
+                    <xs:enumeration value="Axillary lymph node dissection alone" />
+                    <xs:enumeration value="Other (specify)" />
+                    <xs:attribute name="cde" type="xs:string" default="2516112" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="breast_carcinoma_surgical_procedure_name" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Surgery not Performed" />
+                    <xs:enumeration value="Lumpectomy" />
+                    <xs:enumeration value="Simple Mastectomy" />
+                    <xs:enumeration value="Modified Radical Mastectomy" />
+                    <xs:enumeration value="Other" />
+                    <xs:attribute name="cde" type="xs:string" default="2739580" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="breast_carcinoma_primary_surgical_procedure_name" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="None" />
+                    <xs:enumeration value="Lumpectomy" />
+                    <xs:enumeration value="Mastectomy NOS" />
+                    <xs:enumeration value="Modified radical mastectomy" />
+                    <xs:enumeration value="Other" />
+                    <xs:attribute name="cde" type="xs:string" default="1218" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="surgical_procedure_purpose_other_text" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3020338" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="cytokeratin_immunohistochemistry_staining_method_micrometastasis_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3086152" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="breast_carcinoma_immunohistochemistry_er_pos_finding_scale" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="4 Point Scale" />
+                    <xs:enumeration value="3 Point Scale" />
+                    <xs:attribute name="cde" type="xs:string" default="3203081" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:element name="breast_cancer_surgery_margin_status" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="brca_shared:posNegClose">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2241252" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="breast_neoplasm_other_surgical_procedure_descriptive_text" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3124493" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="axillary_lymph_node_stage_other_method_descriptive_text" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3124496" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="first_nonlymph_node_metastasis_anatomic_sites">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="clin_shared:metastatic_site_at_diagnosis" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element ref="clin_shared:metastatic_site_at_diagnosis_other" minOccurs="1" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="distant_metastasis_present_ind2" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2194698" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="breast_carcinoma_immunohistochemistry_progesterone_receptor_pos_finding_scale" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="4 Point Scale" />
+					<xs:enumeration value="3 Point Scale" />
+                    <xs:attribute name="cde" type="xs:string" default="3203083" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4.1" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="posNegStat">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="" />
+            <xs:enumeration value="Positive" />
+            <xs:enumeration value="Negative" />
+            <xs:enumeration value="Unknown" />
+            <xs:enumeration value="Equivocal" />
+            <xs:enumeration value="Indeterminate" />
+            <xs:enumeration value="Performed but Not Available" />
+            <xs:enumeration value="Not Performed" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="noneToGreaterThanTwenty">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None" />
+            <xs:enumeration value="Greater than 20" />
+            <xs:enumeration value="16-20" />
+            <xs:enumeration value="11-15" />
+            <xs:enumeration value="6-10 Lymph nodes" />
+            <xs:enumeration value="5" />
+            <xs:enumeration value="4" />
+            <xs:enumeration value="3" />
+            <xs:enumeration value="2" />
+            <xs:enumeration value="1" />
+            <xs:enumeration value="" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="molecular_markers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="molecular_marker" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="molecular_marker">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:molecular_abnormality_results" />
+                <xs:element ref="clin_shared:molecular_abnormality_results_other" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

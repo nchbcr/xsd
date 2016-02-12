@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+   xmlns:read_nte="http://tcga.nci/bcr/xml/clinical/read/shared/new_tumor_event/2.7/1.0" 
+   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+   xmlns="http://tcga.nci/bcr/xml/clinical/read/followup/2.7/1.0"
+   targetNamespace="http://tcga.nci/bcr/xml/clinical/read/followup/2.7/1.0">
+
+    <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" namespace="http://tcga.nci/bcr/xml/utility/2.7" />
+    <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" namespace="http://tcga.nci/bcr/xml/administration/2.7" />
+    <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" />
+	<xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" />
+	<xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/read/shared/2.7/TCGA_BCR.READ_Clinical_NTEs_v1.0.xsd" namespace="http://tcga.nci/bcr/xml/clinical/read/shared/new_tumor_event/2.7/1.0" />
+	
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the TCGA Clinical Data Follow-up Form within the READ study.</xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="follow_up">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:bcr_followup_barcode" />
+                <xs:element ref="clin_shared:bcr_followup_uuid" />
+				
+				<xs:element ref="clin_shared:followup_case_report_form_submission_reason" />
+				<xs:element ref="clin_shared:lost_follow_up" />
+				<xs:element ref="clin_shared:radiation_therapy" />
+				<xs:element ref="clin_shared:postoperative_rx_tx" />
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
+				<xs:element ref="clin_shared:followup_treatment_success" />
+                <xs:element ref="clin_shared:vital_status" />
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death" />
+                        <xs:element ref="clin_shared:month_of_death" />
+                        <xs:element ref="clin_shared:year_of_death" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_death" />
+                </xs:choice>
+				<xs:element ref="clin_shared:person_neoplasm_cancer_status" />
+
+				<xs:element ref="read_nte:new_tumor_events" minOccurs="0" maxOccurs="1" />
+				
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" default="1.0" use="optional"/>
+			<xs:attribute name="sequence" type="xs:integer" />
+        </xs:complexType>
+    </xs:element>
+
+    
+</xs:schema>

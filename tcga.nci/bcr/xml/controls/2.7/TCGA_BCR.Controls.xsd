@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+	xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7" 
+	xmlns:bio="http://tcga.nci/bcr/xml/biospecimen/2.7"
+	xmlns="http://tcga.nci/bcr/xml/control/2.7"  
+	targetNamespace="http://tcga.nci/bcr/xml/control/2.7"  
+	elementFormDefault="qualified" 
+	version="2.7.2">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema to define elements for cell line and other controls</xs:documentation>
+	</xs:annotation>
+	
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/biospecimen/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/biospecimen/2.7/TCGA_BCR.Biospecimen.xsd"/>			
+		
+	<xs:element name="tcga_bcr">
+		<xs:annotation> 
+			<xs:documentation>
+				Top level element for adding controls metadata to patient and administration definitions. 
+				Administration and patient elements are unchanged from the original schemas.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="admin:admin"/>
+				<xs:element ref="bio:patient"/>
+				<xs:element ref="controls"/>
+			</xs:sequence>
+			<xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="controls">
+		<xs:annotation> 
+			<xs:documentation>
+				A wrapper to create a list of control elements
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="control" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>		
+	</xs:element>	
+	
+	<xs:element name="control">
+		<xs:annotation> 
+			<xs:documentation>
+				Control element specifying the type of a control, and its relation 
+				to disease studies.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="control_element" maxOccurs="1" minOccurs="1"/>
+				<xs:element ref="aliquots_to_diseases" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>					
+
+	<xs:simpleType name="control_element_type">	
+		<xs:annotation> 
+			<xs:documentation>
+				Enumeration that defines control element type.
+			</xs:documentation>
+		</xs:annotation>			
+		<xs:restriction base="xs:string">
+				<xs:enumeration value="cell_line_control"/>
+				<xs:enumeration value="normal_normal_control"/>				  
+		</xs:restriction>	
+	</xs:simpleType>				
+	<xs:element name="control_element" type="control_element_type"/>
+	
+	<xs:element name="aliquots_to_diseases">
+		<xs:annotation> 
+			<xs:documentation>
+				A mapping between a control and a list of disease studies.
+			</xs:documentation>
+		</xs:annotation>		
+		<xs:complexType>
+			<xs:sequence>
+            <xs:element ref="disease_code_list" maxOccurs="1" minOccurs="1"/>
+			<xs:element ref="bio:bcr_aliquot_barcode" maxOccurs="1" minOccurs="1"/>
+			<xs:element ref="bio:bcr_aliquot_uuid"  maxOccurs="1" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:simpleType name="disease_code_list_type">					
+			<xs:list itemType="disease_code_type"/>
+	</xs:simpleType>		
+	<xs:element name="disease_code_list" type="disease_code_list_type"/>		
+										
+    <xs:simpleType name="disease_code_type"> 
+		<xs:annotation> 
+			<xs:documentation>
+				The list is duplicated in this namespace because admin:disease_code 
+				is not meant to be extensible. An effort is underway to refactor anonymous types
+				into named types.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACC" />    <!-- Adrenocortical carcinoma -->
+			<xs:enumeration value="BLCA" />   <!-- Urothelial carcinoma -->
+			<xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
+			<xs:enumeration value="BRCA" />   <!-- Breast invasive carcinoma -->
+			<xs:enumeration value="CESC" />   <!-- Cervical Squamous cell carcinoma -->
+			<xs:enumeration value="CHOL" />   <!-- Cholangiocarcinoma -->
+			<xs:enumeration value="COAD" />   <!-- Colon/Rectal adenocarcinoma -->
+			<xs:enumeration value="DLBC" />   <!-- Diffuse Large B-Cell Lymphoma -->
+			<xs:enumeration value="ESCA" />   <!-- Esophageal -->
+			<xs:enumeration value="GBM" />    <!-- Glioblastoma multiforme -->
+			<xs:enumeration value="GIST" />   <!-- Gastrointestinal Stromal Tumor -->
+			<xs:enumeration value="HNSC" />   <!-- Heand and neck squamous cell carcinoma -->
+			<xs:enumeration value="KIRC" />   <!-- Kidney renal cell carcinoma -->
+			<xs:enumeration value="KIRP" />   <!-- Kidney renal papillary cell carcinoma -->
+			<xs:enumeration value="KICH" />   <!-- Kidney Chromophobe -->
+			<xs:enumeration value="LAML" />   <!-- Acute myeloid leukemia -->
+			<xs:enumeration value="LCLL" />   <!-- Cronic lymphocytic leukemia -->
+			<xs:enumeration value="LCML" />   <!-- Chronic Myelogenous Leukemia -->
+			<xs:enumeration value="LGG" />    <!-- Lower Grade Glioma-->
+			<xs:enumeration value="LIHC" />   <!-- Liver hepatocellular carcinoma -->
+			<xs:enumeration value="LNNH" />   <!-- Lymphoid neoplasm non-hodgkins lymphoma -->
+			<xs:enumeration value="LUAD" />   <!-- Lung adenocarcinoma -->
+			<xs:enumeration value="LUNG" />   <!-- Lung cancer -->
+			<xs:enumeration value="LUSC" />   <!-- Lung squamous cell carcinoma -->
+			<xs:enumeration value="MESO" />   <!-- Mesothelioma -->
+			<xs:enumeration value="MCC" />    <!-- Merkel cell carcinoma -->
+			<xs:enumeration value="MM" />     <!-- Multiple Myeloma  -->
+			<xs:enumeration value="OV" />     <!-- Ovarian serous cystadenocacinoma -->
+			<xs:enumeration value="PAAD" />   <!-- Pancreatic Adenocarcinoma -->
+			<xs:enumeration value="PCPG" />   <!-- Pheochromocytoma and Paraganglioma -->
+			<xs:enumeration value="PRAD" />   <!-- Prostate adenocarcinoma -->
+			<xs:enumeration value="READ" />   <!-- Rectum Adenocarcinoma -->
+			<xs:enumeration value="SARC" />   <!-- Dedifferentiated Liposarcoma -->
+			<xs:enumeration value="SCLC" />   <!-- Small Cell Lung Carcinoma -->
+			<xs:enumeration value="SKCM" />   <!-- Cutaneous melanoma -->
+			<xs:enumeration value="STAD" />   <!-- Stomach adenocarinoma -->
+			<xs:enumeration value="TGCT" />   <!-- Testicular Germ Cell Tumors -->
+			<xs:enumeration value="THCA" />   <!-- Thyroid carcinoma -->
+			<xs:enumeration value="THYM" />   <!-- Thymoma -->
+			<xs:enumeration value="UCEC" />   <!-- Uterine Corpus Endometrioid Carcinoma  -->
+			<xs:enumeration value="UCS" />    <!-- Uterine Carcinosarcoma -->
+			<xs:enumeration value="UVM" />    <!-- Uveal Melanoma  -->
+		</xs:restriction>
+	</xs:simpleType>	         	
+</xs:schema>

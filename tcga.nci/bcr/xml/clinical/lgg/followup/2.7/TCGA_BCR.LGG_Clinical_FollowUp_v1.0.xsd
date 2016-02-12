@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+   xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
+   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+   xmlns="http://tcga.nci/bcr/xml/clinical/lgg/followup/2.7/1.0"
+   targetNamespace="http://tcga.nci/bcr/xml/clinical/lgg/followup/2.7/1.0">
+
+   <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" namespace="http://tcga.nci/bcr/xml/utility/2.7" />
+   <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" namespace="http://tcga.nci/bcr/xml/administration/2.7" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" />
+   <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" />
+
+   <xs:annotation>
+      <xs:documentation xml:lang="en">Schema to define the elements of the TCGA Clinical Data Follow-up Form within the LGG study.</xs:documentation>
+   </xs:annotation>
+
+   <xs:element name="follow_up">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="clin_shared:bcr_followup_barcode" />
+            <xs:element ref="clin_shared:bcr_followup_uuid" />
+            <xs:element ref="clin_shared:lost_follow_up" />
+            <xs:element ref="clin_shared:vital_status" />
+            <xs:element ref="clin_shared:primary_therapy_outcome_success" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="clin_shared:day_of_last_followup" />
+                  <xs:element ref="clin_shared:month_of_last_followup" />
+                  <xs:element ref="clin_shared:year_of_last_followup" />
+               </xs:sequence>
+               <xs:element ref="clin_shared:days_to_last_followup" />
+            </xs:choice>
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="clin_shared:day_of_death" />
+                  <xs:element ref="clin_shared:month_of_death" />
+                  <xs:element ref="clin_shared:year_of_death" />
+               </xs:sequence>
+               <xs:element ref="clin_shared:days_to_death" />
+            </xs:choice>
+            <xs:element ref="nte:new_tumor_event_after_initial_treatment" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="nte:day_of_new_tumor_event_after_initial_treatment" />
+                  <xs:element ref="nte:month_of_new_tumor_event_after_initial_treatment" />
+                  <xs:element ref="nte:year_of_new_tumor_event_after_initial_treatment" />
+               </xs:sequence>
+               <xs:element ref="nte:days_to_new_tumor_event_after_initial_treatment" />
+            </xs:choice>
+            <xs:element ref="nte:additional_surgery_locoregional_procedure" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="nte:day_of_additional_surgery_locoregional_procedure" />
+                  <xs:element ref="nte:month_of_additional_surgery_locoregional_procedure" />
+                  <xs:element ref="nte:year_of_additional_surgery_locoregional_procedure" />
+               </xs:sequence>
+               <xs:element ref="nte:days_to_additional_surgery_locoregional_procedure" />
+            </xs:choice>
+            <xs:element ref="clin_shared:person_neoplasm_cancer_status" />
+            <xs:element ref="nte:new_neoplasm_event_type" />
+			<xs:element ref="clin_shared:patient_death_reason" />
+            <xs:element ref="nte:additional_pharmaceutical_therapy" />
+            <xs:element ref="nte:additional_radiation_therapy" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="clin_shared:day_of_form_completion" />
+                  <xs:element ref="clin_shared:month_of_form_completion" />
+                  <xs:element ref="clin_shared:year_of_form_completion" />
+               </xs:sequence>
+               <xs:element ref="clin_shared:days_to_form_completion" />
+            </xs:choice>
+
+            <xs:element ref="clin_shared:followup_case_report_form_submission_reason" />
+
+            <xs:element ref="clin_shared:karnofsky_performance_score" />
+            <xs:element ref="clin_shared:eastern_cancer_oncology_group" />
+            <xs:element ref="clin_shared:performance_status_scale_timing" />
+            <xs:element ref="clin_shared:followup_treatment_success" />
+            <xs:element ref="clin_shared:targeted_molecular_therapy" />
+            <xs:element ref="clin_shared:radiation_therapy" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="clin_shared:month_of_performance_status_assessment" />
+                  <xs:element ref="clin_shared:day_of_performance_status_assessment" />
+                  <xs:element ref="clin_shared:year_of_performance_status_assessment" />
+               </xs:sequence>
+               <xs:element ref="clin_shared:days_to_performance_status_assessment" />
+            </xs:choice>
+            <xs:element ref="nte:additional_surgery_metastatic_procedure" />
+            <xs:choice>
+               <xs:sequence>
+                  <xs:element ref="nte:month_of_additional_surgery_metastatic_procedure" />
+                  <xs:element ref="nte:day_of_additional_surgery_metastatic_procedure" />
+                  <xs:element ref="nte:year_of_additional_surgery_metastatic_procedure" />
+               </xs:sequence>
+               <xs:element ref="nte:days_to_additional_surgery_metastatic_procedure" />
+            </xs:choice>
+        </xs:sequence>
+      <xs:attribute name="version" type="xs:string" default="1.0" use="optional"/>
+	  <xs:attribute name="sequence" type="xs:integer" />
+      </xs:complexType>
+   </xs:element>
+
+</xs:schema>

@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+
+	<xs:element name="stage_event">
+		<xs:annotation>
+            <xs:documentation>	
+				This element 'stage_event' contains an attribute 'system_type', which indicates 
+				the type of staging system being used. Some of the CDE values within this section 
+				of data are variable and a function of the value of this 'system_type' attribute. 
+            </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="system_version" />
+				<xs:element ref="clinical_stage" />
+				<xs:element ref="pathologic_stage" />
+				<xs:element ref="stage_other" minOccurs="0" />
+				<xs:element ref="tnm_categories" />
+				<xs:element ref="psa" />
+				<xs:element ref="gleason_grading" />
+				<xs:element ref="ann_arbor" />
+                <xs:element ref="serum_markers" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="igcccg_stage" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="masaoka_stage" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+			<xs:attribute name="system" type="system_type" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="system_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FIGO" />
+			<xs:enumeration value="AJCC" />
+			<xs:enumeration value="ANN_ARBOR" />
+			<xs:enumeration value="ENSAT" />
+            <xs:enumeration value="MASAOKA" />
+        </xs:restriction>
+    </xs:simpleType>
+
+	<xs:element name="system_version">
+		<xs:annotation>
+            <xs:documentation>	
+				The enumeration for this element is the set union of the PVs 
+				from CDE=2722309 and CDE=3114049. That is, this is all of 
+				the acceptable versions for AJCC and FIGO systems. 
+				
+				The attribute 'system_type' on the 'stage_event' element 
+				provides context for this element. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="1st" />
+					<xs:enumeration value="2nd" />
+					<xs:enumeration value="3rd" />
+					<xs:enumeration value="4th" />
+					<xs:enumeration value="5th" />
+					<xs:enumeration value="6th" />
+					<xs:enumeration value="7th" />
+					<xs:enumeration value="1988" />
+					<xs:enumeration value="1995" />
+					<xs:enumeration value="2009" />
+					
+					<xs:attribute name="cde" type="system_version_cde_type" default="2722309" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="system_version_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="2722309" /> <!-- System version for AJCC -->
+			<xs:enumeration value="3114049" /> <!-- System version for FIGO -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="clinical_stage">
+		<xs:annotation>
+            <xs:documentation>	
+				The enumeration for this element is the set union of the PVs 
+				from CDE=3440332, CDE=3225684, and CDE=3065862. 
+				That is, this is all of the acceptable stage values for 
+				AJCC, FIGO, ANN_ARBOR, and ENSAT systems. 
+				
+				The attribute 'system_type' on the 'stage_event' element combined 
+				with the'system_version' element provides context for this 
+				element. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="Stage 0" />
+					<xs:enumeration value="Stage 0a" />
+					<xs:enumeration value="Stage 0is" />
+					<xs:enumeration value="Stage I" />
+					<xs:enumeration value="Stage IA" />
+					<xs:enumeration value="Stage IA1" />
+					<xs:enumeration value="Stage IA2" />
+					<xs:enumeration value="Stage IB" />
+					<xs:enumeration value="Stage IB Cervix" />
+					<xs:enumeration value="Stage IB1" />
+					<xs:enumeration value="Stage IB2" />
+					<xs:enumeration value="Stage IC" />
+                    <xs:enumeration value="Stage IS" />
+					<xs:enumeration value="Stage II" />
+					<xs:enumeration value="Stage II Cervix" />
+					<xs:enumeration value="Stage IIA" />
+					<xs:enumeration value="Stage IIA Cervix" />
+					<xs:enumeration value="Stage IIA1" />
+					<xs:enumeration value="Stage IIA2" />
+					<xs:enumeration value="Stage IIB" />
+					<xs:enumeration value="Stage IIC" />
+					<xs:enumeration value="Stage III" />
+					<xs:enumeration value="Stage IIIA" />
+					<xs:enumeration value="Stage IIIB" />
+					<xs:enumeration value="Stage IIIC" />
+					<xs:enumeration value="Stage IIIC1" />
+					<xs:enumeration value="Stage IIIC2" />
+					<xs:enumeration value="Stage IV" />
+					<xs:enumeration value="Stage IVA" />
+					<xs:enumeration value="Stage IVB" />
+					<xs:enumeration value="Stage IVC" />
+					<xs:enumeration value="Stage Tis" />
+					<xs:enumeration value="Stage X" />
+					
+					<xs:attribute name="cde" type="clinical_stage_cde_type" default="3440332" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="clinical_stage_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3440332" /> <!-- Clinical stage for AJCC -->
+			<xs:enumeration value="3225684" /> <!-- Clinical stage for FIGO -->
+			<xs:enumeration value="3065862" /> <!-- Clinical stage for Ann Arbor -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	
+	<xs:element name="pathologic_stage">
+		<xs:annotation>
+            <xs:documentation>	
+				The enumeration for this element is the set union of the PVs 
+				from CDE=3203222 and possible future ones. 
+				
+				The attribute 'system_type' on the 'stage_event' element combined 
+				with the'system_version' element provides context for this 
+				element. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="Stage Tis" />
+					<xs:enumeration value="Stage 0" />
+					<xs:enumeration value="Stage 0a" />
+					<xs:enumeration value="Stage 0is" />
+					<xs:enumeration value="Stage I" />
+					<xs:enumeration value="Stage IA" />
+					<xs:enumeration value="Stage IA1" />
+					<xs:enumeration value="Stage IA2" />
+					<xs:enumeration value="Stage IB" />
+					<xs:enumeration value="Stage IB Cervix" />
+					<xs:enumeration value="Stage IB1" />
+					<xs:enumeration value="Stage IB2" />
+                    <xs:enumeration value="Stage IC" />
+                    <xs:enumeration value="IS" />
+					<xs:enumeration value="I/II NOS" />
+					<xs:enumeration value="Stage II" />
+					<xs:enumeration value="Stage II Cervix" />
+					<xs:enumeration value="Stage IIA" />
+                    <xs:enumeration value="Stage IIA1" />
+                    <xs:enumeration value="Stage IIA2" />
+					<xs:enumeration value="Stage IIA Cervix" />
+					<xs:enumeration value="Stage IIA1" />
+					<xs:enumeration value="Stage IIA2" />
+					<xs:enumeration value="Stage IIB" />
+					<xs:enumeration value="Stage IC" />
+					<xs:enumeration value="Stage IIC" />
+					<xs:enumeration value="Stage III" />
+					<xs:enumeration value="Stage IIIA" />
+					<xs:enumeration value="Stage IIIB" />
+					<xs:enumeration value="Stage IIIC" />
+					<xs:enumeration value="Stage IIIC1" />
+					<xs:enumeration value="Stage IIIC2" />
+					<xs:enumeration value="Stage IV" />
+					<xs:enumeration value="Stage IVA" />
+					<xs:enumeration value="Stage IVB" />
+					<xs:enumeration value="Stage IVC" />
+					<xs:enumeration value="Stage X" />
+					
+					<xs:attribute name="cde" type="pathologic_stage_cde_type" default="3203222" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="pathologic_stage_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3203222" /> <!-- Pathologic stage for AJCC and ENSAT -->
+			<xs:enumeration value="3065862" /> <!-- Pathologic stage for Ann Arbor -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="tnm_categories">
+		<xs:annotation>
+            <xs:documentation>	
+				The attribute 'system_type' on the 'stage_event' element combined 
+				with the'system_version' element provides context for this 
+				element. This is said because the CDE attributes for some of the clinical (T,N,M) and 
+				pathologic (T,N,M) fields are determined based on this 'system_type' attribute. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clinical_categories" />
+				<xs:element ref="pathologic_categories" />
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="clinical_categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clinical_T" />
+				<xs:element ref="clinical_N" />
+				<xs:element ref="clinical_M" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pathologic_categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pathologic_T" />
+				<xs:element ref="pathologic_N" />
+				<xs:element ref="pathologic_M" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="clinical_T">
+		<xs:annotation>
+            <xs:documentation>
+                Currently only the AJCC system uses this clinical_T element. So, currently the 
+				CDE attribute is held constant with respect to the type of study. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="T0" />
+					<xs:enumeration value="T1" />
+					<xs:enumeration value="T1a" />
+					<xs:enumeration value="T1a1" />
+					<xs:enumeration value="T1a2" />
+					<xs:enumeration value="T1b" />
+					<xs:enumeration value="T1b1" />
+					<xs:enumeration value="T1b2" />
+					<xs:enumeration value="T1c" />
+					<xs:enumeration value="T1mi" />
+					<xs:enumeration value="T2" />
+					<xs:enumeration value="T2a" />
+					<xs:enumeration value="T2a1" />
+					<xs:enumeration value="T2a2" />
+					<xs:enumeration value="T2b" />
+					<xs:enumeration value="T2c" />
+                    <xs:enumeration value="T2d" />
+					<xs:enumeration value="T3" />
+					<xs:enumeration value="T3a" />
+					<xs:enumeration value="T3b" />
+					<xs:enumeration value="T3c" />
+                    <xs:enumeration value="T3d" />
+					<xs:enumeration value="T4" />
+					<xs:enumeration value="T4a" />
+					<xs:enumeration value="T4b" />
+					<xs:enumeration value="T4c" />
+					<xs:enumeration value="T4d" />
+                    <xs:enumeration value="T4e" />
+					<xs:enumeration value="Ta" />
+					<xs:enumeration value="Tis" />
+					<xs:enumeration value="Tis (DCIS)" />
+					<xs:enumeration value="Tis (LCIS)" />
+					<xs:enumeration value="Tis (Paget's)" />
+					<xs:enumeration value="TX" />
+					
+                    <xs:attribute name="cde" type="clinical_T_cde_type" default="3440328" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="clinical_T_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3440328" /> <!-- Clinical T for AJCC -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="clinical_N">
+		<xs:annotation>
+            <xs:documentation>
+                Currently only the AJCC system uses this clinical_N element. So, currently the 
+				CDE attribute is held constant with respect to the type of study.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="N0" />
+					<xs:enumeration value="N0 (i+)" />
+					<xs:enumeration value="N0 (i-)" />
+					<xs:enumeration value="N0 (mol+)" />
+					<xs:enumeration value="N0 (mol-)" />
+					<xs:enumeration value="N1" />
+					<xs:enumeration value="N1a" />
+					<xs:enumeration value="N1b" />
+					<xs:enumeration value="N1bI" />
+					<xs:enumeration value="N1bII" />
+					<xs:enumeration value="N1bIII" />
+					<xs:enumeration value="N1bIV" />
+					<xs:enumeration value="N1c" />
+					<xs:enumeration value="N1mi" />
+					<xs:enumeration value="N2" />
+					<xs:enumeration value="N2a" />
+					<xs:enumeration value="N2b" />
+					<xs:enumeration value="N2c" />
+					<xs:enumeration value="N3" />
+					<xs:enumeration value="N3a" />
+					<xs:enumeration value="N3b" />
+					<xs:enumeration value="N3c" />
+					<xs:enumeration value="N4" />
+					<xs:enumeration value="NX" />
+                    <xs:attribute name="cde" type="clinical_N_cde_type" default="3440330" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="clinical_N_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3440330" /> <!-- Clinical N for AJCC -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="clinical_M">
+		<xs:annotation>
+            <xs:documentation>
+                The attribute 'system_type' on the 'stage_event' element combined 
+				with the 'system_version' element provides context for this 
+				element. This is said because the CDE attribute for this clinical_M 
+				element is determined based on this 'system_type' attribute. 
+				
+				For example, clinical XML for the BLCA study, which uses on the AJCC system, 
+				will have a CDE=3440331 for this element. But clinical XML for the ACC study, 
+				which uses the ENSAT system, will have a CDE=3648748 for this element. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="cM0 (i+)" />
+					<xs:enumeration value="M0" />
+					<xs:enumeration value="M1" />
+					<xs:enumeration value="M1a" />
+					<xs:enumeration value="M1b" />
+					<xs:enumeration value="M1c" />
+					<xs:enumeration value="MX" />
+                    <xs:attribute name="cde" type="clinical_M_cde_type" default="3440331" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:simpleType name="clinical_M_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3440331" /> <!-- Clinical M for AJCC -->
+			<xs:enumeration value="3648748" /> <!-- Clinical M for ENSAT -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="pathologic_T">
+		<xs:annotation>
+            <xs:documentation>
+                The attribute 'system_type' on the 'stage_event' element combined 
+				with the 'system_version' element provides context for this 
+				element. This is said because the CDE attribute for this pathologic_T 
+				element is determined based on this 'system_type' attribute. 
+				
+				For example, clinical XML for the BLCA study, which uses on the AJCC system, 
+				will have a CDE=3045435 for this element. But clinical XML for the ACC study, 
+				which uses the ENSAT system, will have a CDE=3648746 for this element.
+            </xs:documentation>
+        </xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value="" />
+					<xs:enumeration value="T0" />
+					<xs:enumeration value="T1" />
+					<xs:enumeration value="T1a" />
+					<xs:enumeration value="T1a1" />
+					<xs:enumeration value="T1a2" />
+					<xs:enumeration value="T1b" />
+					<xs:enumeration value="T1b1" />
+					<xs:enumeration value="T1b2" />
+					<xs:enumeration value="T1c" />
+					<xs:enumeration value="T1mi" />
+					<xs:enumeration value="T2" />
+					<xs:enumeration value="T2a" />
+					<xs:enumeration value="T2a1" />
+					<xs:enumeration value="T2a2" />
+					<xs:enumeration value="T2b" />
+					<xs:enumeration value="T2c" />
+                    <xs:enumeration value="T2d" />
+					<xs:enumeration value="T3" />
+					<xs:enumeration value="T3a" />
+					<xs:enumeration value="T3b" />
+					<xs:enumeration value="T3c" />
+                    <xs:enumeration value="T3d" />
+					<xs:enumeration value="T4" />
+					<xs:enumeration value="T4a" />
+					<xs:enumeration value="T4b" />
+					<xs:enumeration value="T4c" />
+					<xs:enumeration value="T4d" />
+                    <xs:enumeration value="T4e" />
+					<xs:enumeration value="Ta" />
+					<xs:enumeration value="Tis" />
+					<xs:enumeration value="Tis (LCIS)" />
+					<xs:enumeration value="Tis (Paget's)" />
+					<xs:enumeration value="Tis (DCIS)" />
+					<xs:enumeration value="TX" />
+					
+					<xs:attribute name="cde" type="pathologic_T_cde_type" default="3045435" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+					<xs:attribute name="tier" type="xs:string" default="2" />
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="pathologic_T_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3045435" /> <!-- Pathologic T for AJCC -->
+			<xs:enumeration value="3648746" /> <!-- Pathologic T for ENSAT -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	
+	<xs:element name="pathologic_N">
+		<xs:annotation>
+            <xs:documentation>
+                The attribute 'system_type' on the 'stage_event' element combined 
+				with the 'system_version' element provides context for this 
+				element. This is said because the CDE attribute for this pathologic_N 
+				element is determined based on this 'system_type' attribute. 
+				
+				For example, clinical XML for the BLCA study, which uses on the AJCC system, 
+				will have a CDE=3203106 for this element. But clinical XML for the ACC study, 
+				which uses the ENSAT system, will have a CDE=3648747 for this element.
+            </xs:documentation>
+        </xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value="" />
+					<xs:enumeration value="N0 (mol+)" />
+					<xs:enumeration value="N0 (mol-)" />
+					<xs:enumeration value="N0 (i+)" />
+					<xs:enumeration value="N0 (i-)" />
+					<xs:enumeration value="N0" />
+					<xs:enumeration value="N1" />
+					<xs:enumeration value="N1a" />
+					<xs:enumeration value="N1b" />
+					<xs:enumeration value="N1bI" />
+					<xs:enumeration value="N1bII" />
+					<xs:enumeration value="N1bIII" />
+					<xs:enumeration value="N1bIV" />
+					<xs:enumeration value="N1c" />
+					<xs:enumeration value="N1mi" />
+					<xs:enumeration value="N2" />
+					<xs:enumeration value="N2a" />
+					<xs:enumeration value="N2b" />
+					<xs:enumeration value="N2c" />
+					<xs:enumeration value="N3" />
+					<xs:enumeration value="N3a" />
+					<xs:enumeration value="N3b" />
+					<xs:enumeration value="N3c" />
+					<xs:enumeration value="N4" />
+					<xs:enumeration value="NX" />
+					
+					<xs:attribute name="cde" type="pathologic_N_cde_type" default="3203106" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+					<xs:attribute name="tier" type="xs:string" default="2" />
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="pathologic_N_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3203106" /> <!-- Pathologic N for AJCC -->
+			<xs:enumeration value="3648747" /> <!-- Pathologic N for ENSAT -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="pathologic_M">
+		<xs:annotation>
+            <xs:documentation>
+                Currently only the AJCC system uses this pathologic_M element. So, currently the 
+				CDE attribute is held constant with respect to the type of study.
+            </xs:documentation>
+        </xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value="" />
+					<xs:enumeration value="M0" />
+					<xs:enumeration value="M1" />
+					<xs:enumeration value="M1a" />
+					<xs:enumeration value="M1b" />
+					<xs:enumeration value="M1c" />
+					<xs:enumeration value="MX" />
+					<xs:enumeration value="cM0 (i+)" />
+					<xs:attribute name="cde" type="pathologic_M_cde_type" default="3045439" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+					<xs:attribute name="tier" type="xs:string" default="2" />
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+   </xs:element>
+   <xs:simpleType name="pathologic_M_cde_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="3045439" /> <!-- Pathologic M for AJCC -->
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:element name="psa">
+		<xs:annotation>
+            <xs:documentation>	
+				These element are applicable only when the 'system' attribute 
+				on the 'stage_event' element has the value AJCC and the disease
+				study is PRAD. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element ref="psa_value" />
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_psa" />
+                        <xs:element ref="month_of_psa" />
+                        <xs:element ref="year_of_psa" />
+                    </xs:sequence>
+                    <xs:element ref="days_to_psa" />
+                </xs:choice>
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="psa_value">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3351903" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="day_of_psa">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3351901" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="month_of_psa">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3351900" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="year_of_psa">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3351902" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="days_to_psa">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3414608" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="gleason_grading">
+		<xs:annotation>
+            <xs:documentation>	
+				These element are applicable only when the 'system' attribute 
+				on the 'stage_event' element has the value AJCC and the disease
+				study is PRAD. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element ref="gleason_score" />
+				<xs:element ref="primary_pattern" />
+				<xs:element ref="secondary_pattern" />
+				<xs:element ref="tertiary_pattern" />
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="gleason_score">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2534619" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="primary_pattern">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2534617" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="secondary_pattern">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2534618" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="tertiary_pattern">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2783875" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+  
+	<xs:element name="ann_arbor">
+		<xs:annotation>
+            <xs:documentation>	
+				These element are applicable only when the 'system' attribute 
+				on the 'stage_event' element has the value AJCC and the disease
+				study is PRAD. 
+            </xs:documentation>
+		</xs:annotation>
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element ref="b_symptoms" />
+				<xs:element ref="extranodal_involvement" />
+			</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="b_symptoms">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2902402" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="extranodal_involvement">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3364582" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="serum_markers">
+        <xs:annotation>
+            <xs:documentation>
+                This element is only applicable when the 'system' attribute
+                on the 'stage_event' element has the value AJCC and the disease
+                study is TGCT.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="SX" />
+                    <xs:enumeration value="S0" />
+                    <xs:enumeration value="S1" />
+                    <xs:enumeration value="S2" />
+                    <xs:enumeration value="S3" />
+                    <xs:attribute name="cde" type="xs:string" default="3901772" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="igcccg_stage">
+        <xs:annotation>
+            <xs:documentation>
+                This element is only applicable when the disease study is TGCT.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Good" />
+                    <xs:enumeration value="Intermediate" />
+                    <xs:enumeration value="Poor" />
+                    <xs:attribute name="cde" type="xs:string" default="3901822" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="masaoka_stage">
+        <xs:annotation>
+            <xs:documentation>
+                This element is only applicable when the disease study is THYM.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="I" />
+                    <xs:enumeration value="IIa" />
+                    <xs:enumeration value="IIb" />
+                    <xs:enumeration value="III" />
+                    <xs:enumeration value="IVa" />
+                    <xs:enumeration value="IVb" />
+                    <xs:attribute name="cde" type="xs:string" default="3952848" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+             </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="stage_other" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2007104"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

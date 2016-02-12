@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	 xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+	 xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+	 xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+	 xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
+	 xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
+	 xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7" 
+	 xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" 
+	 xmlns:hnsc_shared="http://tcga.nci/bcr/xml/clinical/hnsc/shared/2.7"
+	 xmlns:follow_up_v1.0="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/1.0" 
+	 xmlns:follow_up_v4.8="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/4.8" 
+	 xmlns:hnsc_nte="http://tcga.nci/bcr/xml/clinical/hnsc/shared/new_tumor_event/2.7/1.0" 
+	 xmlns="http://tcga.nci/bcr/xml/clinical/hnsc/2.7" 
+	 targetNamespace="http://tcga.nci/bcr/xml/clinical/hnsc/2.7" 
+	 elementFormDefault="qualified" 
+	 version="2.7.2">
+	
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema to define the elements of the HNSC study.</xs:documentation>
+	</xs:annotation>
+	
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/shared/2.7/TCGA_BCR.HNSC_Clinical_Shared_Datatypes.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/TCGA_BCR.HNSC_Clinical_FollowUp_v1.0.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/4.8" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/TCGA_BCR.HNSC_Clinical_FollowUp_v4.8.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/shared/2.7/TCGA_BCR.HNSC_Clinical_NTEs_v1.0.xsd" />
+	
+	<xs:element name="tcga_bcr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="admin:admin"/>
+				<xs:element ref="patient"/>
+			</xs:sequence>
+			<xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="patient">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:tumor_tissue_site"/>
+				<xs:element ref="shared:histological_type"/>
+				<xs:element ref="clin_shared:tissue_prospective_collection_indicator"/>
+				<xs:element ref="clin_shared:tissue_retrospective_collection_indicator"/>
+				<xs:element ref="shared:gender"/>
+				<xs:element ref="clin_shared:vital_status"/>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_birth"/>
+						<xs:element ref="clin_shared:month_of_birth"/>
+						<xs:element ref="clin_shared:year_of_birth"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_birth"/>
+				</xs:choice>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_last_known_alive"/>
+						<xs:element ref="clin_shared:month_of_last_known_alive"/>
+						<xs:element ref="clin_shared:year_of_last_known_alive"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_last_known_alive"/>
+				</xs:choice>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_death"/>
+						<xs:element ref="clin_shared:month_of_death"/>
+						<xs:element ref="clin_shared:year_of_death"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_death"/>
+				</xs:choice>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_last_followup"/>
+						<xs:element ref="clin_shared:month_of_last_followup"/>
+						<xs:element ref="clin_shared:year_of_last_followup"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_last_followup"/>
+				</xs:choice>
+				<xs:element ref="clin_shared:race_list"/>
+				<xs:element ref="shared:bcr_patient_barcode"/>
+				<xs:element ref="shared:tissue_source_site"/>
+				<xs:element ref="shared:patient_id"/>
+				<xs:element ref="shared:bcr_patient_uuid"/>
+				<xs:element ref="shared:history_of_neoadjuvant_treatment"/>
+				<xs:element ref="clin_shared:informed_consent_verified"/>
+				<xs:element ref="clin_shared:icd_o_3_site"/>
+				<xs:element ref="clin_shared:icd_o_3_histology"/>
+				<xs:element ref="clin_shared:icd_10"/>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis"/>
+						<xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis"/>
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element ref="clin_shared:days_to_initial_pathologic_diagnosis"/>
+						<xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis"/>
+					</xs:sequence>
+				</xs:choice>
+				<xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis"/>
+				<xs:element ref="clin_shared:ethnicity"/>
+				<xs:element ref="clin_shared:person_neoplasm_cancer_status"/>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_form_completion"/>
+						<xs:element ref="clin_shared:month_of_form_completion"/>
+						<xs:element ref="clin_shared:year_of_form_completion"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_form_completion"/>
+				</xs:choice>
+				
+				<xs:element ref="clin_shared:anatomic_neoplasm_subdivision"/>
+				<xs:element ref="clin_shared:laterality"/>
+				<xs:element ref="clin_shared:primary_lymph_node_presentation_assessment"/>
+				<xs:element ref="clin_shared:lymph_node_examined_count"/>
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_he"/>
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_ihc"/>		
+				<xs:element ref="lymphnode_neck_dissection"/>
+				<xs:element ref="lymphnode_dissection_method_left"/>
+				<xs:element ref="lymphnode_dissection_method_right"/>
+				<xs:element ref="clin_shared:margin_status"/>
+				<xs:element ref="p53_gene_analysis"/>
+				<xs:element ref="egfr_amplication_status"/>
+				<xs:element ref="presence_of_pathological_nodal_extracapsular_spread"/>
+				<xs:element ref="clin_shared:lymphovascular_invasion_present"/>
+				<xs:element ref="clin_shared:perineural_invasion_present"/>
+				<xs:element ref="shared:neoplasm_histologic_grade"/>
+				<xs:element ref="hpv_status_by_p16_testing"/>
+				<xs:element ref="hpv_status_by_ish_testing"/>
+				<xs:element ref="shared:tobacco_smoking_history"/>
+				<xs:element ref="clin_shared:year_of_tobacco_smoking_onset"/>
+				<xs:element ref="clin_shared:stopped_smoking_year"/>
+				<xs:element ref="clin_shared:number_pack_years_smoked"/>
+				<xs:element ref="clin_shared:alcohol_history_documented"/>
+				<xs:element ref="clin_shared:frequency_of_alcohol_consumption"/>
+				<xs:element ref="clin_shared:amount_of_alcohol_consumption_per_day"/>
+				<xs:element ref="clin_shared:radiation_therapy"/>
+				<xs:element ref="clin_shared:postoperative_rx_tx"/>
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
+				<xs:element ref="shared:other_dx"/>
+				
+				<xs:element ref="shared_stage:stage_event" />
+				
+				<xs:element ref="hnsc_nte:new_tumor_events" minOccurs="0" />
+				<xs:element ref="rx:drugs"/>
+				<xs:element ref="rad:radiations"/>
+				
+				<xs:element ref="follow_ups" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="follow_ups">
+		<xs:annotation>
+			<xs:documentation>We are using namespaces and version numbers to distinguish one version of followup from another.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="follow_up_v1.0:follow_up" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="follow_up_v4.8:follow_up" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+				
+	<xs:element name="lymphnode_dissection_method_left" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Functional (Limited) Neck Dissection"/>
+					<xs:enumeration value="Modified Radical Neck Dissection"/>
+					<xs:enumeration value="Radical Neck Dissection"/>
+					<xs:attribute name="cde" type="xs:string" default="3113989"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lymphnode_dissection_method_right" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Functional (Limited) Neck Dissection"/>
+					<xs:enumeration value="Modified Radical Neck Dissection"/>
+					<xs:enumeration value="Radical Neck Dissection"/>
+					<xs:attribute name="cde" type="xs:string" default="3124514"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="p53_gene_analysis" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Normal"/>
+					<xs:enumeration value="Abnormal"/>
+					<xs:attribute name="cde" type="xs:string" default="3124938"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="egfr_amplication_status" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Amplified"/>
+					<xs:enumeration value="Unamplified"/>
+					<xs:attribute name="cde" type="xs:string" default="3124957"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hpv_status_by_p16_testing" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Negative"/>
+					<xs:enumeration value="Positive"/>
+					<xs:attribute name="cde" type="xs:string" default="3108263"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hpv_status_by_ish_testing" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Negative"/>
+					<xs:enumeration value="Positive"/>
+					<xs:attribute name="cde" type="xs:string" default="3108261"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lymphnode_neck_dissection" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="utility:yes_or_no">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2238421"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="presence_of_pathological_nodal_extracapsular_spread" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="No Extranodal Extension"/>
+					<xs:enumeration value="Gross Extension"/>
+					<xs:enumeration value="Microscopic Extension"/>
+					<xs:attribute name="cde" type="xs:string" default="3108215"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

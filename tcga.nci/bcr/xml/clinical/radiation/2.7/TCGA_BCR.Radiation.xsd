@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7">
+    
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+
+    <xs:element name="radiations">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="radiation" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="radiation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bcr_radiation_barcode" />
+                <xs:element ref="bcr_radiation_uuid"/>
+        
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_radiation_therapy_start" />
+                        <xs:element ref="month_of_radiation_therapy_start" />
+                        <xs:element ref="year_of_radiation_therapy_start" />
+                    </xs:sequence>
+          
+                    <xs:element ref="days_to_radiation_therapy_start" />
+                </xs:choice>
+        
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_radiation_therapy_end" />
+                        <xs:element ref="month_of_radiation_therapy_end" />
+                        <xs:element ref="year_of_radiation_therapy_end" />
+                    </xs:sequence>
+          
+                    <xs:element ref="days_to_radiation_therapy_end" />
+                </xs:choice>
+        
+				<xs:element ref="prior_radiation_type_metastasis" minOccurs="0" />
+				<xs:element ref="prior_radiation_type_notes_metastasis" minOccurs="0" />
+				<xs:element ref="radiation_dosage_metastasis" minOccurs="0" />
+				<xs:element ref="radiation_type" />
+                <xs:element ref="radiation_type_notes" />
+                <xs:element ref="radiation_dosage" />
+                <xs:element ref="units" />
+                <xs:element ref="numfractions" />
+                <xs:element ref="anatomic_treatment_site" />
+                <xs:element ref="clin_shared:regimen_indication" />
+                <xs:element ref="clin_shared:regimen_indication_notes" />
+                <xs:element ref="radiation_treatment_ongoing" />
+                <xs:element ref="course_number" />
+				
+				<xs:element ref="clin_shared:measure_of_response" />
+        
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+          
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="course_number" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:integer_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2732184" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.2" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="bcr_radiation_barcode">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NCName">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.15" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="bcr_radiation_uuid">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="radiation_treatment_ongoing" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2842745" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="radiation_type">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="adjuvant" />
+					<xs:enumeration value="Brachytherapy" />
+					<xs:enumeration value="COMBINATION" />
+					<xs:enumeration value="definitive" />
+					<xs:enumeration value="EXTERNAL BEAM" />
+					<xs:enumeration value="External" />
+					<xs:enumeration value="IMPLANTS" />
+					<xs:enumeration value="Internal" />
+					<xs:enumeration value="OTHER" />
+					<xs:enumeration value="palliative" />
+					<xs:enumeration value="RADIOISOTOPE" />
+					<xs:enumeration value="Systemic" />
+                    <xs:attribute name="cde" type="xs:string" default="2842944" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.8" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="radiation_type_notes">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2195477" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="anatomic_treatment_site">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Distant Recurrence" />
+                    <xs:enumeration value="Local Recurrence" />
+                    <xs:enumeration value="Primary Tumor Field" />
+                    <xs:enumeration value="Distant site" />
+                    <xs:enumeration value="Regional site" />
+                    <xs:attribute name="cde" type="xs:string" default="2793522" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="units">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="cGy" />
+                    <xs:enumeration value="Gy" />
+                    <xs:enumeration value="mCi" />
+                    <xs:enumeration value="uCi" />
+                    <xs:attribute name="cde" type="xs:string" default="61446" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_radiation_therapy_start">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897102" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="month_of_radiation_therapy_start">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897100" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="year_of_radiation_therapy_start">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897104" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="day_of_radiation_therapy_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897108" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="month_of_radiation_therapy_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897106" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="year_of_radiation_therapy_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2897110" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.12" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="radiation_dosage" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="2721441" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.8" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="numfractions" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="61465" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.8" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="days_to_radiation_therapy_start">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3008313" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="days_to_radiation_therapy_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="3008333" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="prior_radiation_type_metastasis">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="adjuvant" />
+					<xs:enumeration value="Brachytherapy" />
+					<xs:enumeration value="COMBINATION" />
+					<xs:enumeration value="definitive" />
+					<xs:enumeration value="EXTERNAL BEAM" />
+					<xs:enumeration value="External" />
+					<xs:enumeration value="IMPLANTS" />
+					<xs:enumeration value="Internal" />
+					<xs:enumeration value="OTHER" />
+					<xs:enumeration value="palliative" />
+					<xs:enumeration value="RADIOISOTOPE" />
+					<xs:enumeration value="Systemic" />
+                    <xs:attribute name="cde" type="xs:string" default="4887011" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="prior_radiation_type_notes_metastasis">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="4887041" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="radiation_dosage_metastasis" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="4887042" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+</xs:schema>

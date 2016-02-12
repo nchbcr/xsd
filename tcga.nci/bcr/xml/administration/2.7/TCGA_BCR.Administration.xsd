@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/administration/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/administration/2.7">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+  
+    <xs:attributeGroup name="admin_res_attribute_group">
+        <xs:attribute name="xsd_ver" type="xs:string" use="optional" default="" />
+    </xs:attributeGroup>
+  
+    <xs:complexType name="admin_res_attribute">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attributeGroup ref="admin_res_attribute_group" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+	
+	<xs:element name="additional_studies">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="additional_study" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="additional_study">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="project_code"/>
+				<xs:element ref="disease_code"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="alternate_identifiers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="alt_id" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="alt_id">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NCName">
+                    <xs:attributeGroup ref="admin_res_attribute_group" />
+					<xs:attribute name="alt_id_type" type="utility:alt_id_type"/>
+					<xs:attribute name="project_code" type="utility:project_code_type"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+	</xs:element>
+
+    <xs:element name="admin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bcr" />
+				<xs:element ref="file_uuid" minOccurs="0" />
+                <xs:element ref="batch_number" />
+                <xs:element ref="project_code" minOccurs="0" />
+                <xs:element ref="disease_code" />
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="day_of_dcc_upload" />
+                        <xs:element ref="month_of_dcc_upload" />
+                        <xs:element ref="year_of_dcc_upload" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="days_to_dcc_upload" />
+                </xs:choice>
+				<xs:element ref="patient_withdrawal" minOccurs="0" />
+				<xs:element ref="redaction" minOccurs="0" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bcr" nillable="false">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:enumeration value="International Genomics Consortium" />  <!-- IGC -->
+                    <xs:enumeration value="Nationwide Children's Hospital" />  <!-- NCH -->
+                    <xs:enumeration value="Washington University" />  <!-- Wash U -->
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.17" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="file_uuid">
+		<xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+	</xs:element>
+      
+    <xs:element name="batch_number" nillable="false">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:pattern value="\d{1,4}\.\d{1,4}\.\d{1,4}" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.17" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="disease_code" nillable="false">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:enumeration value="ACC" />    <!-- Adrenocortical carcinoma -->
+                    <xs:enumeration value="BLCA" />   <!-- Urothelial carcinoma -->
+                    <xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
+                    <xs:enumeration value="BRCA" />   <!-- Breast invasive carcinoma -->
+                    <xs:enumeration value="CESC" />   <!-- Cervical Squamous cell carcinoma -->
+                    <xs:enumeration value="CHOL" />   <!-- Cholangiocarcinoma -->
+                    <xs:enumeration value="COAD" />   <!-- Colon/Rectal adenocarcinoma -->
+                    <xs:enumeration value="DLBC" />   <!-- Diffuse Large B-Cell Lymphoma -->
+                    <xs:enumeration value="ESCA" />   <!-- Esophageal -->
+                    <xs:enumeration value="FPPP"/>    <!-- Formalin Paraffin Pilot Project  -->
+                    <xs:enumeration value="GBM" />    <!-- Glioblastoma multiforme -->
+                    <xs:enumeration value="GIST" />   <!-- Gastrointestinal Stromal Tumor -->
+                    <xs:enumeration value="HNSC" />   <!-- Heand and neck squamous cell carcinoma -->
+                    <xs:enumeration value="KIRC" />   <!-- Kidney renal cell carcinoma -->
+                    <xs:enumeration value="KIRP" />   <!-- Kidney renal papillary cell carcinoma -->
+                    <xs:enumeration value="KICH" />   <!-- Kidney Chromophobe -->
+                    <xs:enumeration value="LAML" />   <!-- Acute myeloid leukemia -->
+                    <xs:enumeration value="LCLL" />   <!-- Cronic lymphocytic leukemia -->
+                    <xs:enumeration value="LCML" />   <!-- Chronic Myelogenous Leukemia -->
+                    <xs:enumeration value="LGG" />    <!-- Lower Grade Glioma-->
+                    <xs:enumeration value="LIHC" />   <!-- Liver hepatocellular carcinoma -->
+                    <xs:enumeration value="LNNH" />   <!-- Lymphoid neoplasm non-hodgkins lymphoma -->
+                    <xs:enumeration value="LUAD" />   <!-- Lung adenocarcinoma -->
+                    <xs:enumeration value="LUNG" />   <!-- Lung cancer -->
+                    <xs:enumeration value="LUSC" />   <!-- Lung squamous cell carcinoma -->
+                    <xs:enumeration value="MESO" />   <!-- Mesothelioma -->
+                    <xs:enumeration value="MCC" />    <!-- Merkel cell carcinoma -->
+                    <xs:enumeration value="MM" />     <!-- Multiple Myeloma  -->
+                    <xs:enumeration value="OV" />     <!-- Ovarian serous cystadenocacinoma -->
+                    <xs:enumeration value="PAAD" />   <!-- Pancreatic Adenocarcinoma -->
+                    <xs:enumeration value="PCPG" />   <!-- Pheochromocytoma and Paraganglioma -->
+                    <xs:enumeration value="PRAD" />   <!-- Prostate adenocarcinoma -->
+					<xs:enumeration value="RCC" />    <!-- Renal Cell Carcinoma -->
+                    <xs:enumeration value="READ" />   <!-- Rectum Adenocarcinoma -->
+                    <xs:enumeration value="SARC" />   <!-- Dedifferentiated Liposarcoma -->
+                    <xs:enumeration value="SCLC" />   <!-- Small Cell Lung Carcinoma -->
+                    <xs:enumeration value="SKCM" />   <!-- Cutaneous melanoma -->
+                    <xs:enumeration value="STAD" />   <!-- Stomach adenocarinoma -->
+                    <xs:enumeration value="TGCT" />   <!-- Testicular Germ Cell Tumors -->
+                    <xs:enumeration value="THCA" />   <!-- Thyroid carcinoma -->
+                    <xs:enumeration value="THYM" />   <!-- Thymoma -->
+                    <xs:enumeration value="UCEC" />   <!-- Uterine Corpus Endometrioid Carcinoma  -->
+                    <xs:enumeration value="UCS" />    <!-- Uterine Carcinosarcoma -->
+                    <xs:enumeration value="UVM" />    <!-- Uveal Melanoma  -->
+                    <xs:enumeration value="CNTL" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="day_of_dcc_upload" nillable="false">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.17" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="month_of_dcc_upload" nillable="false">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.17" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_dcc_upload" nillable="false">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="1.17" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_dcc_upload">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="cde" type="xs:string" default=""/>
+                    <xs:attribute name="precision" type="xs:string" use="optional" />
+                    <xs:attribute name="xsd_ver" type="xs:string" use="optional" default="" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="patient_withdrawal">
+		<xs:annotation>
+		<xs:documentation> 
+			An element that indicates whether a patient has been withdrawn from the TCGA Program. 
+			If a patient has been withdrawn (as indicated by the 'withdrawn' element), additional 
+			data will be provided to indicate when and why the patient was withdrawn. 
+			
+			-- withdrawn: indicates if the patient has been withdrawn. 
+			-- date_of_withdraw: indicates the YEAR-MONTH-DAY that the patient was withdrawn. 
+			-------: Standard format for dates is YYYY-MM-DD
+			-- reason_for_withdraw: a free text description of why the patient was withdrawn. 
+		</xs:documentation>
+		</xs:annotation>
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="withdrawn" maxOccurs="1" minOccurs="1" type="xs:boolean" default="false"/>
+					<xs:element name="date_of_withdraw" maxOccurs="1" minOccurs="0" type="xs:date"/>
+					<xs:element name="reason_for_withdraw" maxOccurs="1" minOccurs="0" type="xs:string"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="redaction">
+		<xs:annotation>
+		<xs:documentation> 
+			An element that indicates whether data for a patient has been redacted from the TCGA Program. 
+			If data has been redated (as indicated by the 'redacted' element), additional 
+			fields will be provided to indicate when the data was redacted and the type of redaction. 
+			
+			-- redacted: indicates if the patient has been withdrawn. 
+			-- date_of_redaction: indicates the YEAR-MONTH-DAY that the data was redacted. 
+			-------: Standard format for dates is YYYY-MM-DD
+			-- type_of_redaction: controlled vocabulary for that indicates the type of redaction. 
+		</xs:documentation>
+		</xs:annotation>
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="redacted" maxOccurs="1" minOccurs="1" type="xs:boolean" default="false"/>
+					<xs:element name="date_of_redaction" maxOccurs="1" minOccurs="0" type="xs:date"/>
+					<xs:element ref="type_of_redaction" maxOccurs="1" minOccurs="0"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="type_of_redaction">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+					<xs:enumeration value="permanent redaction" />    
+                    <xs:enumeration value="temporary redaction" />   
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="project_code" nillable = "false">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:project_code_type">
+                    <xs:attributeGroup ref="admin_res_attribute_group" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+	</xs:element>
+	
+</xs:schema>

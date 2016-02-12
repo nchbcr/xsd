@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://tcga.nci/bcr/xml/utility/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/utility/2.7">
+
+    <xs:attributeGroup name="common_ext_attribute_group">
+		<xs:attribute name="cde_ver" type="xs:string" use="optional" default=""/>
+        <xs:attribute name="procurement_status" type="procurement_status_type"  use="required" />
+        <xs:attribute name="owner" type="owner_type" use="required" />
+        <xs:attribute name="precision" type="xs:string" use="optional" />
+		<xs:attribute name="preferred_name" type="xs:string" use="optional" default="" />
+		<xs:attribute name="display_order" type="xs:integer" use="optional" default="9999" />
+		<xs:attribute name="restricted" type="xs:boolean" default="false" />
+		<xs:attribute name="source_system_identifier" type="xs:integer" use="optional" />
+    </xs:attributeGroup>
+  
+    <xs:attributeGroup name="common_res_attribute_group">
+        <xs:attribute name="cde" type="xs:string" default=""/>
+		<xs:attribute name="cde_ver" type="xs:string" use="optional" default=""/>
+        <xs:attribute name="procurement_status" type="procurement_status_type"  use="required" />
+        <xs:attribute name="owner" type="owner_type" use="required" />
+        <xs:attribute name="precision" type="xs:string" use="optional" />
+        <xs:attribute name="xsd_ver" type="xs:string" use="optional" default="" />
+		<xs:attribute name="units" type="xs:string" use="optional" default="" />
+    </xs:attributeGroup>
+  
+    <xs:attributeGroup name="clinical_res_attribute_group">
+        <xs:attributeGroup ref="common_res_attribute_group" />
+        <xs:attribute name="tier" type="xs:string" use="optional" default="" />
+		<xs:attribute name="floored" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="preferred_name" type="xs:string" use="optional" default=""/>
+		<xs:attribute name="display_order" type="xs:integer" use="optional" default="9999"/>
+		<xs:attribute name="restricted" type="xs:boolean" default="false" />
+		<xs:attribute name="source_system_identifier" type="xs:integer" use="optional"/>
+    </xs:attributeGroup>
+
+    <xs:complexType name="common_res_attributes">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attributeGroup ref="common_res_attribute_group" />
+				<xs:attribute name="restricted" type="xs:boolean" default="false" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+  
+	<xs:attributeGroup name="clinical_res_dcc_attribute_group">
+      <xs:attributeGroup ref="clinical_res_attribute_group"/>
+    </xs:attributeGroup>
+    <xs:complexType name="clinical_res_attributes">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attributeGroup ref="clinical_res_attribute_group" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+  
+    <xs:simpleType name="number_or_null">
+        <xs:union memberTypes="xs:decimal">
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal" />
+            </xs:simpleType>
+      
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+	
+	<xs:simpleType name="integer_or_null">
+        <xs:union memberTypes="xs:integer">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer" />
+            </xs:simpleType>
+      
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="generic_hour">
+        <xs:union memberTypes="xs:integer">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="0"/>
+                    <xs:maxInclusive value="24" />
+                </xs:restriction>
+            </xs:simpleType>
+
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="generic_day">
+        <xs:union memberTypes="xs:integer">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="1"/>
+                    <xs:maxInclusive value="31" />
+                </xs:restriction>
+            </xs:simpleType>
+      
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+  
+    <xs:simpleType name="generic_month">
+        <xs:union memberTypes="xs:integer">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="1"/>
+                    <xs:maxInclusive value="12" />
+                </xs:restriction>
+            </xs:simpleType>
+      
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+  
+    <xs:simpleType name="generic_year">
+        <xs:union memberTypes="xs:integer">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:pattern value="(19|20)\d{2}" />
+                </xs:restriction>
+            </xs:simpleType>
+      
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+  
+    <xs:simpleType name="yes_or_no">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="YES" />
+            <xs:enumeration value="NO" />
+            <xs:enumeration value="" />
+        </xs:restriction>
+    </xs:simpleType>
+  
+    <xs:simpleType name="procurement_status_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Completed" />
+            <xs:enumeration value="Discrepancy" />
+            <xs:enumeration value="Not Applicable" />
+            <xs:enumeration value="Not Available" />
+            <xs:enumeration value="Not Reported" />
+            <xs:enumeration value="Not Requested" />
+            <xs:enumeration value="Pending" />
+			<xs:enumeration value="Not Evaluated" />
+			<xs:enumeration value="Unknown" />
+            <xs:enumeration value="" />
+        </xs:restriction>
+    </xs:simpleType>
+  
+    <xs:simpleType name="owner_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BCR" />
+            <xs:enumeration value="PATH" />
+            <xs:enumeration value="TSS" />
+            <xs:enumeration value="" />
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:simpleType name="alt_id_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ER Review Panel ID" />
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:simpleType name="project_code_type"> 
+		<xs:annotation> 
+			<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>        
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="10KE" />
+			<xs:enumeration value="ALCH" />
+			<xs:enumeration value="BLGSP" />
+			<xs:enumeration value="CCLE" />
+			<xs:enumeration value="CDDP" />
+			<xs:enumeration value="CTSP" />
+			<xs:enumeration value="ER" />
+			<xs:enumeration value="HTMCP" />
+			<xs:enumeration value="REBC" />
+			<xs:enumeration value="TCGA" />
+		</xs:restriction>          
+	</xs:simpleType>
+	
+</xs:schema>

@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/acc/shared/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/acc/shared/2.7">
+  
+  <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+  <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+  
+  <xs:element name="weiss_assessment_report">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="weiss_score"/>
+        <xs:element ref="weiss_assessment_categories"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="excess_adrenal_hormone_history_types" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="excess_adrenal_hormone_history_type" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element ref="excess_adrenal_hormone_diagnosis_method_type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metastatic_neoplasm_initial_diagnosis_anatomic_sites">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metastatic_neoplasm_initial_diagnosis_anatomic_site" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element ref="distant_metastasis_anatomic_site"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metastatic_neoplasm_confirmed_diagnosis_method_names">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metastatic_neoplasm_confirmed_diagnosis_method_name" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element ref="metastatic_neoplasm_confirmed_diagnosis_method_text"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="germline_genotype_testing_report">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element ref="shared:germline_testing_performed"/>
+        <xs:element ref="germline_genotype_test_categories"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mitotane_therapy_adjuvant_setting">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646377"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="therapeutic_mitotane_levels_achieved">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646378"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="excess_adrenal_hormone_diagnosis_method_type" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Clinical Assessment"/>
+          <xs:enumeration value="Biochemical Assessment"/>
+          <xs:enumeration value="Both Clinical and Biochemical Assessments"/>
+          <xs:attribute name="cde" type="xs:string" default="3646387"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="excess_adrenal_hormone_history_type" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Androgen"/>
+          <xs:enumeration value="Mineralocorticoids"/>
+          <xs:enumeration value="Cortisol"/>
+          <xs:enumeration value="Estrogen"/>
+		  <xs:enumeration value="None"/>
+          <xs:attribute name="cde" type="xs:string" default="3646386"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="distant_metastasis_anatomic_site" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="2961431"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.5"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metastatic_neoplasm_confirmed_diagnosis_method_text" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3178376"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metastatic_neoplasm_initial_diagnosis_anatomic_site" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Bone"/>
+          <xs:enumeration value="Liver"/>
+          <xs:enumeration value="Lung"/>
+          <xs:enumeration value="Other, specify"/>
+		  <xs:enumeration value="Peritoneum"/>
+          <xs:attribute name="cde" type="xs:string" default="2967298"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metastatic_neoplasm_confirmed_diagnosis_method_name" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Biopsy Proven"/>
+          <xs:enumeration value="Imaging Suspected"/>
+          <xs:enumeration value="Other, specify"/>
+          <xs:attribute name="cde" type="xs:string" default="3178364"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mitoses_count" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:number_or_null">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646391"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mitotane_therapy">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646372"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="therapeutic_mitotane_lvl_recurrence">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+		  <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646379"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mitotane_therapy_for_macroscopic_residual_disease">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646385"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="therapeutic_mitotane_lvl_macroscopic_residual">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+          <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646380"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="therapeutic_mitotane_lvl_progression">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="utility:yes_or_no">
+		  <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+          <xs:attribute name="cde" type="xs:string" default="3646382"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="germline_genotype_test_categories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ret"/>
+        <xs:element ref="vhl"/>
+        <xs:element ref="nf1"/>
+        <xs:element ref="nf1_clinical_diagnosis"/>
+        <xs:element ref="sdha"/>
+        <xs:element ref="sdhb"/>
+        <xs:element ref="sdhc"/>
+        <xs:element ref="sdhd"/>
+        <xs:element ref="sdhaf2_sdh5"/>
+        <xs:element ref="tmem127"/>
+        <xs:element ref="max"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="max">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="MAX Negative"/>
+          <xs:enumeration value="MAX Positive"/>
+          <xs:enumeration value="MAX Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tmem127">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="TMEM 127 Negative"/>
+          <xs:enumeration value="TMEM 127 Positive"/>
+          <xs:enumeration value="TMEM 127 Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdhaf2_sdh5">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="SDHAF2 (SDH5) Negative"/>
+          <xs:enumeration value="SDHAF2 (SDH5) Positive"/>
+          <xs:enumeration value="SDHAF2 (SDH5) Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdhd">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="SDHD Negative"/>
+          <xs:enumeration value="SDHD Positive"/>
+          <xs:enumeration value="SDHD Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdhc">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="SDHC Negative"/>
+          <xs:enumeration value="SDHC Positive"/>
+          <xs:enumeration value="SDHC Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdhb">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="SDHB Negative"/>
+          <xs:enumeration value="SDHB Positive"/>
+          <xs:enumeration value="SDHB Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdha">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="SDHA Negative"/>
+          <xs:enumeration value="SDHA Positive"/>
+          <xs:enumeration value="SDHA Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nf1_clinical_diagnosis">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="NF1 Clinical Diagnosis Negative"/>
+          <xs:enumeration value="NF1 Clinical Diagnosis Positive"/>
+          <xs:enumeration value="NF1 Clinical Diagnosis Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nf1">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="NF1 Negative"/>
+          <xs:enumeration value="NF1 Positive"/>
+          <xs:enumeration value="NF1 Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vhl">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="VHL Negative"/>
+          <xs:enumeration value="VHL Positive"/>
+          <xs:enumeration value="VHL Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ret">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="RET Negative"/>
+          <xs:enumeration value="RET Positive"/>
+          <xs:enumeration value="RET Not Tested"/>
+          <xs:attribute name="cde" type="xs:string" default="3121628"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="weiss_assessment_categories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="nuclear_grade_III_IV"/>
+        <xs:element ref="mitotic_rate"/>
+        <xs:element ref="atypical_mitotic_figures"/>
+        <xs:element ref="cytoplasm_presence_less_than_equal_25_percent"/>
+        <xs:element ref="diffuse_architecture"/>
+        <xs:element ref="necrosis"/>
+        <xs:element ref="weiss_venous_invasion"/>
+        <xs:element ref="sinusoid_invasion"/>
+        <xs:element ref="invasion_of_tumor_capsule"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nuclear_grade_III_IV">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Nuclear Grade III or IV Absent"/>
+          <xs:enumeration value="Nuclear Grade III or IV Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mitotic_rate">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Mitotic Rate &gt; 5/50 HPF Absent"/>
+          <xs:enumeration value="Mitotic Rate &gt; 5/50 HPF Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="atypical_mitotic_figures">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Atypical Mitotic Figures Absent"/>
+          <xs:enumeration value="Atypical Mitotic Figures Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cytoplasm_presence_less_than_equal_25_percent">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Cytoplasm presence &lt;= 25% Absent"/>
+          <xs:enumeration value="Cytoplasm presence &lt;= 25% Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="diffuse_architecture">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Diffuse Architecture Absent"/>
+          <xs:enumeration value="Diffuse Architecture Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="necrosis">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Necrosis Absent"/>
+          <xs:enumeration value="Necrosis Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="weiss_venous_invasion">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Venous Invasion Absent"/>
+          <xs:enumeration value="Venous Invasion Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sinusoid_invasion">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Sinusoid Invasion Absent"/>
+          <xs:enumeration value="Sinusoid Invasion Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="invasion_of_tumor_capsule">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Invasion of Tumor Capsule Absent"/>
+          <xs:enumeration value="Invasion of Tumor Capsule Present"/>
+          <xs:attribute name="cde" type="xs:string" default="3648743"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="weiss_score">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="0"/>
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="2"/>
+          <xs:enumeration value="3"/>
+          <xs:enumeration value="4"/>
+          <xs:enumeration value="5"/>
+          <xs:enumeration value="6"/>
+          <xs:enumeration value="7"/>
+          <xs:enumeration value="8"/>
+          <xs:enumeration value="9"/>
+          <xs:attribute name="cde" type="xs:string" default="3648744"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

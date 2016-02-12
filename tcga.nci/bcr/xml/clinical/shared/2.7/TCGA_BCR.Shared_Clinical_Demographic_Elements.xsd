@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/shared/demographic/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/shared/demographic/2.7">
+  
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema to define xml elements that convey patient demographic information.</xs:documentation>
+	</xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+
+	<xs:element name="country_of_birth" nillable="true">
+		<xs:complexType mixed="true">
+		  <xs:simpleContent>
+			<xs:restriction base="utility:clinical_res_attributes">
+			  <xs:attribute name="cde" type="xs:string" default="2183279"/>
+			  <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+			  <xs:attribute name="tier" type="xs:string" default="2"/>
+			</xs:restriction>
+		  </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="country_of_procurement" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:attribute name="cde" type="xs:string" default="3203072"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="state_province_of_procurement" nillable="true">
+		<xs:complexType mixed="true">
+		  <xs:simpleContent>
+			<xs:restriction base="utility:clinical_res_attributes">
+			  <xs:attribute name="cde" type="xs:string" default="2179603"/>
+			  <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+			  <xs:attribute name="tier" type="xs:string" default="2"/>
+			</xs:restriction>
+		  </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="city_of_procurement" nillable="true">
+		<xs:complexType mixed="true">
+		  <xs:simpleContent>
+			<xs:restriction base="utility:clinical_res_attributes">
+			  <xs:attribute name="cde" type="xs:string" default="3203075"/>
+			  <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+			  <xs:attribute name="tier" type="xs:string" default="2"/>
+			</xs:restriction>
+		  </xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

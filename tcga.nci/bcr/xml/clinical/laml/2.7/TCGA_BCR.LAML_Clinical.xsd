@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+  xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+  xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  xmlns:follow_up_v2.0="http://tcga.nci/bcr/xml/clinical/laml/followup/2.7/2.0"
+  xmlns="http://tcga.nci/bcr/xml/clinical/laml/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/laml/2.7">
+      
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the LAML study.</xs:documentation>
+    </xs:annotation>
+  
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/laml/followup/2.7/2.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/laml/followup/2.7/TCGA_BCR.LAML_Clinical_FollowUp_v2.0.xsd" />
+    
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin" />
+                <xs:element ref="patient" />
+            </xs:sequence>
+            
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="clin_shared:tumor_tissue_site" />
+                <xs:element ref="clin_shared:tumor_tissue_site_other" /> 
+                <xs:element ref="leukemia_specimen_cell_source_type" />
+                <xs:element ref="shared:other_dx" />
+                <xs:element ref="shared:gender" />
+                <xs:element ref="clin_shared:vital_status" />
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_birth" />
+                        <xs:element ref="clin_shared:month_of_birth" />
+                        <xs:element ref="clin_shared:year_of_birth" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_birth" />
+                </xs:choice>
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_known_alive" />
+                        <xs:element ref="clin_shared:month_of_last_known_alive" />
+                        <xs:element ref="clin_shared:year_of_last_known_alive" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_last_known_alive" />
+                </xs:choice>
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death" />
+                        <xs:element ref="clin_shared:month_of_death" />
+                        <xs:element ref="clin_shared:year_of_death" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_death" />
+                </xs:choice>
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+
+                <xs:element ref="clin_shared:race_list"/>
+                <xs:element ref="shared:bcr_patient_barcode" />
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
+                <xs:element ref="shared:bcr_patient_uuid" />
+                <xs:element ref="shared:history_of_neoadjuvant_treatment" />
+                <xs:element ref="clin_shared:informed_consent_verified" />
+                <xs:element ref="clin_shared:icd_o_3_site" />
+                <xs:element ref="clin_shared:icd_o_3_histology" />
+                <xs:element ref="clin_shared:icd_10" />
+                
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis" />
+                        <xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis" />
+                    </xs:sequence>
+                    
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:days_to_initial_pathologic_diagnosis" />
+                        <xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis" />
+                    </xs:sequence>
+                </xs:choice>
+
+                <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis" />
+                <xs:element ref="clin_shared:ethnicity" />
+                <xs:element ref="cumulative_agent_total_dose" />
+                <xs:element ref="prior_hematologic_disorder_diagnosis_indicator" />
+                <xs:element ref="rx:total_dose_units" />
+                <xs:element ref="hydroxyurea_agent_administered_day_count" />
+                <xs:element ref="hydroxyurea_administration_prior_registration_clinical_study_indicator" />
+                <xs:element ref="atra_exposure" />
+                <xs:element ref="steroid_therapy_administered" />
+                <xs:element ref="person_history_nonmedical_leukemia_causing_agent_type" />
+                <xs:element ref="person_history_leukemogenic_agent_other_exposure_text" />
+                <xs:element ref="clin_shared:initial_pathologic_diagnosis_method" />
+                <xs:element ref="lab_procedure_blast_cell_outcome_percentage_value" />
+                <xs:element ref="leukemia_french_american_british_morphology_code" />
+                <xs:element ref="immunophenotype_cytochemistry_testing_results" />
+                <xs:element ref="lab_procedure_bone_marrow_cellularity_outcome_percent_value" />
+                <xs:element ref="lab_procedure_leukocyte_result_unspecified_value" />
+                <xs:element ref="lab_procedure_hemoglobin_result_specified_value" />
+                <xs:element ref="lab_procedure_hematocrit_outcome_percent_value" />
+                <xs:element ref="clin_shared:platelet_result_count" />
+                <xs:element ref="lab_procedure_bone_marrow_blast_cell_outcome_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_promyelocyte_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_myelocyte_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_metamyelocyte_result_value" />
+                <xs:element ref="lab_procedure_bone_marrow_band_cell_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_neutrophil_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_lab_eosinophil_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_basophil_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_lymphocyte_outcome_percent_value" />
+                <xs:element ref="lab_procedure_monocyte_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_prolymphocyte_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_promonocyte_count_result_percent_value" />
+                <xs:element ref="lab_procedure_abnormal_lymphocyte_result_percent_value" />
+                <xs:element ref="lab_procedure_bone_marrow_diff_not_reported_reason" />
+                <xs:element ref="cytogenetic_analysis_performed_ind" /> 
+                <xs:element ref="fluorescence_in_situ_hybrid_cytogenetics_metaphase_nucleus_result_count" />
+                <xs:element ref="acute_myeloid_leukemia_calgb_cytogenetics_risk_category" />
+                <xs:element ref="cytogenetic_abnormalities" />
+                <xs:element ref="cytogenetic_abnormality_other" />
+                <xs:element ref="fish_evaluation_performed_ind" />
+                <xs:element ref="fluorescence_in_situ_hybridization_abnormal_result_indicator" />
+                <xs:element ref="FISH_test_component_results" />
+                <xs:element ref="shared:germline_testing_performed" />
+                <xs:element ref="disease_detection_molecular_analysis_method_type" />
+                <xs:element ref="disease_detection_molecular_analysis_method_type_other_text" /> 
+                <xs:element ref="molecular_analysis_abnormal_result_indicator" />
+                <xs:element ref="molecular_analysis_abnormality_testing_results" />
+                <xs:element ref="clin_shared:karnofsky_performance_score" />
+                <xs:element ref="clin_shared:eastern_cancer_oncology_group" />
+                <xs:element ref="clin_shared:performance_status_scale_timing" />
+                <xs:element ref="clin_shared:assessment_timepoint_category" />
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    
+                    <xs:element ref="clin_shared:days_to_form_completion" />
+                </xs:choice>
+				
+				<xs:element ref="follow_ups" />
+                <xs:element ref="rx:drugs" />
+                <xs:element ref="rad:radiations" />
+                
+				
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="follow_ups">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">We are using namespaces and version numbers to distinguish one version of followup from another.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+		  <xs:sequence>
+			<xs:element ref="follow_up_v2.0:follow_up" minOccurs="0" maxOccurs="unbounded" />
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+    <xs:element name="leukemia_specimen_cell_source_type" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Bone marrow aspirate" />
+                    <xs:enumeration value="Skin" />
+                    <xs:enumeration value="Peripheral blood" />
+                    <xs:attribute name="cde" type="xs:string" default="64583" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cumulative_agent_total_dose" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:decimal">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="1515" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prior_hematologic_disorder_diagnosis_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3120971" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>   
+    <xs:element name="hydroxyurea_agent_administered_day_count" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:decimal">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2724416" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="hydroxyurea_administration_prior_registration_clinical_study_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121638" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>   
+    <xs:element name="atra_exposure" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2625735" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="steroid_therapy_administered" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2459014" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="person_history_nonmedical_leukemia_causing_agent_type" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121309" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="person_history_leukemogenic_agent_other_exposure_text" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3131188" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="first_pathologic_diagnosis_bio_acquisition_method_type" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Core needle biopsy" />
+                    <xs:enumeration value="Aspirate" />
+                    <xs:attribute name="cde" type="xs:string" default="2757941" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_blast_cell_outcome_percentage_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58282" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="leukemia_french_american_british_morphology_code" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Biphenotypic" />
+                    <xs:enumeration value="M0 Undifferentiated" />
+                    <xs:enumeration value="M1" />
+                    <xs:enumeration value="M2" />
+                    <xs:enumeration value="M3" />
+                    <xs:enumeration value="M3v" />
+                    <xs:enumeration value="M4" />
+                    <xs:enumeration value="M4eos" />
+                    <xs:enumeration value="M5" />
+                    <xs:enumeration value="M6" />
+                    <xs:enumeration value="M7" />
+                    <xs:enumeration value="Not Classified" />
+                    <xs:attribute name="cde" type="xs:string" default="3124352" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="immunophenotype_cytochemistry_testing_results">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="immunophenotype_cytochemistry_testing_result_values" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="immunophenotype_cytochemistry_testing_result_values">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="immunophenotype_cytochemistry_testing_result" />
+            <xs:element ref="immunophenotype_cytochemistry_percent_positive" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="immunophenotype_cytochemistry_testing_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="TDT Not Tested" />
+                    <xs:enumeration value="TDT Positive" />
+                    <xs:enumeration value="TDT Negative" />
+                    <xs:enumeration value="NSE Positive" />
+                    <xs:enumeration value="NSE Not Tested" />
+                    <xs:enumeration value="NSE Negative" />
+                    <xs:enumeration value="MPX Not Tested" />
+                    <xs:enumeration value="MPX Positive" />
+                    <xs:enumeration value="MPX Negative" />
+                    <xs:enumeration value="NA Not Tested" />
+                    <xs:enumeration value="NA Positive" />
+                    <xs:enumeration value="NA Negative" />
+                    <xs:enumeration value="CD56 Not Tested" />
+                    <xs:enumeration value="CD56 Positive" />
+                    <xs:enumeration value="CD56 Negative" />
+                    <xs:enumeration value="CD45 Not Tested" />
+                    <xs:enumeration value="CD45 Positive" />
+                    <xs:enumeration value="CD45 Negative" />
+                    <xs:enumeration value="CD34 Not Tested" />
+                    <xs:enumeration value="CD34 Positive" />
+                    <xs:enumeration value="CD34 Negative" />
+                    <xs:enumeration value="CD33 Not Tested" />
+                    <xs:enumeration value="CD33 Positive" />
+                    <xs:enumeration value="CD33 Negative" />
+                    <xs:enumeration value="CD25 Not Tested" />
+                    <xs:enumeration value="CD25 Positive" />
+                    <xs:enumeration value="CD25 Negative" />
+                    <xs:enumeration value="CD23 Not Tested" />
+                    <xs:enumeration value="CD23 Positive" />
+                    <xs:enumeration value="CD23 Negative" />
+                    <xs:enumeration value="CD20 Not Tested" />
+                    <xs:enumeration value="CD20 Positive" />
+                    <xs:enumeration value="CD20 Negative" />
+                    <xs:enumeration value="CD19 Not Tested" />
+                    <xs:enumeration value="CD19 Positive" />
+                    <xs:enumeration value="CD19 Negative" />
+                    <xs:enumeration value="CD15 Not Tested" />
+                    <xs:enumeration value="CD15 Positive" />
+                    <xs:enumeration value="CD15 Negative" />
+                    <xs:enumeration value="CD14 Not Tested" />
+                    <xs:enumeration value="CD14 Positive" />
+                    <xs:enumeration value="CD14 Negative" />
+                    <xs:enumeration value="CD10 Not Tested" />
+                    <xs:enumeration value="CD10 Positive" />
+                    <xs:enumeration value="CD10 Negative" />
+                    <xs:enumeration value="CD7 Not Tested" />
+                    <xs:enumeration value="CD7 Positive" />
+                    <xs:enumeration value="CD7 Negative" />
+                    <xs:enumeration value="CD5 Not Tested" />
+                    <xs:enumeration value="CD5 Positive" />
+                    <xs:enumeration value="CD5 Negative" />
+                    <xs:enumeration value="CD3 Not Tested" />
+                    <xs:enumeration value="CD3 Positive" />
+                    <xs:enumeration value="CD3 Negative" />
+                    <xs:enumeration value="Other CD Not Tested" />
+                    <xs:enumeration value="Other CD Positive" />
+                    <xs:enumeration value="Other CD Negative" />
+                    <xs:enumeration value="HLA-DR Not Tested" />
+                    <xs:enumeration value="HLA-DR Positive" />
+                    <xs:enumeration value="HLA-DR  Negative" />
+                    <xs:enumeration value="CD 117 Not Tested" />
+                    <xs:enumeration value="CD117 Positive" />
+                    <xs:enumeration value="CD117 Negative" />
+                    <xs:enumeration value="CD13 Not Tested" />
+                    <xs:enumeration value="CD13 Positive" />
+                    <xs:enumeration value="CD13 Negative" />
+                    <xs:attribute name="cde" type="xs:string" default="3121483" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="immunophenotype_cytochemistry_percent_positive" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121491" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_cellularity_outcome_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58264" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_leukocyte_result_unspecified_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2006107" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_hemoglobin_result_specified_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2190" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_hematocrit_outcome_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2180444" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="lab_procedure_bone_marrow_blast_cell_outcome_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58262" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="lab_procedure_bone_marrow_promyelocyte_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58271" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_myelocyte_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2669788" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_metamyelocyte_result_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2669787" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_band_cell_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3131180" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_neutrophil_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2669786" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_lab_eosinophil_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58266" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_basophil_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="64507" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_lymphocyte_outcome_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58270" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_monocyte_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="58301" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_prolymphocyte_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2669789" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_promonocyte_count_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3131695" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_abnormal_lymphocyte_result_percent_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3144381" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lab_procedure_bone_marrow_diff_not_reported_reason" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Differential count not done" />
+                    <xs:enumeration value="Differential count not stated" />
+                    <xs:attribute name="cde" type="xs:string" default="3131184" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cytogenetic_analysis_performed_ind" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2626417" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fluorescence_in_situ_hybrid_cytogenetics_metaphase_nucleus_result_count" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="64523" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acute_myeloid_leukemia_calgb_cytogenetics_risk_category" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="N/A - Remission" />
+                    <xs:enumeration value="Poor" />
+                    <xs:enumeration value="Intermediate/Normal" />
+                    <xs:enumeration value="Favorable" />
+                    <xs:attribute name="cde" type="xs:string" default="3121502" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cytogenetic_abnormalities">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="clin_shared:cytogenetic_abnormality" minOccurs="1" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   <xs:element name="cytogenetic_abnormality_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2957553" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fish_evaluation_performed_ind" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="64521" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fluorescence_in_situ_hybridization_abnormal_result_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121563" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FISH_test_component_results">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="FISH_test_component_result" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FISH_test_component_result">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="FISH_test_component" />
+            <xs:element ref="FISH_test_component_percentage_value" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FISH_test_component" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="BCR-ABL" />
+                    <xs:enumeration value="PML-RAR" />
+                    <xs:enumeration value="MLL" />
+                    <xs:enumeration value="CBF-Beta" />
+                    <xs:enumeration value="AML1-ETO" />
+                    <xs:enumeration value="TEL-AML 1" />
+                    <xs:enumeration value="+8" />
+                    <xs:enumeration value="-7 or del(7q)" />
+                    <xs:enumeration value="-5 or del(5q)" />
+                    <xs:enumeration value="del (20q)" />
+                    <xs:enumeration value="Other" />
+                    <xs:attribute name="cde" type="xs:string" default="64527" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FISH_test_component_percentage_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3151691" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="disease_detection_molecular_analysis_method_type" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="RT-PCR" />
+                    <xs:enumeration value="Southern" />
+                    <xs:enumeration value="FISH" />
+                    <xs:enumeration value="IHC" />
+                    <xs:enumeration value="Other" />
+                    <xs:attribute name="cde" type="xs:string" default="3121575" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="disease_detection_molecular_analysis_method_type_other_text" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3151694" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>   
+    <xs:element name="molecular_analysis_abnormal_result_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121579" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>   
+    <xs:element name="molecular_analysis_abnormality_testing_results">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="molecular_analysis_abnormality_testing_result_values" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="molecular_analysis_abnormality_testing_result_values">
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element ref="molecular_analysis_abnormality_testing_result" />
+            <xs:element ref="molecular_analysis_abnormality_testing_percentage_value" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="molecular_analysis_abnormality_testing_result" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Other Not Tested" />
+                    <xs:enumeration value="Other Positive" />
+                    <xs:enumeration value="Other Negative" />
+                    <xs:enumeration value="NPMc Not Tested" />
+                    <xs:enumeration value="NPMc Positive" />
+                    <xs:enumeration value="NPMc Negative" />
+                    <xs:enumeration value="Activating RAS Not Tested" />
+                    <xs:enumeration value="Activating RAS Negative" />
+                    <xs:enumeration value="Activating RAS Positive" />
+                    <xs:enumeration value="IDH1 R172 Not Tested" />
+                    <xs:enumeration value="IDH1 R172 Positive" />
+                    <xs:enumeration value="IDH1 R172 Negative" />
+                    <xs:enumeration value="IDH1 R140 Not Tested" />
+                    <xs:enumeration value="IDH1 R140 Positive" />
+                    <xs:enumeration value="IDH1 R140 Negative" />
+                    <xs:enumeration value="IDH1 R132 Not Tested" />
+                    <xs:enumeration value="IDH1 R132 Positive" />
+                    <xs:enumeration value="IDH1 R132 Negative" />
+                    <xs:enumeration value="FLT3 Mutation Not Tested" />
+                    <xs:enumeration value="FLT3 Mutation Positive" />
+                    <xs:enumeration value="FLT3 Mutation Negative" />
+                    <xs:enumeration value="PML-RAR Not Tested" />
+                    <xs:enumeration value="PML-RAR Positive" />
+                    <xs:enumeration value="PML-RAR Negative" />
+                    <xs:enumeration value="BCR-ABL Not Tested" />
+                    <xs:enumeration value="BCR-ABL Positive" />
+                    <xs:enumeration value="BCR-ABL Negative" />
+                    <xs:enumeration value="JAK2 V617 Not Tested" />
+                    <xs:enumeration value="JAK2 V617 Positive" />
+                    <xs:enumeration value="JAK2 V617 Negative" />
+                    <xs:enumeration value="WT1 Not Tested" />
+                    <xs:enumeration value="WT1 Positive" />
+                    <xs:enumeration value="WT1 Negative" />
+                    <xs:enumeration value="CEBPA Not Tested" />
+                    <xs:enumeration value="CEBPA Positive" />
+                    <xs:enumeration value="CEBPA Negative" />
+                    <xs:enumeration value="KIT Not Tested" />
+                    <xs:enumeration value="KIT Positive" />
+                    <xs:enumeration value="KIT Negative" />
+                    <xs:attribute name="cde" type="xs:string" default="3121628" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="molecular_analysis_abnormality_testing_percentage_value" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3151753" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

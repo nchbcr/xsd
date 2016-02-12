@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns="http://tcga.nci/bcr/xml/prescreen/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/prescreen/2.7"
+  elementFormDefault="qualified"
+  version="2.7.2">
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the pathology prescreen forms.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin"/>
+                <xs:element ref="patient"/>
+            </xs:sequence>
+
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies"/>
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
+                <xs:element ref="shared:bcr_patient_barcode" />
+                <xs:element ref="shared:bcr_patient_uuid" />
+                <xs:element ref="prescreen"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="prescreen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="histological_types"/>
+				<xs:element ref="shared:histological_type_other"/>
+				<xs:element ref="shared:neoplasm_histologic_grade"/>
+				<xs:element ref="genetic_testing_results"/>
+				<xs:element ref="genetic_abnormalities"/>
+				<xs:element ref="eber_genetic_testing_result" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:tumor_nuclei_percent"/>
+				<xs:element ref="shared:tumor_necrosis_percent"/>
+                <xs:element ref="shared:comment"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <xs:element name="histological_types">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="shared:histological_type" />
+                <xs:element ref="shared:histological_percentage"  minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_testing_results">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="genetic_testing_result"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_testing_result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="shared:immunophenotypic_analysis_tested" />
+                <xs:element ref="shared:immunophenotypic_analysis_results" />
+                <xs:element ref="slide" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="eber_genetic_testing_result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="shared:immunophenotypic_analysis_results" />
+                <xs:element ref="slide" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_abnormalities">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="genetic_abnormality_testing_result" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="genetic_abnormality_testing_result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="shared:genetic_abnormality_tested" />
+                <xs:element ref="shared:genetic_abnormality_results" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="fluorescence_in_situ_hybridization_abnormal_result_indicator" />
+                <xs:element ref="slide" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="slide">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element ref="shared:bcr_slide_barcode"/>
+                <xs:element ref="shared:bcr_slide_uuid"/>
+                <xs:element ref="shared:image_file_name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="fluorescence_in_situ_hybridization_abnormal_result_indicator" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3121563" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

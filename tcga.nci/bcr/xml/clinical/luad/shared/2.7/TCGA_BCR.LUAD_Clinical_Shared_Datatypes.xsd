@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://tcga.nci/bcr/xml/clinical/luad/shared/2.7"
+   targetNamespace="http://tcga.nci/bcr/xml/clinical/luad/shared/2.7">
+
+   <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+
+   <xs:annotation>
+      <xs:documentation xml:lang="en">Elements of the TCGA Clinical Data which are used in both LUAD Enrollment and Follow-up Forms.</xs:documentation>
+   </xs:annotation>
+
+   <xs:element name="karnofsky_performance_score">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:restriction base="utility:clinical_res_attributes">
+               <xs:enumeration value="" />
+               <xs:enumeration value="0" />
+               <xs:enumeration value="10" />
+               <xs:enumeration value="20" />
+               <xs:enumeration value="30" />
+               <xs:enumeration value="40" />
+               <xs:enumeration value="50" />
+               <xs:enumeration value="60" />
+               <xs:enumeration value="70" />
+               <xs:enumeration value="80" />
+               <xs:enumeration value="90" />
+               <xs:enumeration value="100" />
+               <xs:attribute name="cde" type="xs:string" default="2003853" />
+               <xs:attribute name="xsd_ver" type="xs:string" default="1.8" />
+               <xs:attribute name="tier" type="xs:string" default="2" />
+            </xs:restriction>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+   <xs:element name="eastern_cancer_oncology_group">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:restriction base="utility:clinical_res_attributes">
+               <xs:enumeration value="" />
+               <xs:enumeration value="0" />
+               <xs:enumeration value="1" />
+               <xs:enumeration value="2" />
+               <xs:enumeration value="3" />
+               <xs:enumeration value="4" />
+               <xs:enumeration value="5" />
+               <xs:attribute name="cde" type="xs:string" default="88" />
+               <xs:attribute name="xsd_ver" type="xs:string" default="1.9" />
+               <xs:attribute name="tier" type="xs:string" default="2" />
+            </xs:restriction>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+</xs:schema>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+ xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+ xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+ xmlns="http://tcga.nci/bcr/xml/auxdata/2.7"
+ targetNamespace="http://tcga.nci/bcr/xml/auxdata/2.7">
+      
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            Schema to define auxiliary data. 
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
+    
+    <xs:element name="tcga_bcr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="admin:admin" />
+                <xs:element ref="patient" />
+            </xs:sequence>
+            <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="2.7"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="shared:bcr_patient_barcode" />
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
+                <xs:element ref="shared:bcr_patient_uuid" />
+                <xs:element ref="microsatellite_instability_test_results" minOccurs="0"/>
+                <xs:element ref="hpv_test_results" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="microsatellite_instability_test_results">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="microsatellite_instability_test_result" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="microsatellite_instability_test_result">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="bcr_aliquot_uuid" />
+            <xs:element ref="mononucleotide_and_dinucleotide_marker_panel_analysis_status" />
+            <xs:element ref="mononucleotide_marker_panel_analysis_status" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bcr_aliquot_uuid">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="mononucleotide_and_dinucleotide_marker_panel_analysis_status" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="MSI-H" />
+                    <xs:enumeration value="MSI-L" />
+                    <xs:enumeration value="MSS" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="3226963" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="mononucleotide_marker_panel_analysis_status" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="MSI-H" />
+                    <xs:enumeration value="MSI-L" />
+                    <xs:enumeration value="MSS" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="3226962" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_test_results">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="hpv_test_result" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_test_result">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="hpv_status" />
+            <xs:element ref="hpv_call_1" />
+            <xs:element ref="hpv_call_2" />
+            <xs:element ref="hpv_call_3" />
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="hpv_status" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Negative" />
+                    <xs:enumeration value="Positive" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_call_1" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="HPV16" />
+					<xs:enumeration value="HPV18" />
+					<xs:enumeration value="HPV31" />
+					<xs:enumeration value="HPV33" />
+					<xs:enumeration value="HPV35" />
+					<xs:enumeration value="HPV39" />
+					<xs:enumeration value="HPV45" />
+					<xs:enumeration value="HPV51" />
+					<xs:enumeration value="HPV52" />
+					<xs:enumeration value="HPV56" />
+					<xs:enumeration value="HPV58" />
+					<xs:enumeration value="HPV59" />
+					<xs:enumeration value="HPV66" />
+					<xs:enumeration value="HPV68" />
+					<xs:enumeration value="HPV73" />
+					<xs:enumeration value="HPV90" />
+					<xs:enumeration value="HPV6" />
+					<xs:enumeration value="HPV11" />
+					<xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_call_2" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="HPV16" />
+					<xs:enumeration value="HPV18" />
+					<xs:enumeration value="HPV31" />
+					<xs:enumeration value="HPV33" />
+					<xs:enumeration value="HPV35" />
+					<xs:enumeration value="HPV39" />
+					<xs:enumeration value="HPV45" />
+					<xs:enumeration value="HPV51" />
+					<xs:enumeration value="HPV52" />
+					<xs:enumeration value="HPV56" />
+					<xs:enumeration value="HPV58" />
+					<xs:enumeration value="HPV59" />
+					<xs:enumeration value="HPV66" />
+					<xs:enumeration value="HPV68" />
+					<xs:enumeration value="HPV73" />
+					<xs:enumeration value="HPV90" />
+					<xs:enumeration value="HPV6" />
+					<xs:enumeration value="HPV11" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_call_3" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="HPV16" />
+					<xs:enumeration value="HPV18" />
+					<xs:enumeration value="HPV31" />
+					<xs:enumeration value="HPV33" />
+					<xs:enumeration value="HPV35" />
+					<xs:enumeration value="HPV39" />
+					<xs:enumeration value="HPV45" />
+					<xs:enumeration value="HPV51" />
+					<xs:enumeration value="HPV52" />
+					<xs:enumeration value="HPV56" />
+					<xs:enumeration value="HPV58" />
+					<xs:enumeration value="HPV59" />
+					<xs:enumeration value="HPV66" />
+					<xs:enumeration value="HPV68" />
+					<xs:enumeration value="HPV73" />
+					<xs:enumeration value="HPV90" />
+					<xs:enumeration value="HPV6" />
+					<xs:enumeration value="HPV11" />
+					<xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

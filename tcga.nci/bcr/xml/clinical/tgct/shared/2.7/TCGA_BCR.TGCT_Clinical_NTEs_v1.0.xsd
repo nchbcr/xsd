@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+           xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
+           xmlns:tgct_shared="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://tcga.nci/bcr/xml/clinical/tgct/shared/new_tumor_event/2.7/1.0"
+           targetNamespace="http://tcga.nci/bcr/xml/clinical/tgct/shared/new_tumor_event/2.7/1.0">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/tgct/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/tgct/shared/2.7/TCGA_BCR.TGCT_Clinical_Shared_Datatypes.xsd" />
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">The new_tumor_event section for TGCT clinical xml.</xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="new_tumor_events">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nte:new_tumor_event_after_initial_treatment" />
+                <xs:element ref="new_tumor_event" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="new_tumor_event">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="nte:day_of_new_tumor_event_after_initial_treatment" />
+                        <xs:element ref="nte:month_of_new_tumor_event_after_initial_treatment" />
+                        <xs:element ref="nte:year_of_new_tumor_event_after_initial_treatment" />
+                    </xs:sequence>
+                    <xs:element ref="nte:days_to_new_tumor_event_after_initial_treatment" />
+                </xs:choice>
+                <xs:element ref="nte:new_neoplasm_event_type" />
+                <xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" />
+                <xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
+   xmlns:hnsc_shared="http://tcga.nci/bcr/xml/clinical/hnsc/shared/2.7" 
+   xmlns:hnsc_nte="http://tcga.nci/bcr/xml/clinical/hnsc/shared/new_tumor_event/2.7/1.0" 
+   xmlns="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/4.8"
+   targetNamespace="http://tcga.nci/bcr/xml/clinical/hnsc/followup/2.7/4.8">
+
+   <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/shared/2.7/TCGA_BCR.HNSC_Clinical_Shared_Datatypes.xsd" />
+   <xs:import namespace="http://tcga.nci/bcr/xml/clinical/hnsc/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/hnsc/shared/2.7/TCGA_BCR.HNSC_Clinical_NTEs_v1.0.xsd" />
+   
+   <xs:annotation>
+      <xs:documentation xml:lang="en">Schema to define the elements of the TCGA Clinical Data Follow-up Form within the HNSC study.</xs:documentation>
+   </xs:annotation>
+
+   <xs:element name="follow_up">
+      <xs:complexType>
+         <xs:sequence>
+           <xs:element ref="clin_shared:bcr_followup_barcode" />
+           <xs:element ref="clin_shared:bcr_followup_uuid" />
+		   <xs:element ref="clin_shared:followup_case_report_form_submission_reason" />
+		   <xs:element ref="clin_shared:lost_follow_up" />
+		   <xs:element ref="clin_shared:radiation_therapy" />
+		   <xs:element ref="clin_shared:targeted_molecular_therapy" />
+		   <xs:element ref="clin_shared:primary_therapy_outcome_success"/>
+		   <xs:element ref="clin_shared:vital_status" />
+		   <xs:choice>
+              <xs:sequence>
+                 <xs:element ref="clin_shared:day_of_last_followup" />
+                 <xs:element ref="clin_shared:month_of_last_followup" />
+                 <xs:element ref="clin_shared:year_of_last_followup" />
+              </xs:sequence>
+              <xs:element ref="clin_shared:days_to_last_followup" />
+           </xs:choice>
+           <xs:choice>
+              <xs:sequence>
+                 <xs:element ref="clin_shared:day_of_death" />
+                 <xs:element ref="clin_shared:month_of_death" />
+                 <xs:element ref="clin_shared:year_of_death" />
+              </xs:sequence>
+              <xs:element ref="clin_shared:days_to_death" />
+           </xs:choice>
+		   <xs:element ref="clin_shared:person_neoplasm_cancer_status" />
+		   <xs:element ref="clin_shared:followup_treatment_success" />
+		   
+		   <xs:element ref="hnsc_shared:smokeless_tobacco_use_at_diag" />
+		   <xs:element ref="hnsc_shared:smokeless_tobacco_use_regularly" />
+		   <xs:element ref="hnsc_shared:smokeless_tobacco_use_per_day" />
+		   <xs:element ref="hnsc_shared:smokeless_tobacco_use_age_at_start" />
+		   <xs:element ref="hnsc_shared:smokeless_tobacco_use_age_at_quit" />
+		   <xs:choice>
+				<xs:sequence>
+					<xs:element ref="hnsc_shared:day_of_completion_of_curative_tx" />
+					<xs:element ref="hnsc_shared:month_of_completion_of_curative_tx" />
+					<xs:element ref="hnsc_shared:year_of_completion_of_curative_tx" />
+				</xs:sequence>
+				
+				<xs:element ref="hnsc_shared:days_to_completion_of_curative_tx" />
+		   </xs:choice>
+		   <xs:element ref="hnsc_shared:method_of_curative_tx" />
+		   <xs:element ref="hnsc_shared:disease_after_curative_tx" />
+		   <xs:element ref="clin_shared:patient_death_reason" />
+	
+		   <xs:element ref="hnsc_nte:new_tumor_events" minOccurs="1" maxOccurs="1"/>
+			
+		   <xs:choice>
+              <xs:sequence>
+                 <xs:element ref="clin_shared:day_of_form_completion" />
+                 <xs:element ref="clin_shared:month_of_form_completion" />
+                 <xs:element ref="clin_shared:year_of_form_completion" />
+              </xs:sequence>
+              <xs:element ref="clin_shared:days_to_form_completion" />
+           </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="version" type="xs:string" default="4.8" use="optional"/>
+		<xs:attribute name="sequence" type="xs:integer" />
+     </xs:complexType>
+   </xs:element>
+
+</xs:schema>

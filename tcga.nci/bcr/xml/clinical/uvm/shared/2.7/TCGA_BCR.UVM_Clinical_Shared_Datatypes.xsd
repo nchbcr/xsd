@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" version="2.7.2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns="http://tcga.nci/bcr/xml/clinical/uvm/shared/2.7"
+  targetNamespace="http://tcga.nci/bcr/xml/clinical/uvm/shared/2.7">
+  
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    
+    <xs:element name="gene_expression_profile_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="gene_expression_profile" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="eye_color" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Amber" />
+                    <xs:enumeration value="Blue" />
+                    <xs:enumeration value="Brown" />
+                    <xs:enumeration value="Gray" />
+                    <xs:enumeration value="Green" />
+                    <xs:enumeration value="Hazel" />
+                    <xs:enumeration value="Red and Violet" />
+                    <xs:enumeration value="Other" />
+                    <xs:attribute name="cde" type="xs:string" default="3870394" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    
+  <xs:element name="gene_expression_profile" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Class 1"/>
+          <xs:enumeration value="Class 1a"/>
+          <xs:enumeration value="Class 1b"/>
+          <xs:enumeration value="Class 2"/>
+          <xs:enumeration value="Unknown"/>
+          <xs:attribute name="cde" type="xs:string" default="3870395"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+    
+	<xs:element name="pet_ct_standardized_values" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3133999"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+      <xs:element name="extravascular_matrix_patterns" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Loops"/>
+          <xs:enumeration value="Loops Forming Networks"/>
+          <xs:enumeration value="Other Complex Patterns"/>
+          <xs:enumeration value="Unknown"/>
+          <xs:attribute name="cde" type="xs:string" default="3874271"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+    
+	<xs:element name="microvascular_density_mvd" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3874272"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+    
+      <xs:element name="tumor_infiltrating_lymphocytes" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Few"/>
+          <xs:enumeration value="Moderate Numbers"/>
+          <xs:enumeration value="Many"/>
+          <xs:enumeration value="Unknown"/>
+          <xs:attribute name="cde" type="xs:string" default="3870441"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+    
+      <xs:element name="tumor_infiltrating_macrophages" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Few"/>
+          <xs:enumeration value="Moderate Numbers"/>
+          <xs:enumeration value="Many"/>
+          <xs:enumeration value="Unknown"/>
+          <xs:attribute name="cde" type="xs:string" default="3874291"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+    
+	<xs:element name="tumor_basal_diameter" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="3870453"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="mm"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+    
+      <xs:element name="tumor_basal_diameter_mx" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Pathologic Measurement"/>
+          <xs:enumeration value="Echographic Measurement"/>
+          <xs:attribute name="cde" type="xs:string" default="3870439"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+    
+    
+	<xs:element name="tumor_thickness" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="utility:number_or_null">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default="2479403"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+					<xs:attribute name="units" type="xs:string" fixed="mm"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+    
+      <xs:element name="tumor_thickness_measurement" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Pathologic Measurement"/>
+          <xs:enumeration value="Echographic Measurement"/>
+          <xs:attribute name="cde" type="xs:string" default="3870440"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+    
+    <xs:element name="extrascleral_extension">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3874292" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    
+      <xs:element name="extranocular_nodule_size" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="&lt;=5mm"/>
+          <xs:enumeration value="&gt;5mm"/>
+          <xs:attribute name="cde" type="xs:string" default="3874294"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+    
+    
+      <xs:element name="tumor_shape_pathologic_clinical" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:restriction base="utility:clinical_res_attributes">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="Mushroom"/>
+          <xs:enumeration value="Dome"/>
+          <xs:enumeration value="Diffuse"/>
+          <xs:attribute name="cde" type="xs:string" default="3870445"/>
+          <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
+          <xs:attribute name="tier" type="xs:string" default="2"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+	
+	<xs:element name="tss_received_permission" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    
+    <xs:element name="new_neoplasm_histology_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="4500217" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    
+</xs:schema>
