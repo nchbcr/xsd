@@ -13,7 +13,7 @@
 	xmlns="http://tcga.nci/bcr/xml/clinical/lgg/2.7" 
 	targetNamespace="http://tcga.nci/bcr/xml/clinical/lgg/2.7" 
 	elementFormDefault="qualified" 
-	version="2.7.2">
+	version="2.7.3">
 	
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the LGG study.</xs:documentation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.2"
+<xs:schema elementFormDefault="qualified" version="2.7.3"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -75,6 +75,8 @@
                 </xs:choice>
 				<xs:element ref="patient_withdrawal" minOccurs="0" />
 				<xs:element ref="redaction" minOccurs="0" />
+                <xs:element ref="program" minOccurs="0" />
+                <xs:element ref="dbgap_registration_code" minOccurs="0" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -274,5 +276,42 @@
             </xs:simpleContent>
         </xs:complexType>
 	</xs:element>
-	
+
+    <xs:element name="program" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:enumeration value="10KE" />
+                    <xs:enumeration value="ALCH" />
+                    <xs:enumeration value="BLGSP" />
+                    <xs:enumeration value="CCLE" />
+                    <xs:enumeration value="CDDP" />
+                    <xs:enumeration value="CG10" />
+                    <xs:enumeration value="Chanock" />
+                    <xs:enumeration value="CTSP" />
+                    <xs:enumeration value="EAGL" />
+                    <xs:enumeration value="ER" />
+                    <xs:enumeration value="HKB" />
+                    <xs:enumeration value="HTMCP" />
+                    <xs:enumeration value="MCAP" />
+                    <xs:enumeration value="OCG" />
+                    <xs:enumeration value="REBC" />
+                    <xs:enumeration value="TCGA" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="dbgap_registration_code" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>

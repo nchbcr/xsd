@@ -8,7 +8,7 @@
   xmlns="http://tcga.nci/bcr/xml/prescreen/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/prescreen/2.7"
   elementFormDefault="qualified"
-  version="2.7.2">
+  version="2.7.3">
 
     <xs:annotation>
         <xs:documentation xml:lang="en">Schema to define the elements of the pathology prescreen forms.</xs:documentation>
@@ -45,7 +45,8 @@
 	<xs:element name="prescreen">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="histological_types"/>
+                <xs:element ref="tumor_histologies" minOccurs="0"/>
+				<xs:element ref="histological_types" minOccurs="0"/>
 				<xs:element ref="shared:histological_type_other"/>
 				<xs:element ref="shared:neoplasm_histologic_grade"/>
 				<xs:element ref="genetic_testing_results"/>
@@ -57,6 +58,24 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+    <xs:element name="tumor_histologies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tumor_histology" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="tumor_histology">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="shared:histological_type"/>
+                <xs:element ref="shared:histological_type_other" minOccurs="0"/>
+                <xs:element ref="shared:histological_percentage" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="histological_types">
         <xs:complexType>

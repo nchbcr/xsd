@@ -9,7 +9,7 @@
  xmlns="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  elementFormDefault="qualified" 
- version="2.7.2">
+ version="2.7.3">
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the biospecimen xml.</xs:documentation>
@@ -19,7 +19,7 @@
 	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/biospecimen/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/biospecimen/2.7/TCGA_BCR.Shared_Bio_Elements.xsd"/>
-				
+	
 	<xs:element name="tcga_bcr">
 		<xs:complexType>
 			<xs:sequence>
@@ -49,6 +49,7 @@
 				</xs:choice>
 				<xs:element ref="bcr_canonical_check"/>
 				<xs:element ref="samples"/>
+				<xs:element ref="hpv_test_results" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -871,6 +872,8 @@
 				<xs:element ref="biospecimen_barcode_bottom" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="source_center" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="is_derived_from_ffpe" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="msi_mono_di_nucleotide_assay_status" minOccurs="0"/>
+				<xs:element ref="msi_mono_nucleotide_assay_status" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1851,9 +1854,11 @@
                     <xs:enumeration value="Control Analyte"/>
                     <xs:enumeration value="Derived Cell Line"/>
                     <xs:enumeration value="EBV Immortalized"/>
+					<xs:enumeration value="Fibroblasts from Bone Marrow Normal"/>
                     <xs:enumeration value="Granulocytes"/>
                     <xs:enumeration value="Human Original Cells"/>
                     <xs:enumeration value="Lymphocytes"/>
+					<xs:enumeration value="Mononuclear Cells from Bone Marrow Normal"/>
                     <xs:enumeration value="Peripheral Blood Components"/>
                     <xs:enumeration value="Peripheral Blood Components NOS"/>
                     <xs:enumeration value="Peripheral Whole Blood"/>
@@ -1887,4 +1892,102 @@
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
+	
+	<xs:element name="msi_mono_di_nucleotide_assay_status">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="MSI-H" />
+                    <xs:enumeration value="MSI-L" />
+                    <xs:enumeration value="MSS" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="3226963" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="msi_mono_nucleotide_assay_status">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="MSI-H" />
+                    <xs:enumeration value="MSI-L" />
+                    <xs:enumeration value="MSS" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="3226962" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="hpv_test_results">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="hpv_test_result" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="hpv_test_result">
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element ref="hpv_status" />
+				<xs:element ref="hpv_call" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="hpv_status">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Negative" />
+                    <xs:enumeration value="Positive" />
+                    <xs:enumeration value="Indeterminate" />
+                    <xs:enumeration value="Not Tested" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hpv_call">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="HPV16" />
+					<xs:enumeration value="HPV18" />
+					<xs:enumeration value="HPV31" />
+					<xs:enumeration value="HPV33" />
+					<xs:enumeration value="HPV35" />
+					<xs:enumeration value="HPV39" />
+					<xs:enumeration value="HPV45" />
+					<xs:enumeration value="HPV51" />
+					<xs:enumeration value="HPV52" />
+					<xs:enumeration value="HPV56" />
+					<xs:enumeration value="HPV58" />
+					<xs:enumeration value="HPV59" />
+					<xs:enumeration value="HPV66" />
+					<xs:enumeration value="HPV68" />
+					<xs:enumeration value="HPV73" />
+					<xs:enumeration value="HPV90" />
+					<xs:enumeration value="HPV6" />
+					<xs:enumeration value="HPV11" />
+					<xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
 </xs:schema>
