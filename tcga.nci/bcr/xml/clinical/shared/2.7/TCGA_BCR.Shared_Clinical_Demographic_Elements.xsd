@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xs:schema elementFormDefault="qualified" version="2.7.3"
+<xs:schema elementFormDefault="qualified" version="2.7.4"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/shared/demographic/2.7"
@@ -11,7 +11,11 @@
 
     <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
 
+	<!-- TODO - DEPRECATED. Remove this element on XSD 2.8, use birth_country instead -->
 	<xs:element name="country_of_birth" nillable="true">
+		<xs:annotation>
+			<xs:documentation>This element is deprecated, will be removed in XSD 2.8 release.</xs:documentation>
+		</xs:annotation>
 		<xs:complexType mixed="true">
 		  <xs:simpleContent>
 			<xs:restriction base="utility:clinical_res_attributes">
