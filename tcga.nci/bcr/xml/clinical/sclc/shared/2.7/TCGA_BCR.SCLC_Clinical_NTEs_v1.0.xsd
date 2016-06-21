@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
-<xs:schema elementFormDefault="qualified" version="2.7.3"
+<!-- TODO: Remove this XSD in 2.8.0 -->
+<xs:schema elementFormDefault="qualified" version="2.7.4"
            xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns="http://tcga.nci/bcr/xml/clinical/sclc/shared/new_tumor_event/2.7/1.0"
@@ -12,6 +12,7 @@
 
     <xs:annotation>
         <xs:documentation xml:lang="en">The new_tumor_event section for SCLC clinical xml.</xs:documentation>
+        <xs:documentation xml:lang="en">This XSD is deprecated as of the 2.7.4 release. Use TCGA_BCR.ER_Clinical_NTEs_v1.0.xsd instead.</xs:documentation>
     </xs:annotation>
 
     <xs:element name="new_tumor_events">

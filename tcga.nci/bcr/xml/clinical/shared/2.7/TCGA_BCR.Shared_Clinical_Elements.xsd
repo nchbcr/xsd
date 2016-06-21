@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.3"
+<xs:schema elementFormDefault="qualified" version="2.7.4"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -4733,7 +4733,11 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- TODO - Deprecated. This element should be removed in XSD 2.8 release. Use "family_member_relationship_type" instead. -->
     <xs:element name="blood_relative_with_cancer" nillable="true">
+        <xs:annotation>
+            <xs:documentation>This element is deprecated, will be removed in XSD 2.8 release. Use "family_member_relationship_type" instead.</xs:documentation>
+        </xs:annotation>
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">

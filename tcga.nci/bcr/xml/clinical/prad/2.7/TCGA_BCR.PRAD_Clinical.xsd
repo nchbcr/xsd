@@ -13,7 +13,7 @@
 	xmlns="http://tcga.nci/bcr/xml/clinical/prad/2.7" 
 	targetNamespace="http://tcga.nci/bcr/xml/clinical/prad/2.7" 
 	elementFormDefault="qualified" 
-	version="2.7.3">
+	version="2.7.4">
 	
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the PRAD study.</xs:documentation>
@@ -371,7 +371,7 @@
 			<xs:simpleContent>
 				<xs:extension base="utility:yes_or_no">
 					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
-					<xs:attribute name="cde" type="xs:string" default="2632191"/>
+					<xs:attribute name="cde" type="xs:string" default="3607491"/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
 					<xs:attribute name="tier" type="xs:string" default="2"/>
 				</xs:extension>
