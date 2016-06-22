@@ -7,7 +7,7 @@
            targetNamespace="http://tcga.nci/bcr/xml/clinical/gist/shared/new_tumor_event/2.7/1.0">
 
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
-               schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd"/>
+               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd"/>
 
 
     <xs:annotation>

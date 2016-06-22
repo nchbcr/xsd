@@ -6,7 +6,7 @@
   xmlns="http://tcga.nci/bcr/xml/clinical/thca/shared/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/clinical/thca/shared/2.7">
 
-	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
 	
 	<xs:element name="i_131_total_administered_preparation_technique" nillable="true">
 		<xs:complexType mixed="true">

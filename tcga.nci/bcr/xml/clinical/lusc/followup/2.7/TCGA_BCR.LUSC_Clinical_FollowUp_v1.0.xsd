@@ -10,11 +10,11 @@
    xmlns="http://tcga.nci/bcr/xml/clinical/lusc/followup/2.7/1.0"
    targetNamespace="http://tcga.nci/bcr/xml/clinical/lusc/followup/2.7/1.0">
 
-    <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" namespace="http://tcga.nci/bcr/xml/utility/2.7" />
-    <xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" namespace="http://tcga.nci/bcr/xml/administration/2.7" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" />
-	<xs:import schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" />
-	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/lusc/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/lusc/shared/2.7/TCGA_BCR.LUSC_Clinical_NTEs_v1.0.xsd" />
+    <xs:import schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" namespace="http://tcga.nci/bcr/xml/utility/2.7" />
+    <xs:import schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" namespace="http://tcga.nci/bcr/xml/administration/2.7" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_New_Tumor_Event_Elements.xsd" />
+	<xs:import schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/lusc/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lusc/shared/2.7/TCGA_BCR.LUSC_Clinical_NTEs_v1.0.xsd" />
 	
     <xs:annotation>
         <xs:documentation xml:lang="en">Schema to define the elements of the TCGA Clinical Data Follow-up Form within the LUSC study.</xs:documentation>
