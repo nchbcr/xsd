@@ -20,17 +20,17 @@
         <xs:documentation xml:lang="en">Schema to define the elements of the BURK study.</xs:documentation>
     </xs:annotation>
   
-    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
-	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
-	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.OCG_Shared_Clinical_Elements.xsd" />
-	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/2.7" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_Shared_Datatypes.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/new_tumor_event/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_NTEs_v1.0.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/followup/2.7/1.0" schemaLocation="http://tcga-data.nci.nih.gov/docs/xsd/BCR/tcga.nci/bcr/xml/clinical/burk/followup/2.7/TCGA_BCR.BURK_Clinical_FollowUp_v1.0.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.OCG_Shared_Clinical_Elements.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_Shared_Datatypes.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_NTEs_v1.0.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/followup/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/followup/2.7/TCGA_BCR.BURK_Clinical_FollowUp_v1.0.xsd" />
     
     <xs:element name="tcga_bcr">
         <xs:complexType>
