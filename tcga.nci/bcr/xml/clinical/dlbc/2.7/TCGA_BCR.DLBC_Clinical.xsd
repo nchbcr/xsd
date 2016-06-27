@@ -148,6 +148,7 @@
 		  </xs:sequence>
 		  <xs:element ref="clin_shared:days_to_form_completion"/>
 		</xs:choice>
+		<xs:element ref="clin_shared:lost_follow_up" minOccurs="0"/>
 		<xs:element ref="follow_ups"/>
 		<xs:element ref="rx:drugs"/>
 		<xs:element ref="rad:radiations"/>
