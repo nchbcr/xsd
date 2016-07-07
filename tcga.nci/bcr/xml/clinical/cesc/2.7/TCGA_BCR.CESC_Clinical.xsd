@@ -141,7 +141,6 @@
 
 				<xs:element ref="clin_shared:tumor_tissue_site" />
 				<xs:element ref="shared:histological_type"/>
-				<xs:element ref="shared:histological_type_other" minOccurs="0" />
 				<xs:element ref="keratinizing_squamous_cell_carcinoma_present_indicator" />
 				<xs:element ref="shared:neoplasm_histologic_grade" />
 				

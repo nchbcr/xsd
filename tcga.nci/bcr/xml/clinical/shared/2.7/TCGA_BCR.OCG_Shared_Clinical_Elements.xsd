@@ -860,7 +860,6 @@
 					<xs:enumeration value="Brain" />
 					<xs:enumeration value="Breast" />
 					<xs:enumeration value="Bladder" />
-					<xs:enumeration value="Cerebrospinal Fluid" />
 					<xs:enumeration value="Colon" />
 					<xs:enumeration value="Epididymis" />
 					<xs:enumeration value="Epidural" />
@@ -900,7 +899,6 @@
 					<xs:enumeration value="Mediastinal Soft Tissue" />
 					<xs:enumeration value="Nasal Soft Tissue" />
 					<xs:enumeration value="Nasopharynx" />
-					<xs:enumeration value="Neck" />
 					<xs:enumeration value="No Known Extranodal Involvement" />
 					<xs:enumeration value="No Known Nodal Involvement" />
 					<xs:enumeration value="Oropharynx" />
