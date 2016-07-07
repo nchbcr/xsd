@@ -147,9 +147,7 @@
 					<xs:enumeration value="14"/>
 					<xs:enumeration value="15"/>
 					<xs:enumeration value="16"/>
-					<xs:enumeration value="17"/>
 					<xs:enumeration value="20"/>
-					<xs:enumeration value="41"/>
 					<xs:enumeration value="50"/>
 					<xs:enumeration value="60"/>
 					<xs:enumeration value="61"/>
@@ -218,8 +216,6 @@
 					<xs:enumeration value="Mononuclear Cells from Bone Marrow Normal"/>
 					<xs:enumeration value="Pleural Effusion"/>
 					<xs:enumeration value="FFPE Recurrent"/>
-					<xs:enumeration value="Centroblasts"/>
-					<xs:enumeration value="Blood Derived Cancer - Bone Marrow, Post-treatment"/>
 					<xs:attribute name="cde" type="xs:string" default=""/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
 				</xs:restriction>
@@ -1871,7 +1867,6 @@
                     <xs:enumeration value="Saliva"/>
                     <xs:enumeration value="Serum"/>
                     <xs:enumeration value="Solid Tissue"/>
-					<xs:enumeration value="Sorted Cells"/>
                     <xs:enumeration value="Sputum"/>
                     <xs:enumeration value="Whole Bone Marrow"/>
                     <xs:attribute name="cde" type="xs:string" default=""/>

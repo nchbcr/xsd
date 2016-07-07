@@ -13,7 +13,7 @@
 			<xs:simpleContent>
 				<xs:extension base="xs:NCName">
 					<xs:attributeGroup ref="utility:common_ext_attribute_group" />
-					<xs:attribute name="cde" type="xs:string" default="2003301" />
+					<xs:attribute name="cde" type="xs:string" default="2673794" />
 					<xs:attribute name="xsd_ver" type="xs:string" default="1.8" />
 				</xs:extension>
 			</xs:simpleContent>
@@ -875,8 +875,6 @@
 					<xs:enumeration value="CD30" />
 					<xs:enumeration value="CD138" />
 					<xs:enumeration value="TTF-1" />
-					<xs:enumeration value="SYP"/>
-					<xs:enumeration value="CHGA"/>
 					<xs:enumeration value="Other (please specify)" />
 					<xs:attribute name="cde" type="xs:string" default="3234614" />
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />

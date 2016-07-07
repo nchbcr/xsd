@@ -15,7 +15,7 @@
 	
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
-	<xs:import namespace="http://tcga.nci/bcr/xml/biospecimen/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/biospecimen/2.7/TCGA_BCR.Biospecimen.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/biospecimen/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/biospecimen/2.7/TCGA_BCR.Biospecimen.xsd"/>			
 		
 	<xs:element name="tcga_bcr">
 		<xs:annotation> 

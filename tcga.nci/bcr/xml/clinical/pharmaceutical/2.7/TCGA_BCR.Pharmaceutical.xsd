@@ -149,7 +149,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="2744948" />
+                    <xs:attribute name="cde" type="xs:string" default="2673845" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.1" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
