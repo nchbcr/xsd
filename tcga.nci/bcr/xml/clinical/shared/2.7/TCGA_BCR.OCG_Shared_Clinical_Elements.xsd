@@ -591,7 +591,7 @@
 			<xs:simpleContent>
 				<xs:extension base="utility:number_or_null">
 					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
-					<xs:attribute name="cde" type="xs:string" default="2597015"/>
+					<xs:attribute name="cde" type="xs:string" default="2953115"/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
 					<xs:attribute name="tier" type="xs:string" default="2"/>
 					<xs:attribute name="units" type="xs:string" fixed="IU"/>

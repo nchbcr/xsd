@@ -4733,11 +4733,7 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- TODO - Deprecated. This element should be removed in XSD 2.8 release. Use "family_member_relationship_type" instead. -->
     <xs:element name="blood_relative_with_cancer" nillable="true">
-        <xs:annotation>
-            <xs:documentation>This element is deprecated, will be removed in XSD 2.8 release. Use "family_member_relationship_type" instead.</xs:documentation>
-        </xs:annotation>
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
