@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4" 
+<xs:schema elementFormDefault="qualified" version="2.7.5" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -141,6 +141,7 @@
 
 				<xs:element ref="clin_shared:tumor_tissue_site" />
 				<xs:element ref="shared:histological_type"/>
+				<xs:element ref="shared:histological_type_other" minOccurs="0" />
 				<xs:element ref="keratinizing_squamous_cell_carcinoma_present_indicator" />
 				<xs:element ref="shared:neoplasm_histologic_grade" />
 				
@@ -309,7 +310,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="2005342" />
+                    <xs:attribute name="cde" type="xs:string" default="2183299" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -394,8 +395,12 @@
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
+
+    <!-- TODO: Remove this XSD in 2.8.0 - DEPRECATED: this is getting replace by 2180638 which is already in use -->
     <xs:element name="total_number_of_pregnancies" nillable="true">
+        <xs:annotation>
+            <xs:documentation>This element is deprecated, will be removed in XSD 2.8 release.</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
@@ -626,7 +631,7 @@
                     <xs:enumeration value="" />
                     <xs:enumeration value="ABSENT" />
                     <xs:enumeration value="PRESENT" />
-                    <xs:attribute name="cde" type="xs:string" default="2008052" />
+                    <xs:attribute name="cde" type="xs:string" default="64727" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>

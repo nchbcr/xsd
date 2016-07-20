@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4"
+<xs:schema elementFormDefault="qualified" version="2.7.5"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -49,7 +49,7 @@
                 <xs:extension base="xs:NCName">
                     <xs:attributeGroup ref="admin_res_attribute_group" />
 					<xs:attribute name="alt_id_type" type="utility:alt_id_type"/>
-					<xs:attribute name="project_code" type="utility:project_code_type"/>
+					<xs:attribute name="project_code" type="xs:string"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -120,7 +120,9 @@
             <xs:simpleContent>
                 <xs:restriction base="admin_res_attribute">
                     <xs:enumeration value="ACC" />    <!-- Adrenocortical carcinoma -->
+                    <xs:enumeration value="ALL" />    <!-- Acute Lymphoblastic Leukemia -->
                     <xs:enumeration value="BLCA" />   <!-- Urothelial carcinoma -->
+                    <xs:enumeration value="BRAIN" />  <!-- Brain cancer -->
                     <xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
                     <xs:enumeration value="BRCA" />   <!-- Breast invasive carcinoma -->
                     <xs:enumeration value="CESC" />   <!-- Cervical Squamous cell carcinoma -->
@@ -147,13 +149,14 @@
                     <xs:enumeration value="MESO" />   <!-- Mesothelioma -->
                     <xs:enumeration value="MCC" />    <!-- Merkel cell carcinoma -->
                     <xs:enumeration value="MM" />     <!-- Multiple Myeloma  -->
+                    <xs:enumeration value="NBL" />    <!-- Neuroblastoma -->
                     <xs:enumeration value="OV" />     <!-- Ovarian serous cystadenocacinoma -->
                     <xs:enumeration value="PAAD" />   <!-- Pancreatic Adenocarcinoma -->
                     <xs:enumeration value="PCPG" />   <!-- Pheochromocytoma and Paraganglioma -->
                     <xs:enumeration value="PRAD" />   <!-- Prostate adenocarcinoma -->
 					<xs:enumeration value="RCC" />    <!-- Renal Cell Carcinoma -->
                     <xs:enumeration value="READ" />   <!-- Rectum Adenocarcinoma -->
-                    <xs:enumeration value="SARC" />   <!-- Dedifferentiated Liposarcoma -->
+                    <xs:enumeration value="SARC" />   <!-- Sarcoma -->
                     <xs:enumeration value="SCLC" />   <!-- Small Cell Lung Carcinoma -->
                     <xs:enumeration value="SKCM" />   <!-- Cutaneous melanoma -->
                     <xs:enumeration value="STAD" />   <!-- Stomach adenocarinoma -->
@@ -163,6 +166,7 @@
                     <xs:enumeration value="UCEC" />   <!-- Uterine Corpus Endometrioid Carcinoma  -->
                     <xs:enumeration value="UCS" />    <!-- Uterine Carcinosarcoma -->
                     <xs:enumeration value="UVM" />    <!-- Uveal Melanoma  -->
+                    <xs:enumeration value="WILMS" />  <!-- Wilms' tumor  -->
                     <xs:enumeration value="CNTL" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
                 </xs:restriction>
@@ -267,12 +271,12 @@
         </xs:complexType>
     </xs:element>
 	
-	<xs:element name="project_code" nillable = "false">
-		<xs:complexType>
+	<xs:element name="project_code" nillable = "true">
+        <xs:complexType mixed="true">
             <xs:simpleContent>
-                <xs:extension base="utility:project_code_type">
-                    <xs:attributeGroup ref="admin_res_attribute_group" />
-                </xs:extension>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
             </xs:simpleContent>
         </xs:complexType>
 	</xs:element>
@@ -281,22 +285,6 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="admin_res_attribute">
-                    <xs:enumeration value="10KE" />
-                    <xs:enumeration value="ALCH" />
-                    <xs:enumeration value="BLGSP" />
-                    <xs:enumeration value="CCLE" />
-                    <xs:enumeration value="CDDP" />
-                    <xs:enumeration value="CG10" />
-                    <xs:enumeration value="Chanock" />
-                    <xs:enumeration value="CTSP" />
-                    <xs:enumeration value="EAGL" />
-                    <xs:enumeration value="ER" />
-                    <xs:enumeration value="HKB" />
-                    <xs:enumeration value="HTMCP" />
-                    <xs:enumeration value="MCAP" />
-                    <xs:enumeration value="OCG" />
-                    <xs:enumeration value="REBC" />
-                    <xs:enumeration value="TCGA" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
                 </xs:restriction>
             </xs:simpleContent>
@@ -306,10 +294,9 @@
     <xs:element name="dbgap_registration_code" nillable="true">
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string">
-                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
-                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
-                </xs:extension>
+                <xs:restriction base="admin_res_attribute">
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:restriction>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4" 
+<xs:schema elementFormDefault="qualified" version="2.7.5" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns="http://tcga.nci/bcr/xml/utility/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/utility/2.7">
@@ -188,11 +188,11 @@
             <xs:enumeration value="ER Review Panel ID" />
         </xs:restriction>
     </xs:simpleType>
-	
+
+    <!-- TODO: Remove in 2.8.0 -->
 	<xs:simpleType name="project_code_type"> 
 		<xs:annotation> 
-			<xs:documentation>
-			</xs:documentation>
+			<xs:documentation>This type is deprecated with the release of the 2.7.5 XSD.</xs:documentation>
 		</xs:annotation>        
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="10KE" />

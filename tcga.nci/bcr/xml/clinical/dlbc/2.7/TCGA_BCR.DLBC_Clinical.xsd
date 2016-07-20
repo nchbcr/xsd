@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4"
+<xs:schema elementFormDefault="qualified" version="2.7.5"
   xmlns="http://tcga.nci/bcr/xml/clinical/dlbc/2.7"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
@@ -148,6 +148,7 @@
 		  </xs:sequence>
 		  <xs:element ref="clin_shared:days_to_form_completion"/>
 		</xs:choice>
+		<xs:element ref="clin_shared:lost_follow_up" minOccurs="0"/>
 		<xs:element ref="follow_ups"/>
 		<xs:element ref="rx:drugs"/>
 		<xs:element ref="rad:radiations"/>

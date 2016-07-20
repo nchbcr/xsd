@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4"
+<xs:schema elementFormDefault="qualified" version="2.7.5"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
            xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
            xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+           xmlns:lung_nte="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0"
            xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
            xmlns:lung_shared="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
            xmlns="http://tcga.nci/bcr/xml/clinical/lung/2.7"
@@ -26,6 +27,8 @@
                schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd"/>
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
                schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Lung_Elements.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0"
+               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/shared/2.7/TCGA_BCR.LUNG_Clinical_NTEs_v1.0.xsd" />
 
 
     <xs:element name="tcga_bcr">
@@ -94,6 +97,16 @@
                 </xs:choice>
                 <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis"/>
                 <xs:element ref="clin_shared:maximum_tumor_diameter"/>
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="clin_shared:vital_status" minOccurs="0" maxOccurs="1"/>
+                <xs:choice minOccurs="0" maxOccurs="1">
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
                 <xs:element ref="stage_event"/>
                 <xs:element ref="lung_shared:egfr_mutation_performed"/>
                 <xs:element ref="lung_shared:egfr_mutation_identified"/>
@@ -187,6 +200,7 @@
                 <xs:element ref="clin_shared:highest_education_achieved"/>
                 <xs:element ref="clin_shared:marital_status"/>
                 <xs:element ref="clin_shared:difficult_to_answer_family"/>
+                <xs:element ref="lung_nte:new_tumor_events" minOccurs="0" maxOccurs="1" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -232,6 +246,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="shared_stage:system_version" />
+                <xs:element ref="shared_stage:pathologic_stage" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="shared_stage:clinical_M" />
                 <xs:element ref="shared_stage:pathologic_T" />
                 <xs:element ref="shared_stage:pathologic_N" />

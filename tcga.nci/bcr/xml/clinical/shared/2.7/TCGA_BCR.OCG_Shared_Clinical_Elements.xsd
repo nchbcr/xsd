@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.4"
+<xs:schema elementFormDefault="qualified" version="2.7.5"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7"
@@ -591,7 +591,7 @@
 			<xs:simpleContent>
 				<xs:extension base="utility:number_or_null">
 					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
-					<xs:attribute name="cde" type="xs:string" default="2953115"/>
+					<xs:attribute name="cde" type="xs:string" default="2597015"/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
 					<xs:attribute name="tier" type="xs:string" default="2"/>
 					<xs:attribute name="units" type="xs:string" fixed="IU"/>
@@ -860,6 +860,7 @@
 					<xs:enumeration value="Brain" />
 					<xs:enumeration value="Breast" />
 					<xs:enumeration value="Bladder" />
+					<xs:enumeration value="Cerebrospinal Fluid" />
 					<xs:enumeration value="Colon" />
 					<xs:enumeration value="Epididymis" />
 					<xs:enumeration value="Epidural" />
@@ -899,6 +900,7 @@
 					<xs:enumeration value="Mediastinal Soft Tissue" />
 					<xs:enumeration value="Nasal Soft Tissue" />
 					<xs:enumeration value="Nasopharynx" />
+					<xs:enumeration value="Neck" />
 					<xs:enumeration value="No Known Extranodal Involvement" />
 					<xs:enumeration value="No Known Nodal Involvement" />
 					<xs:enumeration value="Oropharynx" />
