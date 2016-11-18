@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5" 
+<xs:schema elementFormDefault="qualified" version="2.7.6" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
@@ -232,7 +232,11 @@
         </xs:complexType>
     </xs:element>
 
+    <!--TODO: Remove this element in 2.8 -->
     <xs:element name="number_cycles">
+        <xs:annotation>
+            <xs:documentation>This element is now included in TCGA_BCR.Shared_Clinical_Elements.xsd and will be removed in the 2.8 release.</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -10,6 +10,7 @@
   xmlns:lung_shared="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
   xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
   xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  xmlns:tx="http://tcga.nci/bcr/xml/clinical/treatment/2.7"
   xmlns:luad_nte="http://tcga.nci/bcr/xml/clinical/luad/shared/new_tumor_event/2.7/1.0" 
   xmlns:follow_up_v1.0="http://tcga.nci/bcr/xml/clinical/luad/followup/2.7/1.0"
   xmlns:follow_up_v4.0="http://tcga.nci/bcr/xml/clinical/luad/followup/2.7/4.0"
@@ -28,6 +29,7 @@
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
 	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/treatment/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/treatment/2.7/TCGA_BCR.Treatment.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/luad/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/luad/shared/2.7/TCGA_BCR.LUAD_Clinical_NTEs_v1.0.xsd" />
 	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/luad/followup/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/luad/followup/2.7/TCGA_BCR.LUAD_Clinical_FollowUp_v1.0.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/luad/followup/2.7/4.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/luad/followup/2.7/TCGA_BCR.LUAD_Clinical_FollowUp_v4.0.xsd" />
@@ -48,14 +50,39 @@
     <xs:element name="patient">
         <xs:complexType>
             <xs:sequence>
+            
+            	<xs:element ref="clin_shared:protocol_status" minOccurs="0" maxOccurs="1"/>
+            	<xs:element ref="clin_shared:patient_sex" minOccurs="0" maxOccurs="1"/>
+            	<xs:element ref="clin_shared:relative_family_cancer_history" minOccurs="0" maxOccurs="1"/>
+            	<xs:element ref="blood_relative_cancer_history_list" minOccurs="0" maxOccurs="1"/>
+				
+            	<xs:choice minOccurs="0">
+			        <xs:sequence>
+			            <xs:element ref="clin_shared:day_of_clinical_diagnosis"/>
+			            <xs:element ref="clin_shared:month_of_clinical_diagnosis"/>
+			            <xs:element ref="clin_shared:year_of_clinical_diagnosis"/>			           
+			        </xs:sequence>
+			        <xs:element ref="clin_shared:days_to_clinical_diagnosis"/>
+			    </xs:choice>
+            	<xs:element ref="clin_shared:method_of_clinical_diagnosis" minOccurs="0" maxOccurs="1"/>
+            	<xs:choice minOccurs="0">
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_most_recent_date_of_last_contact"/>
+                        <xs:element ref="clin_shared:month_of_most_recent_date_of_last_contact"/>
+                        <xs:element ref="clin_shared:year_of_most_recent_date_of_last_contact"/>
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_most_recent_date_of_last_contact"/>
+                </xs:choice>
+            	<xs:element ref="comorbidities" minOccurs="0" maxOccurs="1" />            	
+            
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="clin_shared:tumor_tissue_site" />
+                <xs:element ref="clin_shared:tumor_tissue_site" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="shared:histological_type"/>
                 <xs:element ref="shared:histological_type_other" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="shared:other_dx" />
-                <xs:element ref="shared:gender" />
-                <xs:element ref="clin_shared:vital_status" />
-
+				<xs:element ref="prior_systemic_therapy_types" minOccurs="0" />
+                <xs:element ref="shared:gender" minOccurs="0" />
+                <xs:element ref="clin_shared:vital_status" minOccurs="0"  maxOccurs="1" />
                 <xs:choice>
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_birth" />
@@ -65,8 +92,7 @@
 
                     <xs:element ref="clin_shared:days_to_birth" />
                 </xs:choice>
-
-                <xs:choice>
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_last_known_alive" />
                         <xs:element ref="clin_shared:month_of_last_known_alive" />
@@ -75,7 +101,6 @@
 
                     <xs:element ref="clin_shared:days_to_last_known_alive" />
                 </xs:choice>
-
                 <xs:choice>
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_death" />
@@ -87,16 +112,18 @@
                 </xs:choice>
 				<xs:element ref="clin_shared:patient_death_reason" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="clin_shared:death_cause_text" minOccurs="0" maxOccurs="1"/>
-
+                
+                <xs:element ref="followup_history_list" minOccurs="0"  maxOccurs="1"/>
                 <xs:choice>
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_last_followup" />
                         <xs:element ref="clin_shared:month_of_last_followup" />
                         <xs:element ref="clin_shared:year_of_last_followup" />
                     </xs:sequence>
-
                     <xs:element ref="clin_shared:days_to_last_followup" />
                 </xs:choice>
+                
+                
                 <xs:element ref="clin_shared:patient_progression_status" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="clin_shared:progression_dates" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="clin_shared:race_list"/>
@@ -109,7 +136,7 @@
                 <xs:element ref="shared:bcr_patient_uuid" />
                 <xs:element ref="clin_shared:age_began_smoking_in_years" minOccurs="0"  maxOccurs="1"/>
         
-                <xs:element ref="shared:history_of_neoadjuvant_treatment" />
+                <xs:element ref="shared:history_of_neoadjuvant_treatment" minOccurs="0"  maxOccurs="1"/>
                 <xs:element ref="clin_shared:history_of_radiation_primary_site" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="clin_shared:history_of_radiation_metastatic_site" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="clin_shared:history_prior_surgery_indicator" minOccurs="0" maxOccurs="1" />
@@ -136,8 +163,8 @@
 
                 <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis" />
                 <xs:element ref="clin_shared:ethnicity" />
-                <xs:element ref="clin_shared:person_neoplasm_cancer_status" />
-                <xs:element ref="clin_shared:performance_status_scale_timing" />
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status" minOccurs="0"  maxOccurs="1" />
+                <xs:element ref="clin_shared:performance_status_scale_timing" minOccurs="0" />
                 
 				<xs:element ref="history_of_disease"  minOccurs="0"  maxOccurs="1" />
 				<xs:element ref="primary_pathology"  minOccurs="0"  maxOccurs="1" />
@@ -154,34 +181,37 @@
 				<xs:element ref="shared_stage:stage_event" />
 
                 <xs:element ref="molecular_markers" minOccurs="0" maxOccurs="1" />
-                <xs:element ref="clin_shared:karnofsky_performance_score" />
-                <xs:element ref="clin_shared:eastern_cancer_oncology_group" />
+                <xs:element ref="clin_shared:karnofsky_performance_score" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:eastern_cancer_oncology_group" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="shared:tobacco_smoking_history"/>
                 <xs:element ref="clin_shared:year_of_tobacco_smoking_onset" />
                 <xs:element ref="clin_shared:stopped_smoking_year" />
                 <xs:element ref="clin_shared:number_pack_years_smoked" />
-                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" />
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="anatomic_neoplasm_subdivision_list" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other" minOccurs="0" maxOccurs="1" />
-                <xs:element ref="lung_shared:diagnosis" />
+                <xs:element ref="lung_shared:diagnosis" minOccurs="0" />
                 <xs:element ref="lung_shared:location_in_lung_parenchyma" />
                 <xs:element ref="clin_shared:residual_tumor" />
                 <xs:element ref="lung_shared:kras_mutation_found" />
                 <xs:element ref="lung_shared:kras_gene_analysis_performed" />
-                <xs:element ref="lung_shared:kras_mutation_result" />
+                <xs:element ref="lung_shared:kras_mutation_result" minOccurs="0" />
+				<xs:element ref="kras_mutation_result_list" minOccurs="0" />
+				<xs:element ref="lung_shared:kras_mutation_result_other" minOccurs="0" />
                 <xs:element ref="lung_shared:egfr_mutation_performed" />
                 <xs:element ref="lung_shared:egfr_mutation_identified" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="lung_shared:egfr_mutation_result" />
                 <xs:element ref="lung_shared:eml4_alk_translocation_performed" />
                 <xs:element ref="lung_shared:eml4_alk_translocation_identified" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="lung_shared:eml4_alk_translocation_method_other" minOccurs="0" />
                 <xs:element ref="lung_shared:eml4_alk_translocation_result" />
                 <xs:element ref="lung_shared:eml4_alk_translocation_method" />
-				<xs:element ref="lung_shared:pulmonary_function_test_performed"/>
+				<xs:element ref="lung_shared:pulmonary_function_test_performed" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="lung_shared:pre_bronchodilator_fev1_percent"/>
 				<xs:element ref="lung_shared:post_bronchodilator_fev1_percent"/>
 				<xs:element ref="lung_shared:pre_bronchodilator_fev1_fvc_percent"/>
 				<xs:element ref="lung_shared:post_bronchodilator_fev1_fvc_percent"/>
 				<xs:element ref="lung_shared:dlco_predictive_percent"/>
-				
 				<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="clin_shared:radiation_therapy" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" maxOccurs="1" />
@@ -192,6 +222,7 @@
                 <xs:element ref="clin_shared:response" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="rx:drugs" />
                 <xs:element ref="rad:radiations" />
+				<xs:element ref="tx:treatments" minOccurs="0" />
                 <xs:element ref="clin_shared:lost_follow_up" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="follow_ups" />
                 <xs:element ref="clin_shared:unstructured" minOccurs="0" maxOccurs="1" />
@@ -246,7 +277,7 @@
 				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_he" />
 				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_ihc" />
 				
-				<xs:choice>
+				<xs:choice minOccurs="0">
 					<xs:sequence>
 						<xs:element ref="shared:day_of_sample_procurement"/>
 						<xs:element ref="shared:month_of_sample_procurement"/>
@@ -256,9 +287,16 @@
 				</xs:choice>
 				
 				<xs:element ref="clin_shared:init_pathology_dx_method_other" />
-				<xs:element ref="pos_lymph_node_locations" />
-				<xs:element ref="ocg_shared:pos_lymph_node_location_other" />
-
+				<xs:element ref="pos_lymph_node_locations" minOccurs="0" />
+				<xs:element ref="ocg_shared:pos_lymph_node_location_other" minOccurs="0" />
+				<xs:element ref="lung_shared:first_surgical_procedure" minOccurs="0" />
+				<xs:element ref="lung_shared:first_surgical_procedure_other" minOccurs="0" />
+				<xs:element ref="clin_shared:margin_status" minOccurs="0" />
+				<xs:element ref="lung_shared:second_surgical_procedure_to_negative_margins" minOccurs="0" />
+				<xs:element ref="lung_shared:second_surgical_procedure_to_negative_margins_other" minOccurs="0" />
+				<xs:element ref="lung_shared:margin_status_after_second_surgical_procedure" minOccurs="0" />
+				<xs:element ref="metastatic_site_at_diagnosis_list" minOccurs="0" />
+				<xs:element ref="clin_shared:metastatic_site_at_diagnosis_other" minOccurs="0" />
 			</xs:sequence >		
         </xs:complexType>
 	</xs:element>
@@ -299,4 +337,87 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="anatomic_neoplasm_subdivision_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="comorbidities">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:comorbidity" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="blood_relative_cancer_history_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="blood_relative_cancer_history" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="blood_relative_cancer_history">
+		<xs:complexType>
+			<xs:sequence>
+	               	<xs:element ref="clin_shared:family_member_relationship_type"/>
+	        	 	<xs:element ref="clin_shared:cancer_diagnosis_cancer_type_icd9_text_name"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="followup_history_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="followup_history" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="followup_history">
+		<xs:complexType>
+			<xs:sequence>	               	
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status" minOccurs="0"  maxOccurs="1" />
+                <xs:element ref="clin_shared:vital_status" minOccurs="0"  maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="prior_systemic_therapy_types">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:prior_systemic_therapy_type" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="metastatic_site_at_diagnosis_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:metastatic_site_at_diagnosis" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="kras_mutation_result_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="lung_shared:kras_mutation_result" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

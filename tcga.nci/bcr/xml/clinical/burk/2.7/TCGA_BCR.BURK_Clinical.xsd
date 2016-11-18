@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5" 
+<xs:schema elementFormDefault="qualified" version="2.7.6" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -10,6 +10,7 @@
   xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
   xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
   xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  xmlns:tx="http://tcga.nci/bcr/xml/clinical/treatment/2.7"
   xmlns:burk_shared="http://tcga.nci/bcr/xml/clinical/burk/shared/2.7" 
   xmlns:burk_nte="http://tcga.nci/bcr/xml/clinical/burk/shared/new_tumor_event/2.7/1.0" 
   xmlns:follow_up_v1.0="http://tcga.nci/bcr/xml/clinical/burk/followup/2.7/1.0"
@@ -28,6 +29,7 @@
 	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/treatment/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/treatment/2.7/TCGA_BCR.Treatment.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_Shared_Datatypes.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/shared/2.7/TCGA_BCR.BURK_Clinical_NTEs_v1.0.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/burk/followup/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/burk/followup/2.7/TCGA_BCR.BURK_Clinical_FollowUp_v1.0.xsd" />
@@ -135,7 +137,7 @@
                 <xs:element ref="follow_ups" />
                 <xs:element ref="rx:drugs" />
                 <xs:element ref="rad:radiations" />
-                
+				<xs:element ref="tx:treatments" minOccurs="0" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

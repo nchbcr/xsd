@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
@@ -23,9 +23,9 @@
 				<xs:element ref="pathologic_stage" />
 				<xs:element ref="stage_other" minOccurs="0" />
 				<xs:element ref="tnm_categories" />
-				<xs:element ref="psa" />
-				<xs:element ref="gleason_grading" />
-				<xs:element ref="ann_arbor" />
+				<xs:element ref="psa" minOccurs="0" />
+				<xs:element ref="gleason_grading" minOccurs="0" />
+				<xs:element ref="ann_arbor" minOccurs="0" />
                 <xs:element ref="serum_markers" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="igcccg_stage" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="masaoka_stage" minOccurs="0" maxOccurs="1" />
@@ -291,6 +291,7 @@
 					<xs:enumeration value="T4c" />
 					<xs:enumeration value="T4d" />
                     <xs:enumeration value="T4e" />
+                    <xs:enumeration value="T5" />
 					<xs:enumeration value="Ta" />
 					<xs:enumeration value="Tis" />
 					<xs:enumeration value="Tis (DCIS)" />
@@ -442,6 +443,7 @@
 					<xs:enumeration value="T4c" />
 					<xs:enumeration value="T4d" />
                     <xs:enumeration value="T4e" />
+                    <xs:enumeration value="T5" />
 					<xs:enumeration value="Ta" />
 					<xs:enumeration value="Tis" />
 					<xs:enumeration value="Tis (LCIS)" />

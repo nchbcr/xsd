@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
 	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
 	xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
 	xmlns:coad_read_shared="http://tcga.nci/bcr/xml/clinical/shared/coad_read/2.7" 
@@ -19,13 +19,13 @@
    <xs:element name="new_tumor_events">
 		<xs:complexType>
 		  <xs:sequence>
-			<xs:element ref="nte:new_tumor_event_after_initial_treatment" />
-			<xs:element ref="new_tumor_event" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element ref="nte:new_tumor_event_after_initial_treatment"/>
+			<xs:element ref="new_tumor_event" minOccurs="0" maxOccurs="unbounded"/>
 		  </xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-   <xs:element name="new_tumor_event">
+	<xs:element name="new_tumor_event">
       <xs:complexType>
          <xs:sequence>
 			<xs:choice>
@@ -38,9 +38,11 @@
 			</xs:choice>
 			<xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" minOccurs="0" maxOccurs="1" />
 			<xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" minOccurs="0" maxOccurs="1" />
-			<xs:element ref="nte:new_neoplasm_event_type" />
+			<xs:element ref="nte:new_neoplasm_event_type" />			
+			<xs:element ref="new_event_treatment_type_list" minOccurs="0" />
+			<xs:element ref="nte:treatment_outcome" minOccurs="0" maxOccurs="1"/>
 			<xs:element ref="nte:progression_determined_by" minOccurs="0" maxOccurs="1" />
-			<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" />
+			<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" minOccurs="0" maxOccurs="1"/>
 			<xs:choice>
 				<xs:sequence>
 					<xs:element ref="nte:day_of_new_tumor_event_additional_surgery_procedure" />
@@ -50,13 +52,19 @@
 				<xs:element ref="nte:days_to_new_tumor_event_additional_surgery_procedure" />
 			</xs:choice>
 			<xs:element ref="coad_read_shared:site_of_additional_surgery_new_tumor_event_mets" />
-			<xs:element ref="nte:residual_disease_post_new_tumor_event_margin_status" />
-			
-			<xs:element ref="nte:additional_radiation_therapy" />
-			<xs:element ref="nte:additional_pharmaceutical_therapy" />
-			
+			<xs:element ref="nte:residual_disease_post_new_tumor_event_margin_status" />			
+			<xs:element ref="nte:additional_radiation_therapy" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="nte:additional_pharmaceutical_therapy" minOccurs="0" maxOccurs="1"/>
 		 </xs:sequence>
 	  </xs:complexType>
-   </xs:element>
- 
+	</xs:element>
+
+ 	<xs:element name="new_event_treatment_type_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nte:new_event_treatment_type" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>

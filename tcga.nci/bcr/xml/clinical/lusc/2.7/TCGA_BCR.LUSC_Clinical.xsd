@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -157,6 +157,7 @@
                 <xs:element ref="clin_shared:stopped_smoking_year" />
                 <xs:element ref="clin_shared:number_pack_years_smoked" />
                 <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" />
+                <xs:element ref="anatomic_neoplasm_subdivision_list" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="lung_shared:diagnosis" />
                 <xs:element ref="lung_shared:location_in_lung_parenchyma" />
@@ -295,6 +296,13 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-	
+
+    <xs:element name="anatomic_neoplasm_subdivision_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 				
 </xs:schema>

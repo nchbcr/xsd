@@ -7,7 +7,7 @@
 	xmlns="http://tcga.nci/bcr/xml/ssf_disease/2.7" 
 	targetNamespace="http://tcga.nci/bcr/xml/ssf_disease/2.7" 
 	elementFormDefault="qualified" 
-	version="2.7.5">
+	version="2.7.6">
 	
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
@@ -42,6 +42,7 @@
 					<xs:element ref="days_to_bcg_treatment"/>
 				</xs:choice>
 				<xs:element ref="diagnosis_subtype"  minOccurs="0" maxOccurs="1"/> 
+				<xs:element ref="burkitt_clinical_variant"  minOccurs="0" maxOccurs="1"/> 
 				<xs:element ref="shared:follicular_percent" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="b_cell_tumor_slide_submitted" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="t_cell_tumor_slide_submitted" minOccurs="0" maxOccurs="1"/>
@@ -313,6 +314,24 @@
 					<xs:enumeration value="Non-papillary"/>
 					<xs:enumeration value="Papillary"/>
 					<xs:attribute name="cde" type="xs:string" default="2783887"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="burkitt_clinical_variant">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Sporadic, adult"/>
+					<xs:enumeration value="Sporadic, pediatric"/>
+					<xs:enumeration value="Endemic"/>
+					<xs:enumeration value="Immunodeficiency-associated, adult"/>
+					<xs:enumeration value="Immunodeficiency-associated, pediatric"/>
+					<xs:attribute name="cde" type="xs:string" default="3770421"/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
 					<xs:attribute name="tier" type="xs:string" default="2"/>
 				</xs:restriction>

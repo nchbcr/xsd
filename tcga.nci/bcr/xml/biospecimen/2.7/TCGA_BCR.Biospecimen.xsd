@@ -9,7 +9,7 @@
  xmlns="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  elementFormDefault="qualified" 
- version="2.7.5">
+ version="2.7.6">
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the biospecimen xml.</xs:documentation>
@@ -1839,6 +1839,7 @@
                     <xs:enumeration value="Normal"/>
                     <xs:enumeration value="Peritumoral"/>
                     <xs:enumeration value="Tumor"/>
+					<xs:enumeration value="Xenograft"/>
                     <xs:attribute name="cde" type="xs:string" default=""/>
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
                 </xs:restriction>

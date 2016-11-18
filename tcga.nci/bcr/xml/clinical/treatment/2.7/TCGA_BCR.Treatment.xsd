@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.6"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+           xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+           xmlns="http://tcga.nci/bcr/xml/clinical/treatment/2.7"
+           targetNamespace="http://tcga.nci/bcr/xml/clinical/treatment/2.7">
+
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7"
+               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd"/>
+
+    <xs:element name="treatments">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="treatment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="treatment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bcr_treatment_barcode"/>
+                <xs:element ref="bcr_treatment_uuid"/>
+                <xs:element ref="clin_shared:regimen_indication"/>
+                <xs:element ref="clin_shared:treatment_type"/>
+                <xs:element ref="clin_shared:treatment_type_other" minOccurs="0"/>
+                <xs:element ref="clin_shared:agent"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_treatment_start"/>
+                        <xs:element ref="clin_shared:month_of_treatment_start"/>
+                        <xs:element ref="clin_shared:year_of_treatment_start"/>
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_treatment_start"/>
+                </xs:choice>
+
+                <xs:element ref="clin_shared:chemotherapy_end" minOccurs="0"/>
+                <xs:element ref="clin_shared:radiation_therapy_end" minOccurs="0"/>
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_treatment_end"/>
+                        <xs:element ref="clin_shared:month_of_treatment_end"/>
+                        <xs:element ref="clin_shared:year_of_treatment_end"/>
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_treatment_end"/>
+                </xs:choice>
+
+                <!-- Pharmaceutical questions -->
+                <xs:element ref="clin_shared:pharm_regimen" minOccurs="0"/>
+                <xs:element ref="clin_shared:pharm_regimen_other" minOccurs="0"/>
+                <xs:element ref="clin_shared:specify_single_agent_therapy" minOccurs="0"/>
+                <xs:element ref="clin_shared:number_cycles" minOccurs="0"/>
+
+                <!-- Radiation questions -->
+                <xs:element ref="clin_shared:radiation_therapy_total_dosage" minOccurs="0"/>
+                <xs:element ref="extranodal_radiation_field_list" minOccurs="0"/>
+                <xs:element ref="targeted_nodal_region_list" minOccurs="0"/>
+                <xs:element ref="clin_shared:targeted_nodal_region_other" minOccurs="0"/>
+
+                <!-- Stem Cell Questions -->
+                <xs:element ref="clin_shared:stem_cell_transplantation" minOccurs="0"/>
+
+                <xs:element ref="clin_shared:measure_of_response"/>
+				<xs:element ref="clin_shared:treatment_outcome" minOccurs="0" />
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_form_completion"/>
+                        <xs:element ref="clin_shared:month_of_form_completion"/>
+                        <xs:element ref="clin_shared:year_of_form_completion"/>
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bcr_treatment_barcode">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bcr_treatment_uuid">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default=""/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="extranodal_radiation_field_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:extranodal_radiation_field" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="targeted_nodal_region_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:targeted_nodal_region" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

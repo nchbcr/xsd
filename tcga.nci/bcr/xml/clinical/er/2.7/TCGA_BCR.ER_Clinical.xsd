@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- $Id -->
 
-<xs:schema elementFormDefault="qualified" version="2.7.5" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema elementFormDefault="qualified" version="2.7.6" xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
            xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"

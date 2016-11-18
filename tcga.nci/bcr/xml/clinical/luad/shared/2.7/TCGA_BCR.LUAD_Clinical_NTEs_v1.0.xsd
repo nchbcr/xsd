@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
    xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns="http://tcga.nci/bcr/xml/clinical/luad/shared/new_tumor_event/2.7/1.0"
@@ -33,21 +33,36 @@
 				  <xs:element ref="nte:days_to_new_tumor_event_after_initial_treatment"/>
 				</xs:choice>
 				
-				<xs:element ref="new_neoplasm_event_types"/>
+				<xs:element ref="nte:new_neoplasm_event_type" minOccurs="0"/>
+				<xs:element ref="new_neoplasm_event_types" minOccurs="0"/>
 				<xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="progression_determined_by_list"/>
+				<xs:element ref="progression_determined_by_list" minOccurs="0"/>
 				
-				<xs:element ref="locoregional_procedure"/>
-				<xs:element ref="metastatic_procedure"/>
+				<xs:element ref="locoregional_procedure" minOccurs="0"/>
+				<xs:element ref="metastatic_procedure" minOccurs="0"/>
 				
 				<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="nte:additional_radiation_therapy"/>
-				<xs:element ref="nte:additional_pharmaceutical_therapy"/>
+				<xs:element ref="nte:additional_radiation_therapy" minOccurs="0"/>
+				<xs:element ref="nte:additional_pharmaceutical_therapy" minOccurs="0"/>
 
+				<xs:element ref="new_event_treatment_type_list" minOccurs="0" />
+				<xs:element ref="nte:treatment_outcome" minOccurs="0" />
+				
+				
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	
+	<xs:element name="new_event_treatment_type_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nte:new_event_treatment_type" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
 	
 	<xs:element name="new_neoplasm_event_types">
         <xs:complexType>
@@ -64,7 +79,6 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-	
 	
 	<xs:element name="locoregional_procedure">
 		<xs:complexType>

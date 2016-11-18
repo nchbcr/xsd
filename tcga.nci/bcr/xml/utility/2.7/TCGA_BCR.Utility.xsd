@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5" 
+<xs:schema elementFormDefault="qualified" version="2.7.6" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns="http://tcga.nci/bcr/xml/utility/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/utility/2.7">
@@ -185,7 +185,9 @@
 	
 	<xs:simpleType name="alt_id_type">
         <xs:restriction base="xs:string">
+            <xs:enumeration value="Aurora Sample Identifier" />
             <xs:enumeration value="ER Review Panel ID" />
+            <xs:enumeration value="PPTC Subject Identifier" />
         </xs:restriction>
     </xs:simpleType>
 

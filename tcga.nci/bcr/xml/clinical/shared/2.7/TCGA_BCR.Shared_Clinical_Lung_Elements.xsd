@@ -4,7 +4,7 @@
            xmlns="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
            targetNamespace="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
            elementFormDefault="qualified"
-           version="2.7.5">
+           version="2.7.6">
 
     <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7"
                schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
@@ -69,7 +69,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
-                    <xs:attribute name="cde" type="xs:string" default=""/> <!--TODO: Procure CDE -->
+                    <xs:attribute name="cde" type="xs:string" default="4588603"/>
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
                     <xs:attribute name="tier" type="xs:string" default="2"/>
                 </xs:extension>
@@ -161,7 +161,35 @@
                     <xs:enumeration value="G12S"/>
                     <xs:enumeration value="G12V"/>
                     <xs:enumeration value="G13D"/>
-                    <xs:enumeration value="Other"/>
+					<xs:enumeration value="c.182A&gt;G"/>
+					<xs:enumeration value="c.182A&gt;T"/>
+					<xs:enumeration value="c.183A&gt;C"/>
+					<xs:enumeration value="c.183A&gt;T"/>
+					<xs:enumeration value="c.34G&gt;A"/>
+					<xs:enumeration value="c.34G&gt;C"/>
+					<xs:enumeration value="c.34G&gt;T"/>
+					<xs:enumeration value="c.34_35delinsTT"/>
+					<xs:enumeration value="c.35G&gt;A"/>
+					<xs:enumeration value="c.35G&gt;C"/>
+					<xs:enumeration value="c.35G&gt;T"/>
+					<xs:enumeration value="c.37G&gt;T"/>
+					<xs:enumeration value="c.38G&gt;A"/>
+					<xs:enumeration value="c.436G&gt;A"/>
+					<xs:enumeration value="p.Ala146Thr"/>
+					<xs:enumeration value="p.Gln61Arg"/>
+					<xs:enumeration value="p.Gln61Glu"/>
+					<xs:enumeration value="p.Gln61His"/>
+					<xs:enumeration value="p.Gln61Leu"/>
+					<xs:enumeration value="p.Gly12Ala"/>
+					<xs:enumeration value="p.Gly12Arg"/>
+					<xs:enumeration value="p.Gly12Asp"/>
+					<xs:enumeration value="p.Gly12Cys"/>
+					<xs:enumeration value="p.Gly12Phe"/>
+					<xs:enumeration value="p.Gly12Ser"/>
+					<xs:enumeration value="p.Gly12Val"/>
+					<xs:enumeration value="p.Gly13Asp"/>
+					<xs:enumeration value="p.Gly13Cys"/>
+					<xs:enumeration value="Other"/>
                     <xs:attribute name="cde" type="xs:string" default="3147614"/>
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.3"/>
                     <xs:attribute name="tier" type="xs:string" default="2"/>
@@ -400,6 +428,8 @@
                     <xs:enumeration value="Other"/>
                     <xs:enumeration value="Supraclavicular biopsy"/>
                     <xs:enumeration value="thoracoscopy"/>
+					<xs:enumeration value="Thoracoscopy / Robotic-assisted"/>
+                    <xs:enumeration value="Thoracoscopy / Robotic-assisted, with conversion to thoracotomy"/>
                     <xs:enumeration value="Thoracoscopy / Video-assisted (VATS)"/>
                     <xs:enumeration value="Thoracoscopy / Video-assisted (VATS), with conversion to Thoracotomy"/>
                     <xs:enumeration value="thoracotomy"/>
@@ -514,6 +544,96 @@
                     <xs:attribute name="cde" type="xs:string" default="4207550"/>
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
                     <xs:attribute name="tier" type="xs:string" default="2"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="first_surgical_procedure" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Pneumonectomy"/>
+					<xs:enumeration value="Wedge Resection"/>
+					<xs:enumeration value="Lobectomy"/>
+					<xs:enumeration value="Other"/>
+					<xs:attribute name="cde" type="xs:string" default="5457224"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="first_surgical_procedure_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3020338" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="second_surgical_procedure_to_negative_margins" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Pneumonectomy"/>
+					<xs:enumeration value="Wedge Resection"/>
+					<xs:enumeration value="Lobectomy"/>
+					<xs:enumeration value="Surgery not Performed"/>
+					<xs:enumeration value="Other"/>
+					<xs:attribute name="cde" type="xs:string" default="5457225"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="second_surgical_procedure_to_negative_margins_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5457226" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="margin_status_after_second_surgical_procedure" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="Close" />
+                    <xs:enumeration value="Negative" />
+                    <xs:enumeration value="Positive" />
+                    <xs:attribute name="cde" type="xs:string" default="5457227" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="kras_mutation_result_other" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5525148" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>

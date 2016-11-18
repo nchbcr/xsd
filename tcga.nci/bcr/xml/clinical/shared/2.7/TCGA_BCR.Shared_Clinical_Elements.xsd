@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5"
+<xs:schema elementFormDefault="qualified" version="2.7.6"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -1156,12 +1156,18 @@
                     <xs:enumeration value="Left Hemicolectomy" />
 					<xs:enumeration value="Local Resection-Exoresection, wall resection" />
 					<xs:enumeration value="Lymph node sampling or dissection" />
+					<xs:enumeration value="Low Anterior Colon Resection" />					
 					<xs:enumeration value="Median Sternectomy" />
 					<xs:enumeration value="Office Endometrial Biopsy" />
                     <xs:enumeration value="Orchiectomy" />
                     <xs:enumeration value="Other method, specify:" />
                     <xs:enumeration value="Other Surgical Resection" />
                     <xs:enumeration value="Pan-Procto Colectomy" />
+                    <xs:enumeration value="Pneumonectomy" />
+                    <xs:enumeration value="Lobectomy" />
+                    <xs:enumeration value="Wedge Resection" />
+                    <xs:enumeration value="Biopsy (all types)" />
+                    <xs:enumeration value="Other Surgical Resection (Please Specify)" />
                     <xs:enumeration value="Right Hemicolectomy" />
                     <xs:enumeration value="Sigmoid Colectomy" />
 					<xs:enumeration value="Surgical Resection" />
@@ -1171,7 +1177,6 @@
                     <xs:enumeration value="Total Colectomy" />
                     <xs:enumeration value="Transverse Colectomy" />
                     <xs:enumeration value="Tumor resection" />
-                    <xs:enumeration value="Unknown" />
 					<xs:enumeration value="Video-assisted Thorascopic Surgery (VATS)" />
                     <xs:attribute name="cde" type="xs:string" default="2757941" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
@@ -1201,6 +1206,8 @@
                     <xs:enumeration value="" />
                     <xs:enumeration value="TUMOR FREE" />
                     <xs:enumeration value="WITH TUMOR" />
+                    <xs:enumeration value="Never Tumor Free" />
+                    <xs:enumeration value="New Tumor Event (remission/relapse)" />
                     <xs:attribute name="cde" type="xs:string" default="2759550" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="1.9" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
@@ -1342,6 +1349,14 @@
         </xs:complexType>
     </xs:element>
 
+	<xs:element name="race_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="race" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="race">
         <xs:complexType>
             <xs:simpleContent>
@@ -1466,6 +1481,7 @@
 					<xs:enumeration value="Pancreatic Cancer" />
 					<xs:enumeration value="Prostate Cancer" />
 					<xs:enumeration value="Stomach Cancer" />
+					<xs:enumeration value="Submitted Malignancy and/or related tumor event"/>
 					<xs:enumeration value="Surgical Complications" />
                     <xs:enumeration value="Testicular Germ Cell Tumor (TGCT)" />
 					<xs:enumeration value="Toxicity of non-protocol treatment" />
@@ -1997,6 +2013,7 @@
 					<xs:enumeration value="Cervix" />
 					<xs:enumeration value="Chest" />
                     <xs:enumeration value="Colon" />
+                    <xs:enumeration value="Colon (NOS)" />
 					<xs:enumeration value="Descending Colon" />
 					<xs:enumeration value="Distant metastasis (please specify)" />
 					<xs:enumeration value="Dome" />
@@ -2028,6 +2045,7 @@
 					<xs:enumeration value="Left Lower Outer Quadrant" />
 					<xs:enumeration value="Left Upper Inner Quadrant" />
 					<xs:enumeration value="Left Upper Outer Quadrant" />
+					<xs:enumeration value="Lingula" />
 					<xs:enumeration value="Lip" />
 					<xs:enumeration value="Liver" />
 					<xs:enumeration value="Lower lobe" />
@@ -2047,6 +2065,7 @@
 					<xs:enumeration value="R-Upper" />
 					<xs:enumeration value="Rectosigmoid Junction" />
 					<xs:enumeration value="Rectum" />
+					<xs:enumeration value="Rectum (NOS)" />
 					<xs:enumeration value="Regional cutaneous or subcutaneous tissue (includes satellite &amp; in-transit metastasis)" />
 					<xs:enumeration value="Regional lymph node" />
 					<xs:enumeration value="Retroperitoneum" />
@@ -2126,6 +2145,10 @@
 			<xs:simpleContent>
 				<xs:restriction base="utility:clinical_res_attributes">
 					<xs:enumeration value="" />
+					<xs:enumeration value="Complete Response" />
+					<xs:enumeration value="Partial Response" />
+					<xs:enumeration value="Treatment Stopped Due to Toxicity" />
+					<xs:enumeration value="First Course Treatment Still in Progress" />
 					<xs:enumeration value="Complete Remission/Response" />
                     <xs:enumeration value="Elevated Tumor Markers and Residual Mass" />
                     <xs:enumeration value="No Measureable Tumor or Tumor Markers" />
@@ -2533,7 +2556,15 @@
                     <xs:enumeration value="Cervix" />
                     <xs:enumeration value="CNS" />
                     <xs:enumeration value="Colon" />
-                    <xs:enumeration value="Esophagus" />
+                    <xs:enumeration value="Esophagus" />                    
+                    <xs:enumeration value="Eye" />
+                    <xs:enumeration value="Head/Face/Neck" />
+                    <xs:enumeration value="Lung/Bronchus" />
+                    <xs:enumeration value="Mesothelioma" />
+                    <xs:enumeration value="Other" />
+                    <xs:enumeration value="Ovary-NOS" />
+                    <xs:enumeration value="Skin-NOS" />
+                    <xs:enumeration value="Thymus" />                    
                     <xs:enumeration value="Eyeball" />
                     <xs:enumeration value="Fallopian Tube" />
                     <xs:enumeration value="Gallbladder" />
@@ -3463,14 +3494,6 @@
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
             </xs:simpleContent>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="race_list">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="race" minOccurs="1" maxOccurs="unbounded"/>
-            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
@@ -4916,4 +4939,597 @@
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="treatment_type">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Chemotherapy" />
+                    <xs:enumeration value="External Radiation" />
+                    <xs:enumeration value="Hormone Therapy" />
+                    <xs:enumeration value="Immunotherapy" />
+                    <xs:enumeration value="Internal Radiation" />
+                    <xs:enumeration value="No Treatment" />
+                    <xs:enumeration value="Other" />
+                    <xs:enumeration value="Pharmaceutical Therapy" />
+                    <xs:enumeration value="Radiation Therapy" />
+                    <xs:enumeration value="Stem Cell Transplant" />
+                    <xs:enumeration value="Surgery" />
+                    <xs:enumeration value="Systemic Radiation" />
+                    <xs:enumeration value="Targeted Molecular Therapy" />
+                    <xs:attribute name="cde" type="xs:string" default="5102381" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="treatment_type_other">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5544691" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:element name="agent">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="4285089" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="treatment_outcome">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Complete Remission/Response" />
+                    <xs:enumeration value="Complete Response" />
+                    <xs:enumeration value="Elevated Tumor Markers and Residual Mass" />
+                    <xs:enumeration value="First Course Treatment Still in Progress" />
+                    <xs:enumeration value="No Measureable Tumor or Tumor Markers" />
+                    <xs:enumeration value="Normalization of Tumor Markers, but Residual Tumor Mass" />
+                    <xs:enumeration value="Other" />
+                    <xs:enumeration value="Partial Remission/Response" />
+                    <xs:enumeration value="Partial Response" />
+                    <xs:enumeration value="Persistent Disease" />
+                    <xs:enumeration value="Progressive Disease" />
+                    <xs:enumeration value="Progressive Tumor Mass and Tumor Markers" />
+                    <xs:enumeration value="Stable Disease" />
+                    <xs:enumeration value="Treatment Ongoing" />
+                    <xs:enumeration value="Treatment Stopped Due to Toxicity" />
+                    <xs:attribute name="cde" type="xs:string" default="5102383" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_treatment_start">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102385" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_treatment_start">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102384" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_treatment_start">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102386" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_treatment_start">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="5102411" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_treatment_end">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102388" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_treatment_end">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102387" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_treatment_end">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102389" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="days_to_treatment_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="5102431" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="specify_single_agent_therapy">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3590022" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="number_cycles">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="62590" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="radiation_therapy_total_dosage" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="36" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="extranodal_radiation_field">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Abdomen, total" />
+                    <xs:enumeration value="Arm" />
+                    <xs:enumeration value="Body, total" />
+                    <xs:enumeration value="Bone, non-spine" />
+                    <xs:enumeration value="Brain, focal" />
+                    <xs:enumeration value="Brain, whole" />
+                    <xs:enumeration value="Breast" />
+                    <xs:enumeration value="Chest Wall" />
+                    <xs:enumeration value="Eye" />
+                    <xs:enumeration value="Gastrointestinal, Colon" />
+                    <xs:enumeration value="Gastrointestinal, Gallbladder" />
+                    <xs:enumeration value="Gastrointestinal, Intestine" />
+                    <xs:enumeration value="Gastrointestinal, Liver" />
+                    <xs:enumeration value="Gastrointestinal, NOS" />
+                    <xs:enumeration value="Gastrointestinal, Pancreas" />
+                    <xs:enumeration value="Gastrointestinal, Stomach" />
+                    <xs:enumeration value="Genitourinary, Bladder" />
+                    <xs:enumeration value="Genitourinary, Kidney" />
+                    <xs:enumeration value="Genitourinary, NOS" />
+                    <xs:enumeration value="Head, Face, or Neck" />
+                    <xs:enumeration value="Leg" />
+                    <xs:enumeration value="Lung" />
+                    <xs:enumeration value="Lymph node, distant (specify site)" />
+                    <xs:enumeration value="Lymph node, locoregional (specify site)" />
+                    <xs:enumeration value="Lymph Nodes" />
+                    <xs:enumeration value="Mantle" />
+                    <xs:enumeration value="Mediastinum" />
+                    <xs:enumeration value="Other" />
+                    <xs:enumeration value="Parametrium" />
+                    <xs:enumeration value="Pelvis" />
+                    <xs:enumeration value="Shoulder" />
+                    <xs:enumeration value="Skin, lower extremity, local" />
+                    <xs:enumeration value="Skin, total" />
+                    <xs:enumeration value="Skin, trunk, local" />
+                    <xs:enumeration value="Skin, upper extremity, local" />
+                    <xs:enumeration value="Spine" />
+                    <xs:enumeration value="Supraclavicular" />
+                    <xs:enumeration value="Thorax" />
+                    <xs:enumeration value="Trunk" />
+                    <xs:attribute name="cde" type="xs:string" default="2416537" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="targeted_nodal_region">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Axillary" />
+                    <xs:enumeration value="Cervical" />
+                    <xs:enumeration value="Epitrochlear" />
+                    <xs:enumeration value="Femoral" />
+                    <xs:enumeration value="Hilar" />
+                    <xs:enumeration value="Iliac-common" />
+                    <xs:enumeration value="Iliac-external" />
+                    <xs:enumeration value="Inguinal" />
+                    <xs:enumeration value="Mediastinal" />
+                    <xs:enumeration value="Mesenteric" />
+                    <xs:enumeration value="Occipital" />
+                    <xs:enumeration value="Paraaortic" />
+                    <xs:enumeration value="Parotid" />
+                    <xs:enumeration value="Popliteal" />
+                    <xs:enumeration value="Retroperitoneal" />
+                    <xs:enumeration value="Splenic" />
+                    <xs:enumeration value="Submandibular" />
+                    <xs:enumeration value="Supraclavicular" />
+                    <xs:attribute name="cde" type="xs:string" default="3762198" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="targeted_nodal_region_other">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="62999" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="stem_cell_transplantation">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Syngeneic/Allogeneic related donor" />
+                    <xs:enumeration value="Autologous" />
+                    <xs:enumeration value="Allogeneic- unrelated donor" />
+                    <xs:attribute name="cde" type="xs:string" default="2957417" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="chemotherapy_end">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="2188260" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="radiation_therapy_end" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="4618471" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="protocol_status">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Active, not recruitng" />
+                    <xs:enumeration value="Completed" />
+                    <xs:enumeration value="Recruiting" />
+                    <xs:enumeration value="Suspended" />
+                    <xs:enumeration value="Terminated" />
+					<xs:attribute name="cde" type="xs:string" default="5102355" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="patient_sex">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Male" />
+                    <xs:enumeration value="Female" />
+                    <xs:enumeration value="Unknown" />
+					<xs:attribute name="cde" type="xs:string" default="2660030" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="day_of_clinical_diagnosis" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102356" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_clinical_diagnosis" nillable="true">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102357" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="year_of_clinical_diagnosis">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5102358" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="days_to_clinical_diagnosis">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="5102380" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    	
+	<xs:element name="method_of_clinical_diagnosis" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="Physical Exam" />
+					<xs:enumeration value="Imaging (x-ray, scan, ultrasound, etc.)" />
+                    <xs:enumeration value="Biochemical Evidence of Disease" />
+					<xs:enumeration value="Cytology" />
+					<xs:enumeration value="Other" />					
+                    <xs:attribute name="cde" type="xs:string" default="5102378" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:element name="comorbidity" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+                    <xs:enumeration value="Allergies"/>
+					<xs:enumeration value="Anemia"/>
+					<xs:enumeration value="Arrhythmia"/>
+					<xs:enumeration value="Arthritis"/>
+					<xs:enumeration value="Asthma"/>
+					<xs:enumeration value="Atrial Fibrillation"/>
+					<xs:enumeration value="Basal Cell Carcinoma"/>
+					<xs:enumeration value="Blood Clots"/>
+					<xs:enumeration value="Bronchitis"/>
+					<xs:enumeration value="Calcium Channel Blockers"/>
+					<xs:enumeration value="Cancer"/>
+					<xs:enumeration value="Cerebrovascular Disease"/>
+					<xs:enumeration value="Congestive Heart Failure (CHF)"/>
+					<xs:enumeration value="Connective Tissue Disorder"/>
+					<xs:enumeration value="COPD"/>
+					<xs:enumeration value="Coronary Artery Disease"/>
+					<xs:enumeration value="Diabetes"/>
+					<xs:enumeration value="Diabetic Neuropathy"/>
+					<xs:enumeration value="Diet controlled Diabetes"/>
+					<xs:enumeration value="Epilepsy"/>
+					<xs:enumeration value="GERD"/>
+					<xs:enumeration value="Heart disease"/>
+					<xs:enumeration value="Hepatitis"/>
+					<xs:enumeration value="Hepatitis B Infection"/>
+					<xs:enumeration value="Hepatitis C Infection"/>
+					<xs:enumeration value="Hypercholesterolemia"/>
+					<xs:enumeration value="Hyperlipidemia"/>
+					<xs:enumeration value="Hypertension"/>
+					<xs:enumeration value="Inflammatory Bowel Disease"/>
+					<xs:enumeration value="Insulin controlled Diabetes"/>
+					<xs:enumeration value="Kidney Disease"/>
+					<xs:enumeration value="Liver Cirrhosis (Liver Disease)"/>
+					<xs:enumeration value="Lupus"/>
+					<xs:enumeration value="MAI"/>
+					<xs:enumeration value="Myocardial Infarction"/>
+					<xs:enumeration value="Obesity"/>
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="Other cancer within 5 years"/>
+					<xs:enumeration value="Other nonmalignant systemic disease"/>
+					<xs:enumeration value="Peptic Ulcer (Ulcer)"/>
+					<xs:enumeration value="Peripheral Vascular Disease"/>
+					<xs:enumeration value="Psoriasis"/>
+					<xs:enumeration value="Pulmonary Fibrosis"/>
+					<xs:enumeration value="Renal Insufficiency"/>
+					<xs:enumeration value="Rheumatologic Disease"/>
+					<xs:enumeration value="Sarcoidosis"/>
+					<xs:enumeration value="Smoking"/>
+					<xs:enumeration value="Tuberculosis"/>
+					<xs:enumeration value="Ulcerative Colitis"/>			
+                    <xs:attribute name="cde" type="xs:string" default="2970715" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="day_of_most_recent_date_of_last_contact">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_day">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5116088" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="month_of_most_recent_date_of_last_contact">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_month">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5116087" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="year_of_most_recent_date_of_last_contact">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="utility:generic_year">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5116089" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="days_to_most_recent_date_of_last_contact">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:attribute name="cde" type="xs:string" default="5116090" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>    
+
+	<xs:element name="prior_systemic_therapy_type" nillable="true">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="Interferon"/>
+					<xs:enumeration value="Chemotherapy"/>
+					<xs:enumeration value="Immunotherapy/Vaccine"/>
+					<xs:enumeration value="Radiation"/>
+					<xs:enumeration value="Other"/>
+					<xs:attribute name="cde" type="xs:string" default="3119700"/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+					<xs:attribute name="tier" type="xs:string" default="2"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+    
 </xs:schema>

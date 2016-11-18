@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.5" 
+<xs:schema elementFormDefault="qualified" version="2.7.6" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -105,6 +105,15 @@
 				<xs:element ref="primary_pathology" />
 			
 				<xs:element ref="thym_nte:new_tumor_events" minOccurs="1" maxOccurs="1" />
+				
+				<xs:choice>
+                    <xs:sequence minOccurs="0">
+                        <xs:element ref="clin_shared:day_of_form_completion" />
+                        <xs:element ref="clin_shared:month_of_form_completion" />
+                        <xs:element ref="clin_shared:year_of_form_completion" />
+                    </xs:sequence>
+                    <xs:element ref="clin_shared:days_to_form_completion" minOccurs="0" />
+                </xs:choice>
 				
                 <xs:element ref="follow_ups" />
                 <xs:element ref="rx:drugs" />
