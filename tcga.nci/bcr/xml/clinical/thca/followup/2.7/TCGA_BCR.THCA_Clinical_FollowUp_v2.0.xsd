@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.6"
+<xs:schema elementFormDefault="qualified" version="2.7.7"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
 	xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
@@ -29,7 +29,8 @@
 				
                 <xs:element ref="clin_shared:followup_case_report_form_submission_reason" />
                 <xs:element ref="clin_shared:radiation_therapy" />
-                <xs:element ref="clin_shared:targeted_molecular_therapy" /> 
+                <xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" /> 
+				<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" />
                 <xs:element ref="thca_shared:i_131_total_administered_preparation_technique" />
                 <xs:element ref="thca_shared:i_131_first_administered_dose" />
                 <xs:element ref="thca_shared:i_131_subsequent_administered_dose" />
