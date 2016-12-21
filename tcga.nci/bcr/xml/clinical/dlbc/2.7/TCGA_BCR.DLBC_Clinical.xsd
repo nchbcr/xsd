@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.6"
+<xs:schema elementFormDefault="qualified" version="2.7.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/dlbc/2.7"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
@@ -124,7 +124,7 @@
 		<xs:element ref="clin_shared:radiation_therapy"/>
 		<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0"/>
 		<xs:element ref="dlbc_nte:pet_scan_results" minOccurs="0"/>
-		<xs:element ref="clin_shared:targeted_molecular_therapy"/>
+		<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0"/>
 		<xs:element ref="clin_shared:primary_therapy_outcome_success"/>
 		<xs:element ref="shared:tobacco_smoking_history" minOccurs="0"/>
 		<xs:element ref="clin_shared:age_began_smoking_in_years" minOccurs="0"/>

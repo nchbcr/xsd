@@ -13,7 +13,7 @@
 	xmlns="http://tcga.nci/bcr/xml/clinical/lgg/2.7" 
 	targetNamespace="http://tcga.nci/bcr/xml/clinical/lgg/2.7" 
 	elementFormDefault="qualified" 
-	version="2.7.6">
+	version="2.7.7">
 	
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the LGG study.</xs:documentation>
@@ -159,6 +159,7 @@
 					<xs:element ref="clin_shared:days_to_performance_status_assessment"/>
 				</xs:choice>
 				<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" />
 				<xs:element ref="clin_shared:primary_therapy_outcome_success" minOccurs="0" maxOccurs="1"/>
 				
 				<xs:element ref="lgg_nte:new_tumor_events" minOccurs="0" maxOccurs="1" />

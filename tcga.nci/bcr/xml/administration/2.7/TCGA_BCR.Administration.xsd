@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.6"
+<xs:schema elementFormDefault="qualified" version="2.7.7"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -125,6 +125,7 @@
                     <xs:enumeration value="BRAIN" />  <!-- Brain cancer -->
                     <xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
                     <xs:enumeration value="BRCA" />   <!-- Breast invasive carcinoma -->
+					<xs:enumeration value="CA" />     <!-- Carcinoma NOS -->
                     <xs:enumeration value="CESC" />   <!-- Cervical Squamous cell carcinoma -->
                     <xs:enumeration value="CHOL" />   <!-- Cholangiocarcinoma -->
                     <xs:enumeration value="COAD" />   <!-- Colon/Rectal adenocarcinoma -->
@@ -149,6 +150,7 @@
                     <xs:enumeration value="MESO" />   <!-- Mesothelioma -->
                     <xs:enumeration value="MCC" />    <!-- Merkel cell carcinoma -->
                     <xs:enumeration value="MM" />     <!-- Multiple Myeloma  -->
+					<xs:enumeration value="MPP" />    <!-- Multiple Primaries Project --> 
                     <xs:enumeration value="NBL" />    <!-- Neuroblastoma -->
                     <xs:enumeration value="OV" />     <!-- Ovarian serous cystadenocacinoma -->
                     <xs:enumeration value="PAAD" />   <!-- Pancreatic Adenocarcinoma -->

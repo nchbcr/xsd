@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.6"
+<xs:schema elementFormDefault="qualified" version="2.7.7"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
@@ -582,7 +582,8 @@
 	<xs:element name="concurrent_rx_tx_info">
         <xs:complexType>
           <xs:sequence>
-			<xs:element ref="clin_shared:targeted_molecular_therapy" />
+			<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" />
+			<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" />
 			<xs:element ref="chemotherapy_negation_radiation_therapy_concurrent_not_administered_reason" />
 			<xs:element ref="chemotherapy_negation_radiation_therapy_concurrent_administered_text" />
             <xs:element ref="concurrent_rx_tx" minOccurs="0" maxOccurs="unbounded" />

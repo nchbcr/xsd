@@ -10,7 +10,7 @@
  xmlns:prad_shared="http://tcga.nci/bcr/xml/clinical/prad/shared/2.7"
  xmlns="http://tcga.nci/bcr/xml/clinical/prad/followup/2.7/1.0" 
  targetNamespace="http://tcga.nci/bcr/xml/clinical/prad/followup/2.7/1.0" 
- elementFormDefault="qualified" version="2.7.6">
+ elementFormDefault="qualified" version="2.7.7">
  
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
@@ -30,7 +30,8 @@
 				<xs:element ref="clin_shared:followup_case_report_form_submission_reason"/>
 				 <xs:element ref="clin_shared:lost_follow_up" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="clin_shared:radiation_therapy"/>
-				<xs:element ref="clin_shared:targeted_molecular_therapy"/>
+				<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" />
+				<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" />
 				<xs:element ref="clin_shared:vital_status"/>
 				<xs:element ref="clin_shared:primary_therapy_outcome_success"/>
 				<xs:choice>
