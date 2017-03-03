@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.7"
+<xs:schema elementFormDefault="qualified" version="2.7.8"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/skcm/shared/2.7"
@@ -148,6 +148,19 @@
         </xs:complexType>
     </xs:element>
 	
+	<xs:element name="nte_anatomic_site_count" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:integer_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="5675451" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
 	<xs:element name="new_primary_melanoma_anatomic_site_other_text" nillable="true">
         <xs:complexType>
             <xs:simpleContent>
@@ -200,4 +213,60 @@
         </xs:complexType>
     </xs:element>
 	
+	<xs:element name="radiation_therapy_to_primary" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3162807" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="prior_radiation_therapy" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="944" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="prior_systemic_therapy" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:yes_or_no">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="64176" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="submitted_tumor_location">
+		<xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="utility:clinical_res_attributes">
+                    <xs:enumeration value="" />
+					<xs:enumeration value="Distant Metastasis" />
+					<xs:enumeration value="Other  Specify" />
+					<xs:enumeration value="Primary Tumor" />
+					<xs:enumeration value="Regional Cutaneous or Subcutaneous Tissue (includes satellite and in-transit metastasis)" />
+					<xs:enumeration value="Regional Lymph Node" />
+					<xs:attribute name="cde" type="xs:string" default="3427526" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:restriction>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

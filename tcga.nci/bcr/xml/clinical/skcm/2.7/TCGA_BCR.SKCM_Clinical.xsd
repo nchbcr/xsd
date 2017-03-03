@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2.7.7"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2.7.8"
 	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
 	xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
 	xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -99,6 +99,7 @@
 				<xs:element ref="melanoma_clark_level_value"/>
 				<xs:element ref="melanoma_ulceration_indicator"/>
 				<xs:element ref="malignant_neoplasm_mitotic_count_rate"/>
+				<xs:element ref="skcm_shared:radiation_therapy_to_primary" minOccurs="0"/>
 				<xs:choice>
 					<xs:sequence>
 						<xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis"/>
@@ -121,9 +122,12 @@
 					</xs:sequence>
 					<xs:element ref="skcm_shared:days_to_submitted_specimen_dx"/>
 				</xs:choice>
-				<xs:element ref="clin_shared:tumor_tissue_site"/>
+				<xs:element ref="skcm_shared:submitted_tumor_location" minOccurs="0"/>
+				<xs:element ref="clin_shared:tumor_tissue_site" minOccurs="0"/>
 				<xs:element ref="skcm_shared:distant_metastasis_anatomic_site"/>
 				<xs:element ref="melanoma_origin_skin_anatomic_site"/>
+				<xs:element ref="skcm_shared:prior_radiation_therapy" minOccurs="0"/>
+				<xs:element ref="skcm_shared:prior_systemic_therapy" minOccurs="0"/>
 				<xs:element ref="prior_systemic_therapy_types"/>
 				<xs:element ref="interferon_90_day_prior_excision_admin_indicator"/>
 				<xs:element ref="clin_shared:radiation_therapy"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.7"
+<xs:schema elementFormDefault="qualified" version="2.7.8"
    xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
    xmlns:sarc_shared="http://tcga.nci/bcr/xml/clinical/sarc/shared/2.7"  
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -55,7 +55,8 @@
 			<xs:element ref="sarc_shared:tumor_multifocal" />
 			<xs:element ref="sarc_shared:discontiguous_lesion_count" />
 			
-			<xs:element ref="sarc_shared:tumor_sizes" />
+			<xs:element ref="sarc_shared:tumor_sizes" minOccurs="0" />
+			<xs:element ref="sarc_shared:nte_tumor_sizes" minOccurs="0" />
 			
 			<xs:element ref="sarc_shared:radiologic_tumor_burden" />
 			<xs:element ref="sarc_shared:pathologic_tumor_burden" />

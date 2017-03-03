@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.7"
+<xs:schema elementFormDefault="qualified" version="2.7.8"
 	xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
 	xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
 	xmlns:coad_read_shared="http://tcga.nci/bcr/xml/clinical/shared/coad_read/2.7" 
