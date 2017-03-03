@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.7"
+<xs:schema elementFormDefault="qualified" version="2.7.8"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/sarc/shared/2.7"
@@ -169,7 +169,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3527990" />
+                    <xs:attribute name="cde" type="xs:string" default="3528021" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -182,7 +182,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3527997" />
+                    <xs:attribute name="cde" type="xs:string" default="3528033" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -195,7 +195,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3527996" />
+                    <xs:attribute name="cde" type="xs:string" default="3528032" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -208,7 +208,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3528003" />
+                    <xs:attribute name="cde" type="xs:string" default="3528034" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -221,7 +221,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3528020" />
+                    <xs:attribute name="cde" type="xs:string" default="3528041" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -234,7 +234,7 @@
             <xs:simpleContent>
                 <xs:extension base="utility:number_or_null">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="3528004" />
+                    <xs:attribute name="cde" type="xs:string" default="3528040" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -242,6 +242,103 @@
         </xs:complexType>
     </xs:element>
 	
+	<xs:element name="nte_tumor_sizes" nillable="true">
+		<xs:complexType>
+          <xs:sequence >
+            <xs:element ref="nte_tumor_size" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+	</xs:element>
+	<xs:element name="nte_tumor_size" nillable="true">
+		<xs:complexType>
+          <xs:sequence >
+            <xs:element ref="nte_radiologic_tumor_length" />
+			<xs:element ref="nte_radiologic_tumor_width" />
+			<xs:element ref="nte_radiologic_tumor_depth" />
+			<xs:element ref="nte_pathologic_tumor_length" />
+			<xs:element ref="nte_pathologic_tumor_width" />
+			<xs:element ref="nte_pathologic_tumor_depth" />
+          </xs:sequence>
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="nte_radiologic_tumor_length" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3527990" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="nte_radiologic_tumor_width" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3527997" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="nte_radiologic_tumor_depth" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3527996" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="nte_pathologic_tumor_length" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3528003" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="nte_pathologic_tumor_width" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3528020" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="nte_pathologic_tumor_depth" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="3528004" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                    <xs:attribute name="tier" type="xs:string" default="2" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
 	
 	<xs:element name="radiologic_tumor_burden" nillable="true">
         <xs:complexType>

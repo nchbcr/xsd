@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.7"
+<xs:schema elementFormDefault="qualified" version="2.7.8"
    xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
    xmlns:skcm_shared="http://tcga.nci/bcr/xml/clinical/skcm/shared/2.7"  
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -50,7 +50,8 @@
 			<xs:element ref="skcm_shared:new_tumor_metastasis_anatomic_site" />
 			<xs:element ref="skcm_shared:new_tumor_metastasis_anatomic_site_other_text" />
 			<xs:element ref="skcm_shared:new_primary_melanoma_anatomic_site" />
-			<xs:element ref="skcm_shared:primary_anatomic_site_count" />
+			<xs:element ref="skcm_shared:primary_anatomic_site_count" minOccurs="0" />
+			<xs:element ref="skcm_shared:nte_anatomic_site_count" minOccurs="0" />
 			<xs:element ref="skcm_shared:new_primary_melanoma_anatomic_site_other_text" />
 			<xs:element ref="skcm_shared:new_non_melanoma_event_histologic_type_text" />
 			<xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" />
