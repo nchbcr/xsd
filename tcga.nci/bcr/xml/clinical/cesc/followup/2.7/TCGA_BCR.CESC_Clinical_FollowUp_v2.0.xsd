@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
 	xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
@@ -132,7 +132,7 @@
 				<xs:element ref="nte:new_neoplasm_event_occurrence_anatomic_site" />
                 <xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" />
 				<xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_type" />
-                <xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_text" />
+                <xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_text" minOccurs = "0" />
 				<xs:choice>
                     <xs:sequence>
                         <xs:element ref="nte:day_of_additional_surgery_metastatic_procedure" />
@@ -189,7 +189,7 @@
                     <xs:element ref="rad:days_to_radiation_therapy_end" />
                 </xs:choice>
             
-                <xs:element ref="cesc_shared:rt_pelvis_administered_total_dose" /> 
+                <xs:element ref="cesc_shared:rt_pelvis_administered_total_dose" minOccurs = "0"/> 
                 <xs:element ref="cesc_shared:external_beam_radiation_therapy_administered_paraaortic_region_lymph_node_dose" /> 
                 <xs:element ref="cesc_shared:external_beam_radiation_therapy_administered_status" /> 
                 <xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
@@ -19,11 +19,11 @@
 	<xs:element name="treatment" nillable="true">
 		<xs:complexType>
 			<xs:sequence >
-				<xs:element ref="clin_shared:regimen_indication" />
-				<xs:element ref="lymphoma_treatment_types" />
-				<xs:element ref="lymphoma_treatment_type_other" />
+				<xs:element ref="clin_shared:regimen_indication" minOccurs="0" />
+				<xs:element ref="lymphoma_treatment_types" minOccurs="0" />
+				<xs:element ref="lymphoma_treatment_type_other" minOccurs="0" />
 				
-				<xs:choice>
+				<xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="ocg_shared:day_of_chemotherapy_start" />
                         <xs:element ref="ocg_shared:month_of_chemotherapy_start" />
@@ -35,7 +35,7 @@
 				
 				<xs:element ref="chemotherapy_end" />
 				
-				<xs:choice>
+				<xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="ocg_shared:day_of_chemotherapy_end" />
                         <xs:element ref="ocg_shared:month_of_chemotherapy_end" />
@@ -44,11 +44,11 @@
                     <xs:element ref="ocg_shared:days_to_chemotherapy_end" />
                 </xs:choice>
 				
-				<xs:element ref="pharm_regimen" />
-				<xs:element ref="pharm_regimen_other" />
+				<xs:element ref="pharm_regimen" minOccurs="0" />
+				<xs:element ref="pharm_regimen_other" minOccurs="0" />
 				
-				<xs:element ref="specify_single_agent_therapy" />
-				<xs:element ref="rx:number_cycles" />
+				<xs:element ref="specify_single_agent_therapy" minOccurs="0" />
+				<xs:element ref="rx:number_cycles" minOccurs="0" />
 				
 				<xs:element ref="radiation" />
 			</xs:sequence >		
@@ -58,7 +58,7 @@
 	<xs:element name="radiation" nillable="true">
 		<xs:complexType>
 			<xs:sequence >
-				<xs:choice>
+				<xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="rad:day_of_radiation_therapy_start" />
                         <xs:element ref="rad:month_of_radiation_therapy_start" />
@@ -67,9 +67,9 @@
                     <xs:element ref="rad:days_to_radiation_therapy_start" />
                 </xs:choice>
 				
-				<xs:element ref="radiation_therapy_end" />
+				<xs:element ref="radiation_therapy_end" minOccurs="0" />
 				
-                <xs:choice>
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="rad:day_of_radiation_therapy_end" />
                         <xs:element ref="rad:month_of_radiation_therapy_end" />
@@ -78,12 +78,12 @@
                     <xs:element ref="rad:days_to_radiation_therapy_end" />
                 </xs:choice>
 				
-				<xs:element ref="radiation_therapy_total_dosage" />
+				<xs:element ref="radiation_therapy_total_dosage" minOccurs="0" />
 				<xs:element ref="extranodal_radiation_fields" />
-				<xs:element ref="targeted_nodal_regions" />
-				<xs:element ref="targeted_nodal_region_other" />
+				<xs:element ref="targeted_nodal_regions" minOccurs="0" />
+				<xs:element ref="targeted_nodal_region_other" minOccurs="0" />
 				
-				<xs:element ref="stem_cell_transplantation" />
+				<xs:element ref="stem_cell_transplantation" minOccurs="0" />
 				<xs:choice>
                     <xs:sequence>
                         <xs:element ref="ocg_shared:day_of_stem_cell_transplantation" />
@@ -93,7 +93,7 @@
                     <xs:element ref="ocg_shared:days_to_stem_cell_transplantation" />
                 </xs:choice>
 				
-				<xs:choice>
+				<xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="ocg_shared:day_of_cancer_debulking_surgery" />
                         <xs:element ref="ocg_shared:month_of_cancer_debulking_surgery" />
@@ -102,7 +102,7 @@
                     <xs:element ref="ocg_shared:days_to_cancer_debulking_surgery" />
                 </xs:choice>
 				
-				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" minOccurs="0"/>
 			</xs:sequence >		
         </xs:complexType>
 	</xs:element>

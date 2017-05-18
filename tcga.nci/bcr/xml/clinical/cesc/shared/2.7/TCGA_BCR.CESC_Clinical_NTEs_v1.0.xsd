@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
    xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
    xmlns:cesc_shared="http://tcga.nci/bcr/xml/clinical/cesc/shared/2.7"  
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -26,7 +26,7 @@
    <xs:element name="new_tumor_event">
       <xs:complexType>
          <xs:sequence>
-			<xs:choice>
+			<xs:choice minOccurs = "0">
 				<xs:sequence>
 					<xs:element ref="nte:day_of_new_tumor_event_after_initial_treatment" />
 					<xs:element ref="nte:month_of_new_tumor_event_after_initial_treatment" />
@@ -40,7 +40,7 @@
 			<xs:element ref="nte:new_neoplasm_occurrence_anatomic_site_text" />
 			
 			<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" />
-			<xs:choice>
+			<xs:choice minOccurs = "0">
 				<xs:sequence>
 					<xs:element ref="nte:day_of_new_tumor_event_additional_surgery_procedure" />
 					<xs:element ref="nte:month_of_new_tumor_event_additional_surgery_procedure" />
@@ -49,13 +49,13 @@
 				<xs:element ref="nte:days_to_new_tumor_event_additional_surgery_procedure" />
 			</xs:choice>
 			
-			<xs:element ref="nte:residual_disease_post_new_tumor_event_margin_status" />
+			<xs:element ref="nte:residual_disease_post_new_tumor_event_margin_status" minOccurs = "0"/>
 
 			<xs:element ref="nte:additional_radiation_therapy" />
 			<xs:element ref="nte:additional_pharmaceutical_therapy" />
 			
-			<xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_type" />
-			<xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_text" />
+			<xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_type" minOccurs = "0"/>
+			<xs:element ref="cesc_shared:new_neoplasm_event_post_initial_therapy_diagnosis_method_text" minOccurs = "0" />
 		 </xs:sequence>
 	  </xs:complexType>
    </xs:element>

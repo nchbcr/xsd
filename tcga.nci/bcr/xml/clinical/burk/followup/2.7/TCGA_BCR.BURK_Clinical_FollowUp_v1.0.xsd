@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
@@ -54,7 +54,8 @@
 				<xs:element ref="clin_shared:person_neoplasm_cancer_status" />
 				<xs:element ref="clin_shared:radiation_therapy" />
 				<xs:element ref="clin_shared:postoperative_rx_tx" />
-				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" minOccurs="0"/>
+				<xs:element ref="clin_shared:primary_therapy_outcome_success_at_followup" minOccurs="0"/>
 				
 				<xs:element ref="shared:hiv_status" />
 				<xs:choice>
@@ -67,7 +68,7 @@
                 </xs:choice>
 				<xs:element ref="ocg_shared:nadir_cd4_counts" />
 				
-				<xs:element ref="burk_shared:treatment" />
+				<xs:element ref="burk_shared:treatment" minOccurs="0"/>
 				
 				<xs:element ref="burk_nte:new_tumor_events" minOccurs="1" maxOccurs="1" />
 				

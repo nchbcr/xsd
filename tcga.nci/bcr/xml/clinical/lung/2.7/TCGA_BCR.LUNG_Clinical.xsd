@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
            xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -82,7 +82,7 @@
                 <xs:element ref="clin_shared:tumor_tissue_site"/>
                 <xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other"/>
                 <xs:element ref="shared:histological_type"/>
-                <xs:element ref="shared:histological_type_other"/>
+                <xs:element ref="shared:histological_type_other" minOccurs = "0"/>
                 <xs:element ref="shared:neoplasm_histologic_grade"/>
                 <xs:choice>
                     <xs:sequence>
@@ -108,8 +108,8 @@
                     <xs:element ref="clin_shared:days_to_last_followup" />
                 </xs:choice>
                 <xs:element ref="stage_event"/>
-                <xs:element ref="lung_shared:egfr_mutation_performed"/>
-                <xs:element ref="lung_shared:egfr_mutation_identified"/>
+                <xs:element ref="lung_shared:egfr_mutation_performed" minOccurs = "0"/>
+                <xs:element ref="lung_shared:egfr_mutation_identified" minOccurs = "0"/>
                 <xs:element ref="lung_shared:egfr_mutation_exon19_deletion"/>
                 <xs:element ref="lung_shared:egfr_mutation_l858r"/>
                 <xs:element ref="lung_shared:egfr_mutation_t790m"/>
@@ -245,7 +245,7 @@
     <xs:element name="stage_event">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="shared_stage:system_version" />
+                <xs:element ref="shared_stage:system_version" minOccurs="0"/>
                 <xs:element ref="shared_stage:pathologic_stage" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="shared_stage:clinical_M" />
                 <xs:element ref="shared_stage:pathologic_T" />

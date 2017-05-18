@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
    xmlns:nte="http://tcga.nci/bcr/xml/clinical/shared/new_tumor_event/2.7"
    xmlns:burk_shared="http://tcga.nci/bcr/xml/clinical/burk/shared/2.7"  
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -39,7 +39,9 @@
 				<xs:element ref="nte:days_to_new_tumor_event_after_initial_treatment" />
 			</xs:choice>
 			
-			<xs:element ref="progression_determined_by_list" />			
+			<!-- 2.7.9 progressions_determined_by_list is being removed in favor of element progression_determined_by -->
+			<xs:element ref="progression_determined_by_list" minOccurs="0"/>
+			<xs:element ref="nte:progression_determined_by" minOccurs="0" maxOccurs="unbounded" />		
 			
 			<xs:element ref="nte:new_tumor_event_additional_surgery_procedure" />
 			<xs:element ref="nte:additional_radiation_therapy" />
@@ -48,13 +50,12 @@
 		 </xs:sequence>
 	  </xs:complexType>
    </xs:element>
-   
-   <xs:element name="progression_determined_by_list">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nte:progression_determined_by" minOccurs="0" maxOccurs="unbounded" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-	
+
+	<xs:element name="progression_determined_by_list">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="nte:progression_determined_by" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+    </xs:element>   
 </xs:schema>
