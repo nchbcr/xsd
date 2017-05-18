@@ -9,7 +9,7 @@
  xmlns="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  elementFormDefault="qualified" 
- version="2.7.8">
+ version="2.7.9">
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the biospecimen xml.</xs:documentation>
@@ -32,6 +32,7 @@
 	<xs:element name="patient">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="shared:bcr_patient_barcode"/>
@@ -78,8 +79,10 @@
 	<xs:element name="sample">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="specimen_fraction_ordinal" minOccurs="0"/>
 				<xs:element ref="sample_type_id"/>
 				<xs:element ref="vial_number"/>
 				<xs:element ref="biospecimen_sequence" minOccurs="0" maxOccurs="1"/>
@@ -131,6 +134,7 @@
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:restriction base="utility:common_res_attributes">
+					<xs:enumeration value=""/>
 					<xs:enumeration value="01"/>
 					<xs:enumeration value="02"/>
 					<xs:enumeration value="03"/>
@@ -221,6 +225,7 @@
 					<xs:enumeration value="Centroblasts"/>
 					<xs:enumeration value="Centrocyte"/>
 					<xs:enumeration value="Blood Derived Cancer - Bone Marrow, Post-treatment"/>
+					<xs:enumeration value="Lymphoid Normal"/>
 					<xs:attribute name="cde" type="xs:string" default=""/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
 				</xs:restriction>
@@ -494,6 +499,17 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="specimen_fraction_ordinal" nillable="true">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="utility:number_or_null">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+                    <xs:attribute name="cde" type="xs:string" default=""/>
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
 	<xs:element name="bcr_biospecimen_canonical_reasons">
 		<xs:complexType>
 			<xs:sequence>
@@ -512,6 +528,7 @@
 	<xs:element name="shipment_portion">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="portion_number"/>
@@ -581,6 +598,7 @@
 	<xs:element name="portion">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="portion_number"/>
@@ -704,6 +722,7 @@
 	<xs:element name="analyte">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="subportion_sequence" minOccurs="0" maxOccurs="1"/>
@@ -859,6 +878,7 @@
 	<xs:element name="aliquot">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="plate_id"/>
@@ -1126,6 +1146,7 @@
 	<xs:element name="slide">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="admin:alternate_identifiers" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="section_location"/>
@@ -1785,6 +1806,7 @@
 	<xs:element name="diagnostic_slides">
 		<xs:complexType>
 			<xs:sequence>	
+				<xs:element ref="shared:notes" minOccurs="0"/>
 				<xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="ffpe_slide_uuid" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
@@ -1825,6 +1847,7 @@
                     <xs:enumeration value="OCT"/>
                     <xs:enumeration value="Snap Frozen"/>
 					<xs:enumeration value="Frozen"/>
+					<xs:enumeration value="AllProtect"/>
                     <xs:attribute name="cde" type="xs:string" default=""/>
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6"/>
                 </xs:restriction>

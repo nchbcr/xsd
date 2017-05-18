@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -135,7 +135,7 @@
                 <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis" />
                 <xs:element ref="clin_shared:ethnicity" />
                 <xs:element ref="clin_shared:person_neoplasm_cancer_status" />
-                <xs:element ref="clin_shared:performance_status_scale_timing" />
+                <xs:element ref="clin_shared:performance_status_scale_timing" minOccurs="0" />
 
                 <xs:choice>
                     <xs:sequence>
@@ -153,29 +153,29 @@
                 <xs:element ref="clin_shared:karnofsky_performance_score" />
                 <xs:element ref="clin_shared:eastern_cancer_oncology_group" />
                 <xs:element ref="shared:tobacco_smoking_history"/>
-                <xs:element ref="clin_shared:year_of_tobacco_smoking_onset" />
+                <xs:element ref="clin_shared:year_of_tobacco_smoking_onset" minOccurs="0" />
                 <xs:element ref="clin_shared:stopped_smoking_year" />
                 <xs:element ref="clin_shared:number_pack_years_smoked" />
-                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" />
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0"/>
                 <xs:element ref="anatomic_neoplasm_subdivision_list" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other" minOccurs="0" maxOccurs="1" />
-                <xs:element ref="lung_shared:diagnosis" />
-                <xs:element ref="lung_shared:location_in_lung_parenchyma" />
+                <xs:element ref="lung_shared:diagnosis" minOccurs="0"/>
+                <xs:element ref="lung_shared:location_in_lung_parenchyma" minOccurs="0"/>
                 <xs:element ref="clin_shared:residual_tumor" />
-                <xs:element ref="lung_shared:kras_mutation_found" />
-                <xs:element ref="lung_shared:kras_gene_analysis_performed" />
-                <xs:element ref="lung_shared:kras_mutation_result" />
-                <xs:element ref="lung_shared:egfr_mutation_performed" />
-                <xs:element ref="lung_shared:egfr_mutation_result" />
-                <xs:element ref="lung_shared:eml4_alk_translocation_performed" />
-                <xs:element ref="lung_shared:eml4_alk_translocation_result" />
-                <xs:element ref="lung_shared:eml4_alk_translocation_method" />
-				<xs:element ref="lung_shared:pulmonary_function_test_performed"/>
-				<xs:element ref="lung_shared:pre_bronchodilator_fev1_percent"/>
-				<xs:element ref="lung_shared:post_bronchodilator_fev1_percent"/>
-				<xs:element ref="lung_shared:pre_bronchodilator_fev1_fvc_percent"/>
-				<xs:element ref="lung_shared:post_bronchodilator_fev1_fvc_percent"/>
-				<xs:element ref="lung_shared:dlco_predictive_percent"/>
+                <xs:element ref="lung_shared:kras_mutation_found" minOccurs="0"/>
+                <xs:element ref="lung_shared:kras_gene_analysis_performed" minOccurs="0" />
+                <xs:element ref="lung_shared:kras_mutation_result" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_performed" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_result" minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_performed"  minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_result" minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_method" minOccurs="0" />
+				<xs:element ref="lung_shared:pulmonary_function_test_performed" minOccurs="0"/>
+				<xs:element ref="lung_shared:pre_bronchodilator_fev1_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:post_bronchodilator_fev1_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:pre_bronchodilator_fev1_fvc_percent"  minOccurs="0"/>
+				<xs:element ref="lung_shared:post_bronchodilator_fev1_fvc_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:dlco_predictive_percent" minOccurs="0"/>
 				
 				<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="clin_shared:radiation_therapy" minOccurs="0" maxOccurs="1" />

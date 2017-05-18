@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -1567,7 +1567,7 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
-                    <xs:attribute name="cde" type="xs:string" default="3131740" />
+                    <xs:attribute name="cde" type="xs:string" default="3008275" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>
@@ -1627,7 +1627,7 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
-                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="cde" type="xs:string" default="3131740" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>
@@ -2160,6 +2160,32 @@
 					<xs:enumeration value="Stable Disease" />
 					<xs:attribute name="cde" type="xs:string" default="2786727" />
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.5" />
+					<xs:attribute name="tier" type="xs:string" default="2" />
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="primary_therapy_outcome_success_at_followup" nillable="true">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="utility:clinical_res_attributes">
+					<xs:enumeration value="" />
+					<xs:enumeration value="Complete Response" />
+					<xs:enumeration value="Partial Response" />
+					<xs:enumeration value="Treatment Stopped Due to Toxicity" />
+					<xs:enumeration value="First Course Treatment Still in Progress" />
+					<xs:enumeration value="Complete Remission/Response" />
+                    <xs:enumeration value="Elevated Tumor Markers and Residual Mass" />
+                    <xs:enumeration value="No Measureable Tumor or Tumor Markers" />
+                    <xs:enumeration value="Normalization of Tumor Markers, but Residual Tumor Mass" />
+					<xs:enumeration value="Partial Remission/Response" />
+					<xs:enumeration value="Persistent Disease" />
+					<xs:enumeration value="Progressive Disease" />
+                    <xs:enumeration value="Progressive Tumor Mass and Tumor Markers" />
+					<xs:enumeration value="Stable Disease" />
+					<xs:attribute name="cde" type="xs:string" default="3104050" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
 					<xs:attribute name="tier" type="xs:string" default="2" />
 				</xs:restriction>
 			</xs:simpleContent>
@@ -2998,7 +3024,7 @@
 						<xs:element ref="day_of_tumor_progression"/>
 						<xs:element ref="year_of_tumor_progression"/>
 					</xs:sequence>
-					<xs:element ref="days_to_tumor_progression"/>
+					<xs:element ref="days_to_tumor_progression" minOccurs = "0"/>
 				</xs:choice>
 				<xs:choice>
 					<xs:sequence>

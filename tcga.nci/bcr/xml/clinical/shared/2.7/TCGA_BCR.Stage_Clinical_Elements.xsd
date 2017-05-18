@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
@@ -18,11 +18,11 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="system_version" />
-				<xs:element ref="clinical_stage" />
-				<xs:element ref="pathologic_stage" />
+				<xs:element ref="system_version" minOccurs="0"/>
+				<xs:element ref="clinical_stage" minOccurs="0"/>
+				<xs:element ref="pathologic_stage" minOccurs ="0"/>
 				<xs:element ref="stage_other" minOccurs="0" />
-				<xs:element ref="tnm_categories" />
+				<xs:element ref="tnm_categories" minOccurs="0" />
 				<xs:element ref="psa" minOccurs="0" />
 				<xs:element ref="gleason_grading" minOccurs="0" />
 				<xs:element ref="ann_arbor" minOccurs="0" />
@@ -146,6 +146,7 @@
             <xs:enumeration value="3440332" /> <!-- Clinical stage for AJCC -->
 			<xs:enumeration value="3225684" /> <!-- Clinical stage for FIGO -->
 			<xs:enumeration value="3065862" /> <!-- Clinical stage for Ann Arbor -->
+			<xs:enumeration value="5615604" />	<!-- Clinical stage for Ann Arbor for OCG -->
         </xs:restriction>
     </xs:simpleType>
 	
@@ -214,6 +215,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="3203222" /> <!-- Pathologic stage for AJCC and ENSAT -->
 			<xs:enumeration value="3065862" /> <!-- Pathologic stage for Ann Arbor -->
+			<xs:enumeration value="5615605" /> <!-- Pathologic stage for OCG Ann Arbor -->
         </xs:restriction>
     </xs:simpleType>
 	
@@ -563,8 +565,8 @@
 		</xs:annotation>
         <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="psa_value" />
-				<xs:choice>
+				<xs:element ref="psa_value" minOccurs = "0" />
+				<xs:choice minOccurs = "0" >
                     <xs:sequence>
                         <xs:element ref="day_of_psa" />
                         <xs:element ref="month_of_psa" />
@@ -644,10 +646,10 @@
 		</xs:annotation>
         <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="gleason_score" />
-				<xs:element ref="primary_pattern" />
-				<xs:element ref="secondary_pattern" />
-				<xs:element ref="tertiary_pattern" />
+				<xs:element ref="gleason_score" minOccurs = "0" />
+				<xs:element ref="primary_pattern" minOccurs = "0"/>
+				<xs:element ref="secondary_pattern" minOccurs = "0" />
+				<xs:element ref="tertiary_pattern" minOccurs = "0"/>
 			</xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -711,8 +713,8 @@
 		</xs:annotation>
         <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="b_symptoms" />
-				<xs:element ref="extranodal_involvement" />
+				<xs:element ref="b_symptoms" minOccurs ="0"/>
+				<xs:element ref="extranodal_involvement" minOccurs ="0"/>
 			</xs:sequence>
         </xs:complexType>
     </xs:element>

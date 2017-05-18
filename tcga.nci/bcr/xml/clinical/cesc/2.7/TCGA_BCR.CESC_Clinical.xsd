@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8" 
+<xs:schema elementFormDefault="qualified" version="2.7.9" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -53,7 +53,7 @@
                 <xs:element ref="shared:patient_id" />
 				<xs:element ref="shared:bcr_patient_barcode" />
                 <xs:element ref="shared:bcr_patient_uuid" />
-				<xs:element ref="clin_shared:informed_consent_verified" />  
+				<xs:element ref="clin_shared:informed_consent_verified" minOccurs= "0"/>  
                 <xs:element ref="clin_shared:icd_o_3_site" />
                 <xs:element ref="clin_shared:icd_o_3_histology" />
                 <xs:element ref="clin_shared:icd_10" />
@@ -109,31 +109,31 @@
 				<xs:element ref="patient_pregnancy_therapeutic_abortion_count" />
 				<xs:element ref="ectopic_pregnancy_count" />
 				<xs:element ref="pregnancy_stillbirth_count" />
-				<xs:element ref="female_breast_feeding_or_pregnancy_status_indicator" />
+				<xs:element ref="female_breast_feeding_or_pregnancy_status_indicator" minOccurs = "0"/>
                 <xs:element ref="total_number_of_pregnancies" />
                 <xs:element ref="patient_pregnancy_count" minOccurs="0" />
 				<xs:element ref="shared:tobacco_smoking_history" />
                 <xs:element ref="clin_shared:age_began_smoking_in_years" />
                 <xs:element ref="clin_shared:stopped_smoking_year" /> 
 				<xs:element ref="clin_shared:number_pack_years_smoked" />
-                <xs:element ref="patient_history_immune_system_and_related_disorders_names" />
-                <xs:element ref="patient_history_immune_system_and_related_disorders_text" />   
+                <xs:element ref="patient_history_immune_system_and_related_disorders_names" minOccurs = "0"/>
+                <xs:element ref="patient_history_immune_system_and_related_disorders_text" minOccurs = "0"/>   
                 <xs:element ref="clin_shared:eastern_cancer_oncology_group" />
-                <xs:element ref="clin_shared:karnofsky_performance_score" minOccurs="0" />
-                <xs:element ref="clin_shared:performance_status_scale_timing" />
-                <xs:element ref="clin_shared:assessment_timepoint_category" />
-                <xs:choice>
+                <xs:element ref="clin_shared:karnofsky_performance_score" minOccurs = "0" />
+                <xs:element ref="clin_shared:performance_status_scale_timing" minOccurs= "0" />
+                <xs:element ref="clin_shared:assessment_timepoint_category" minOccurs = "0" />
+                <xs:choice minOccurs = "0">
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_performance_status_assessment" />
                         <xs:element ref="clin_shared:month_of_performance_status_assessment" />
                         <xs:element ref="clin_shared:year_of_performance_status_assessment" />
                     </xs:sequence>
-                    <xs:element ref="clin_shared:days_to_performance_status_assessment" />
+                    <xs:element ref="clin_shared:days_to_performance_status_assessment"  />
                 </xs:choice>
 
                 <xs:element ref="history_of_disease"  minOccurs="0" maxOccurs="1" />
 
-                <xs:element ref="tumor_response_cdus_type" />
+                <xs:element ref="tumor_response_cdus_type" minOccurs="0" />
 				
 				<xs:element ref="clin_shared:primary_therapy_outcome_success" />
                 <xs:element ref="clin_shared:radiation_therapy" minOccurs="0" />
@@ -191,7 +191,7 @@
                     </xs:sequence>
                     <xs:element ref="days_to_fdg_or_ct_pet_performed" />
                 </xs:choice>
-                <xs:element ref="standardized_uptake_value_cervix_uteri_assessment_measurement" />
+                <xs:element ref="standardized_uptake_value_cervix_uteri_assessment_measurement" minOccurs = "0"/>
 				<xs:element ref="fdg_or_ct_pet_performed_outcomes" />
 				<xs:choice>
                     <xs:sequence>
@@ -405,7 +405,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attributeGroup ref="utility:common_ext_attribute_group" />
-                    <xs:attribute name="cde" type="xs:string" default="2005341" />
+                    <xs:attribute name="cde" type="xs:string" default="2180638" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.3" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:extension>
@@ -697,7 +697,7 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
-                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="cde" type="xs:string" default="5654367" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>
@@ -812,7 +812,7 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
-                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="cde" type="xs:string" default="3414503" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>
@@ -977,7 +977,7 @@
         <xs:complexType mixed="true">
             <xs:simpleContent>
                 <xs:restriction base="utility:clinical_res_attributes">
-                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="cde" type="xs:string" default="5654374" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.4" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
                 </xs:restriction>

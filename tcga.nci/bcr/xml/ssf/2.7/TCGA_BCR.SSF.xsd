@@ -10,7 +10,7 @@
 	xmlns="http://tcga.nci/bcr/xml/ssf/2.7" 
 	targetNamespace="http://tcga.nci/bcr/xml/ssf/2.7" 
 	elementFormDefault="qualified" 
-	version="2.7.8">
+	version="2.7.9">
 	
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
@@ -40,7 +40,7 @@
 				<xs:element ref="shared:bcr_patient_uuid"/>
 				<xs:element ref="shared:tissue_source_site"/>
 				<xs:element ref="shared:patient_id"/>
-				<xs:element ref="shared:hiv_status"/>
+				<xs:element ref="shared:hiv_status" minOccurs="0"/>
 				<xs:element ref="tumor_samples"/>
 				<xs:element ref="normal_controls"/>
 				<xs:element ref="patient_details" minOccurs="0" />
@@ -70,30 +70,30 @@
 				</xs:choice>
 				<xs:element ref="shared:method_of_sample_procurement"/>
 				<xs:element ref="shared:other_method_of_sample_procurement"/>
-				<xs:element ref="vessel_used"/>
-				<xs:element ref="other_vessel_used"/>
-				<xs:element ref="shared:maximum_tumor_dimension"/>
-				<xs:element ref="tumor_weight"/>
-				<xs:element ref="sample_prescreened"/>
-				<xs:element ref="shared:tumor_nuclei_percent"/>
-				<xs:element ref="shared:tumor_necrosis_percent"/>
+				<xs:element ref="vessel_used" minOccurs="0"/>
+				<xs:element ref="other_vessel_used" minOccurs="0"/>
+				<xs:element ref="shared:maximum_tumor_dimension" minOccurs="0"/>
+				<xs:element ref="tumor_weight" minOccurs="0"/>
+				<xs:element ref="sample_prescreened" minOccurs="0"/>
+				<xs:element ref="shared:tumor_nuclei_percent" minOccurs="0"/>
+				<xs:element ref="shared:tumor_necrosis_percent" minOccurs="0"/>
 				<xs:choice>
 					<xs:sequence>
-						<xs:element ref="day_of_pathology_review"/>
-						<xs:element ref="month_of_pathology_review"/>
-						<xs:element ref="year_of_pathology_review"/>
+						<xs:element ref="day_of_pathology_review" minOccurs="0"/>
+						<xs:element ref="month_of_pathology_review" minOccurs="0"/>
+						<xs:element ref="year_of_pathology_review" minOccurs="0"/>
 					</xs:sequence>
-					<xs:element ref="days_to_pathology_review"/>
+					<xs:element ref="days_to_pathology_review" minOccurs="0"/>
 				</xs:choice>
-				<xs:element ref="path_confirm_tumor_nuclei_metrics"/>
-				<xs:element ref="path_confirm_tumor_necrosis_metrics"/>
-				<xs:element ref="path_confirm_report_attached"/>
-				<xs:element ref="path_confirm_diagnosis_matching"/>
-				<xs:element ref="reason_path_confirm_diagnosis_not_matching"/>
-				<xs:element ref="top_slide_submitted"/>
-				<xs:element ref="digital_image_submitted"/>
-				<xs:element ref="ffpe_tumor_slide_submitted"/>
-				<xs:element ref="submitted_for_lce"/>
+				<xs:element ref="path_confirm_tumor_nuclei_metrics" minOccurs="0"/>
+				<xs:element ref="path_confirm_tumor_necrosis_metrics" minOccurs="0"/>
+				<xs:element ref="path_confirm_report_attached" minOccurs="0"/>
+				<xs:element ref="path_confirm_diagnosis_matching" minOccurs="0"/>
+				<xs:element ref="reason_path_confirm_diagnosis_not_matching" minOccurs="0"/>
+				<xs:element ref="top_slide_submitted" minOccurs="0"/>
+				<xs:element ref="digital_image_submitted" minOccurs="0"/>
+				<xs:element ref="ffpe_tumor_slide_submitted" minOccurs="0"/>
+				<xs:element ref="submitted_for_lce" minOccurs="0"/>
 				<xs:element ref="shared:other_dx"/>
 				<xs:element ref="shared:history_of_neoadjuvant_treatment"/>
 				<xs:element ref="shared:consent_or_death_status"/>
@@ -105,7 +105,7 @@
 					</xs:sequence>
 					<xs:element ref="shared:days_to_consent"/>
 				</xs:choice>
-				<xs:element ref="shared:country"/>
+				<xs:element ref="shared:country" minOccurs="0"/>
 				<xs:element ref="ssf_disease:disease_details" minOccurs="0" maxOccurs="1"/>
 				<xs:element ref="tumor_histologies"/>
 				<xs:element ref="tumor_locations"/>
@@ -116,8 +116,8 @@
 	<xs:element name="tumor_locations">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tumor_focality"/>
-				<xs:element ref="laterality"/>
+				<xs:element ref="tumor_focality" minOccurs="0"/>
+				<xs:element ref="laterality" minOccurs="0"/>
 				<xs:element ref="tumor_location" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
@@ -128,7 +128,7 @@
 			<xs:sequence>
 				<xs:element ref="site_of_disease"/>
 				<xs:element ref="site_of_disease_text"/>
-				<xs:element ref="site_of_disease_description"/>
+				<xs:element ref="site_of_disease_description" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -145,9 +145,9 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="shared:histological_type"/>
-				<xs:element ref="shared:histological_type_other"/>
-				<xs:element ref="shared:histological_percentage"/>
-				<xs:element ref="shared:tumor_morphology_percentage"/>
+				<xs:element ref="shared:histological_type_other" minOccurs="0"/>
+				<xs:element ref="shared:histological_percentage" minOccurs="0"/>
+				<xs:element ref="shared:tumor_morphology_percentage" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

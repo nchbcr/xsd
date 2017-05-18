@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.8"
+<xs:schema elementFormDefault="qualified" version="2.7.9"
   xmlns="http://tcga.nci/bcr/xml/clinical/dlbc/2.7"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
@@ -272,7 +272,7 @@
 				<xs:element ref="shared:maximum_tumor_dimension" />
 				<xs:element ref="ocg_shared:maximum_tumor_bulk_anatomic_site" />
 				
-				<xs:element ref="clin_shared:initial_pathologic_diagnosis_method" /> 
+				<xs:element ref="clin_shared:initial_pathologic_diagnosis_method"/> 
 				<xs:element ref="clin_shared:init_pathology_dx_method_other" />
 				
 				<xs:choice>
@@ -291,7 +291,7 @@
 				<xs:element ref="pos_lymph_node_locations" />
 				<xs:element ref="ocg_shared:pos_lymph_node_location_other" />
 				
-				<xs:element ref="ocg_shared:bone_marrow_biopsy_done"/>
+				<xs:element ref="ocg_shared:bone_marrow_biopsy_done" minOccurs="0"/>
 				<xs:element ref="ocg_shared:bone_marrow_involvement" />
 				<xs:element ref="ocg_shared:bone_marrow_sample_histology" />
 			</xs:sequence>		
