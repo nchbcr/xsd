@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.9"
+<xs:schema elementFormDefault="qualified" version="2.7.10"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
            xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
            xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
+           xmlns:ocg_shared="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7"
            xmlns:lung_nte="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0"
            xmlns:shared_stage="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
            xmlns:lung_shared="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
+           xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+  		   xmlns:rx="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7"
+  		   xmlns:follow_up_v4.0="http://tcga.nci/bcr/xml/clinical/lung/followup/2.7/4.0"
            xmlns="http://tcga.nci/bcr/xml/clinical/lung/2.7"
+           xmlns:tx="http://tcga.nci/bcr/xml/clinical/treatment/2.7"
            targetNamespace="http://tcga.nci/bcr/xml/clinical/lung/2.7">
 
     <xs:annotation>
         <xs:documentation xml:lang="en">Schema to define the elements in various lung cancer studies.</xs:documentation>
     </xs:annotation>
 
-    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Lung_Elements.xsd"/>
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0"
-               schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/shared/2.7/TCGA_BCR.LUNG_Clinical_NTEs_v1.0.xsd" />
-
+    <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/ocg/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.OCG_Shared_Clinical_Elements.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/stage/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Stage_Clinical_Elements.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/pharmaceutical/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/pharmaceutical/2.7/TCGA_BCR.Pharmaceutical.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/lung/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Lung_Elements.xsd"/>
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/followup/2.7/4.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/followup/2.7/TCGA_BCR.LUNG_Clinical_FollowUp_v4.0.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/shared/2.7/TCGA_BCR.LUNG_Clinical_NTEs_v1.0.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/clinical/treatment/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/treatment/2.7/TCGA_BCR.Treatment.xsd" />
 
     <xs:element name="tcga_bcr">
         <xs:complexType>
@@ -46,15 +49,15 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="admin:additional_studies" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="shared:bcr_patient_barcode"/>
-                <xs:element ref="shared:tissue_source_site"/>
-                <xs:element ref="shared:patient_id"/>
+                <xs:element ref="shared:bcr_patient_barcode"  />
+                <xs:element ref="shared:tissue_source_site" />
+                <xs:element ref="shared:patient_id" />
                 <xs:element ref="shared:bcr_patient_uuid"/>
-                <xs:element ref="clin_shared:informed_consent_verified" />
+                <xs:element ref="clin_shared:informed_consent_verified"/>
                 <xs:element ref="clin_shared:icd_o_3_site"/>
-                <xs:element ref="clin_shared:icd_o_3_histology"/>
-                <xs:element ref="clin_shared:icd_10"/>
-                <xs:choice>
+                <xs:element ref="clin_shared:icd_o_3_histology" />
+                <xs:element ref="clin_shared:icd_10" />
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_birth" />
                         <xs:element ref="clin_shared:month_of_birth" />
@@ -63,11 +66,12 @@
 
                     <xs:element ref="clin_shared:days_to_birth" />
                 </xs:choice>
-                <xs:element ref="clin_shared:ethnicity"/>
-                <xs:element ref="shared:gender"/>
-                <xs:element ref="shared:country"/>
-                <xs:element ref="clin_shared:race_list"/>
-                <xs:choice>
+                
+               <xs:element ref="clin_shared:ethnicity" minOccurs="0"/>
+                <xs:element ref="shared:gender" minOccurs="0"/>
+                <xs:element ref="shared:country" minOccurs="0"/>
+                <xs:element ref="clin_shared:race_list" minOccurs="0"/>
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="shared:day_of_sample_procurement"/>
                         <xs:element ref="shared:month_of_sample_procurement"/>
@@ -75,16 +79,16 @@
                     </xs:sequence>
                     <xs:element ref="shared:days_to_sample_procurement"/>
                 </xs:choice>
-                <xs:element ref="shared:method_of_sample_procurement"/>
-                <xs:element ref="lung_shared:lung_surgical_procedure_administered"/>
-                <xs:element ref="lung_shared:mediastinal_lymph_node_exam_type"/>
-                <xs:element ref="clin_shared:meddra_code"/>
-                <xs:element ref="clin_shared:tumor_tissue_site"/>
-                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other"/>
-                <xs:element ref="shared:histological_type"/>
-                <xs:element ref="shared:histological_type_other" minOccurs = "0"/>
-                <xs:element ref="shared:neoplasm_histologic_grade"/>
-                <xs:choice>
+                <xs:element ref="shared:method_of_sample_procurement" minOccurs="0"/>
+                <xs:element ref="lung_shared:lung_surgical_procedure_administered" minOccurs="0"/>
+                <xs:element ref="lung_shared:mediastinal_lymph_node_exam_type" minOccurs="0"/>
+                <xs:element ref="clin_shared:meddra_code" minOccurs="0"/>
+                <xs:element ref="clin_shared:tumor_tissue_site" minOccurs="0"/>
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision_other" minOccurs="0"/>
+                <xs:element ref="shared:histological_type" minOccurs="0"/>
+                <xs:element ref="shared:histological_type_other" minOccurs = "0" maxOccurs="1"/>
+                <xs:element ref="shared:neoplasm_histologic_grade" minOccurs="0"/>
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_initial_pathologic_diagnosis"/>
                         <xs:element ref="clin_shared:month_of_initial_pathologic_diagnosis"/>
@@ -95,8 +99,8 @@
                         <xs:element ref="clin_shared:age_at_initial_pathologic_diagnosis"/>
                     </xs:sequence>
                 </xs:choice>
-                <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis"/>
-                <xs:element ref="clin_shared:maximum_tumor_diameter"/>
+                <xs:element ref="clin_shared:year_of_initial_pathologic_diagnosis" minOccurs="0"/>
+                <xs:element ref="clin_shared:maximum_tumor_diameter" minOccurs="0"/>
                 <xs:element ref="clin_shared:person_neoplasm_cancer_status" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="clin_shared:vital_status" minOccurs="0" maxOccurs="1"/>
                 <xs:choice minOccurs="0" maxOccurs="1">
@@ -107,23 +111,23 @@
                     </xs:sequence>
                     <xs:element ref="clin_shared:days_to_last_followup" />
                 </xs:choice>
-                <xs:element ref="stage_event"/>
+                <xs:element ref="stage_event" minOccurs="0"/>
                 <xs:element ref="lung_shared:egfr_mutation_performed" minOccurs = "0"/>
                 <xs:element ref="lung_shared:egfr_mutation_identified" minOccurs = "0"/>
-                <xs:element ref="lung_shared:egfr_mutation_exon19_deletion"/>
-                <xs:element ref="lung_shared:egfr_mutation_l858r"/>
-                <xs:element ref="lung_shared:egfr_mutation_t790m"/>
-                <xs:element ref="lung_shared:egfr_mutation_exon20_insertion"/>
-                <xs:element ref="lung_shared:egfr_mutation_g719a_g719c_g719s"/>
-                <xs:element ref="lung_shared:egfr_mutation_l861q"/>
-                <xs:element ref="lung_shared:egfr_mutation_other"/>
-                <xs:element ref="lung_shared:egfr_mutation_specify"/>
-                <xs:element ref="lung_shared:eml4_alk_translocation_performed"/>
-                <xs:element ref="lung_shared:eml4_alk_translocation_method"/>
-                <xs:element ref="lung_shared:eml4_alk_translocation_method_other"/>
-                <xs:element ref="lung_shared:alk_mutation_detected_result"/>
-                <xs:element ref="clin_shared:height"/>
-                <xs:choice>
+                <xs:element ref="lung_shared:egfr_mutation_exon19_deletion" minOccurs="0" />
+                <xs:element ref="lung_shared:egfr_mutation_l858r" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_t790m" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_exon20_insertion" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_g719a_g719c_g719s" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_l861q" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_other" minOccurs="0"/>
+                <xs:element ref="lung_shared:egfr_mutation_specify" minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_performed" minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_method" minOccurs="0"/>
+                <xs:element ref="lung_shared:eml4_alk_translocation_method_other" minOccurs="0"/>
+                <xs:element ref="lung_shared:alk_mutation_detected_result" minOccurs="0"/>
+                <xs:element ref="clin_shared:height" minOccurs="0"/>
+                <xs:choice minOccurs="0">
                     <xs:sequence>
                         <xs:element ref="clin_shared:day_of_form_completion"/>
                         <xs:element ref="clin_shared:month_of_form_completion"/>
@@ -132,80 +136,192 @@
                     <xs:element ref="clin_shared:days_to_form_completion"/>
                 </xs:choice>
                 <xs:element ref="shared:other_dx"/>
-                <xs:element ref="other_malignancy_list"/>
-                <xs:element ref="clin_shared:asthma_indicator"/>
-                <xs:element ref="clin_shared:year_of_asthma_dx"/>
-                <xs:element ref="clin_shared:copd_indicator"/>
-                <xs:element ref="clin_shared:year_of_copd_dx"/>
-                <xs:element ref="clin_shared:pneumonia_indicator"/>
-                <xs:element ref="clin_shared:year_of_pneumonia_dx"/>
-                <xs:element ref="clin_shared:hiv_aids_indicator"/>
-                <xs:element ref="clin_shared:year_of_hiv_aids_dx"/>
-                <xs:element ref="clin_shared:hypertension_indicator"/>
-                <xs:element ref="clin_shared:year_of_hypertension_dx"/>
-                <xs:element ref="clin_shared:cad_heart_attack_indicator"/>
-                <xs:element ref="clin_shared:year_of_cad_heart_attack_dx"/>
-                <xs:element ref="clin_shared:stroke_indicator"/>
-                <xs:element ref="clin_shared:year_of_stroke_dx"/>
-                <xs:element ref="clin_shared:diabetes_indicator"/>
-                <xs:element ref="clin_shared:year_of_diabetes_dx"/>
-                <xs:element ref="clin_shared:aspirin_use_category"/>
-                <xs:element ref="clin_shared:acetaminophen_use_category"/>
-                <xs:element ref="clin_shared:metformin_use_category"/>
-                <xs:element ref="clin_shared:statin_use_category"/>
-                <xs:element ref="clin_shared:oxygen_use_indicator"/>
-                <xs:element ref="clin_shared:oxygen_use_type"/>
-                <xs:element ref="clin_shared:weight_prior_to_diagnosis"/>
-                <xs:element ref="clin_shared:weight"/>
-                <xs:element ref="clin_shared:difficult_to_answer_epidemiology"/>
-                <xs:element ref="clin_shared:smoking_history_indicator"/>
-                <xs:element ref="clin_shared:age_began_smoking_in_years"/>
-                <xs:element ref="clin_shared:smoking_cessation_indicator"/>
-                <xs:element ref="clin_shared:smoking_cessation_duration"/>
-                <xs:element ref="clin_shared:smoking_cessation_duration_units"/>
-                <xs:element ref="clin_shared:smoking_avg_cigarettes_per_day"/>
-                <xs:element ref="clin_shared:smoking_frequency"/>
-                <xs:element ref="clin_shared:smoking_duration_years"/>
-                <xs:element ref="clin_shared:smoking_time_in_day_begins"/>
-                <xs:element ref="other_tobacco_product_usage_list"/>
-                <xs:element ref="clin_shared:difficult_to_answer_smoking"/>
-                <xs:element ref="clin_shared:childhood_smoke_exposure"/>
-                <xs:element ref="clin_shared:childhood_smoke_exposure_per_day"/>
-                <xs:element ref="clin_shared:childhood_smoke_exposure_years"/>
-                <xs:element ref="clin_shared:adult_smoke_exposure"/>
-                <xs:element ref="clin_shared:adult_smoke_exposure_per_day"/>
-                <xs:element ref="clin_shared:adult_smoke_exposure_years"/>
-                <xs:element ref="clin_shared:workplace_smoke_exposure"/>
-                <xs:element ref="clin_shared:workplace_smoke_exposure_per_day"/>
-                <xs:element ref="clin_shared:workplace_smoke_exposure_years"/>
-                <xs:element ref="clin_shared:social_smoke_exposure"/>
-                <xs:element ref="clin_shared:social_smoke_exposure_per_day"/>
-                <xs:element ref="clin_shared:social_smoke_exposure_years"/>
-                <xs:element ref="occupational_history_list"/>
-                <xs:element ref="clin_shared:asbestos_exposure"/>
-                <xs:element ref="clin_shared:radioactive_material_exposure"/>
-                <xs:element ref="clin_shared:diesel_exhaust_exposure"/>
-                <xs:element ref="clin_shared:crystalline_silica_exposure"/>
-                <xs:element ref="clin_shared:wood_dust_exposure"/>
-                <xs:element ref="clin_shared:mineral_dust_exposure"/>
-                <xs:element ref="clin_shared:other_dust_exposure"/>
-                <xs:element ref="clin_shared:other_dust_exposure_type"/>
-                <xs:element ref="clin_shared:other_gas_exposure"/>
-                <xs:element ref="clin_shared:other_gas_exposure_type"/>
-                <xs:element ref="clin_shared:difficult_to_answer_exposure"/>
-                <xs:element ref="clin_shared:birth_country"/>
-                <xs:element ref="lung_shared:family_history_lung_cancer_indicator"/>
-                <xs:element ref="family_history_lung_cancer_list"/>
-                <xs:element ref="clin_shared:physical_exercise_days_per_week"/>
-                <xs:element ref="clin_shared:highest_education_achieved"/>
-                <xs:element ref="clin_shared:marital_status"/>
-                <xs:element ref="clin_shared:difficult_to_answer_family"/>
+                <xs:element ref="other_malignancy_list" minOccurs="0"/>
+                <xs:element ref="clin_shared:asthma_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_asthma_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:copd_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_copd_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:pneumonia_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_pneumonia_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:hiv_aids_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_hiv_aids_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:hypertension_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_hypertension_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:cad_heart_attack_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_cad_heart_attack_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:stroke_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_stroke_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:diabetes_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:year_of_diabetes_dx" minOccurs="0"/>
+                <xs:element ref="clin_shared:aspirin_use_category" minOccurs="0"/>
+                <xs:element ref="clin_shared:acetaminophen_use_category" minOccurs="0"/>
+                <xs:element ref="clin_shared:metformin_use_category" minOccurs="0"/>
+                <xs:element ref="clin_shared:statin_use_category" minOccurs="0"/>
+                <xs:element ref="clin_shared:oxygen_use_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:oxygen_use_type" minOccurs="0"/>
+                <xs:element ref="clin_shared:weight_prior_to_diagnosis" minOccurs="0"/>
+                <xs:element ref="clin_shared:weight" />
+                <xs:element ref="clin_shared:difficult_to_answer_epidemiology" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_history_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:age_began_smoking_in_years" minOccurs="0"  maxOccurs="1"/>
+                <xs:element ref="clin_shared:smoking_cessation_indicator" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_cessation_duration" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_cessation_duration_units" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_avg_cigarettes_per_day" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_frequency" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_duration_years" minOccurs="0"/>
+                <xs:element ref="clin_shared:smoking_time_in_day_begins" minOccurs="0"/>
+                <xs:element ref="other_tobacco_product_usage_list" minOccurs="0"/>
+                <xs:element ref="clin_shared:difficult_to_answer_smoking" minOccurs="0"/>
+                <xs:element ref="clin_shared:childhood_smoke_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:childhood_smoke_exposure_per_day" minOccurs="0"/>
+                <xs:element ref="clin_shared:childhood_smoke_exposure_years" minOccurs="0"/>
+                <xs:element ref="clin_shared:adult_smoke_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:adult_smoke_exposure_per_day" minOccurs="0"/>
+                <xs:element ref="clin_shared:adult_smoke_exposure_years" minOccurs="0"/>
+                <xs:element ref="clin_shared:workplace_smoke_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:workplace_smoke_exposure_per_day" minOccurs="0"/>
+                <xs:element ref="clin_shared:workplace_smoke_exposure_years" minOccurs="0"/>
+                <xs:element ref="clin_shared:social_smoke_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:social_smoke_exposure_per_day" minOccurs="0"/>
+                <xs:element ref="clin_shared:social_smoke_exposure_years" minOccurs="0"/>
+                <xs:element ref="occupational_history_list" minOccurs="0"/>
+                <xs:element ref="clin_shared:asbestos_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:radioactive_material_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:diesel_exhaust_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:crystalline_silica_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:wood_dust_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:mineral_dust_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:other_dust_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:other_dust_exposure_type" minOccurs="0"/>
+                <xs:element ref="clin_shared:other_gas_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:other_gas_exposure_type" minOccurs="0"/>
+                <xs:element ref="clin_shared:difficult_to_answer_exposure" minOccurs="0"/>
+                <xs:element ref="clin_shared:birth_country" minOccurs="0"/>
+                <xs:element ref="lung_shared:family_history_lung_cancer_indicator" minOccurs="0"/>
+                <xs:element ref="family_history_lung_cancer_list" minOccurs="0"/>
+                <xs:element ref="clin_shared:physical_exercise_days_per_week" minOccurs="0"/>
+                <xs:element ref="clin_shared:highest_education_achieved" minOccurs="0"/>
+                <xs:element ref="clin_shared:marital_status" minOccurs="0"/>
+                <xs:element ref="clin_shared:difficult_to_answer_family" minOccurs="0"/>
                 <xs:element ref="lung_nte:new_tumor_events" minOccurs="0" maxOccurs="1" />
+                
+                <!--       Export From LUSC -start  -->
+                
+                <xs:choice minOccurs="0">
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_known_alive" />
+                        <xs:element ref="clin_shared:month_of_last_known_alive" />
+                        <xs:element ref="clin_shared:year_of_last_known_alive" />
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_last_known_alive" minOccurs="0"/>
+                </xs:choice>
+
+                <xs:choice minOccurs="0">
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_death" />
+                        <xs:element ref="clin_shared:month_of_death" />
+                        <xs:element ref="clin_shared:year_of_death" />
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_death" minOccurs="0"/>
+                </xs:choice>
+				<xs:element ref="clin_shared:patient_death_reason" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:death_cause_text" minOccurs="0" maxOccurs="1"/>
+
+<!--                 <xs:choice minOccurs="0"> -->
+<!--                     <xs:sequence> -->
+<!--                         <xs:element ref="clin_shared:day_of_last_followup" minOccurs="0"/> -->
+<!--                         <xs:element ref="clin_shared:month_of_last_followup" minOccurs="0"/> -->
+<!--                         <xs:element ref="clin_shared:year_of_last_followup" minOccurs="0"/> -->
+<!--                     </xs:sequence> -->
+
+<!--                     <xs:element ref="clin_shared:days_to_last_followup" minOccurs="0" /> -->
+<!--                 </xs:choice> -->
+				<xs:element ref="clin_shared:patient_progression_status" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="clin_shared:progression_dates" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="shared:history_of_neoadjuvant_treatment" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="clin_shared:history_of_radiation_primary_site" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:history_of_radiation_metastatic_site" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:history_prior_surgery_indicator" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:history_prior_surgery_type" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:history_prior_surgery_type_other" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:tissue_prospective_collection_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:tissue_retrospective_collection_indicator" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:performance_status_scale_timing" minOccurs="0" />
+				<xs:element ref="stage_event_info" minOccurs="0" />
+				<xs:element ref="molecular_markers" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:eastern_cancer_oncology_group" minOccurs="0"/>
+				<xs:element ref="clin_shared:year_of_tobacco_smoking_onset" minOccurs="0" />
+				<xs:element ref="clin_shared:stopped_smoking_year" minOccurs="0"/>
+				<xs:element ref="clin_shared:number_pack_years_smoked" minOccurs="0"/>
+				<xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0"/>
+				<xs:element ref="anatomic_neoplasm_subdivision_list" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="lung_shared:diagnosis" minOccurs="0"/>
+				<xs:element ref="lung_shared:location_in_lung_parenchyma" minOccurs="0"/>
+				<xs:element ref="clin_shared:residual_tumor" minOccurs="0"/>
+				<xs:element ref="lung_shared:kras_mutation_found" minOccurs="0"/>
+				<xs:element ref="lung_shared:kras_gene_analysis_performed" minOccurs="0" />
+				<xs:element ref="lung_shared:kras_mutation_result" minOccurs="0"/>
+				<xs:element ref="lung_shared:egfr_mutation_result" minOccurs="0"/>
+				<xs:element ref="lung_shared:eml4_alk_translocation_result" minOccurs="0"/>
+				<xs:element ref="lung_shared:pulmonary_function_test_performed" minOccurs="0"/>
+				<xs:element ref="lung_shared:pre_bronchodilator_fev1_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:post_bronchodilator_fev1_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:pre_bronchodilator_fev1_fvc_percent"  minOccurs="0"/>
+				<xs:element ref="lung_shared:post_bronchodilator_fev1_fvc_percent" minOccurs="0"/>
+				<xs:element ref="lung_shared:dlco_predictive_percent" minOccurs="0"/>
+				<xs:element ref="clin_shared:targeted_molecular_therapy" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:radiation_therapy" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:postoperative_rx_tx" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:primary_therapy_outcome_success" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="history_of_disease"  minOccurs="0"  maxOccurs="1" />
+				<xs:element ref="primary_pathology"  minOccurs="0"  maxOccurs="1" />
+				<xs:element ref="clin_shared:response" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="rx:drugs" minOccurs="0"/>
+				<xs:element ref="rad:radiations" minOccurs="0"/>
+				<xs:element ref="clin_shared:lost_follow_up" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="follow_ups" minOccurs="0"/>
+				<xs:element ref="clin_shared:unstructured" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="clin_shared:karnofsky_performance_score" minOccurs="0"/>	
+				<xs:element ref="shared:tobacco_smoking_history" minOccurs="0"/>
+				<!--                 Export From LUSC -End  -->
+				
+				<!--                 Export From LUAD -START  -->
+				<xs:element ref="clin_shared:protocol_status" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:patient_sex" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="clin_shared:relative_family_cancer_history" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="blood_relative_cancer_history_list" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0">
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_clinical_diagnosis"/>
+						<xs:element ref="clin_shared:month_of_clinical_diagnosis"/>
+						<xs:element ref="clin_shared:year_of_clinical_diagnosis"/>			           
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_clinical_diagnosis" minOccurs="0"/>
+				</xs:choice>
+				<xs:element ref="clin_shared:method_of_clinical_diagnosis" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="0">
+					<xs:sequence>
+						<xs:element ref="clin_shared:day_of_most_recent_date_of_last_contact"/>
+						<xs:element ref="clin_shared:month_of_most_recent_date_of_last_contact"/>
+						<xs:element ref="clin_shared:year_of_most_recent_date_of_last_contact"/>
+					</xs:sequence>
+					<xs:element ref="clin_shared:days_to_most_recent_date_of_last_contact" minOccurs="0"/>
+				</xs:choice>
+				<xs:element ref="comorbidities" minOccurs="0" maxOccurs="1" />  
+				<xs:element ref="prior_systemic_therapy_types" minOccurs="0" />
+				<xs:element ref="kras_mutation_result_list" minOccurs="0" />
+				<xs:element ref="lung_shared:kras_mutation_result_other" minOccurs="0" />
+				<xs:element ref="lung_shared:eml4_alk_translocation_identified" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="tx:treatments" minOccurs="0" />
+				<!--                 Export From LUAD -END  -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="occupational_history_list">
+<xs:element name="occupational_history_list">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="occupational_history" minOccurs="0" maxOccurs="unbounded"/>
@@ -300,5 +416,210 @@
         </xs:sequence>
         <xs:attribute name="system" type="shared_stage:system_type"/>
     </xs:complexType>
-</xs:element>
+	</xs:element>
+	
+	
+<!--                 Elements exported from LUSC start -->
+
+<xs:element name="history_of_disease" nillable="true">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element ref="shared:hiv_status" />
+
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="ocg_shared:day_of_hiv_diagnosis" />
+                        <xs:element ref="ocg_shared:month_of_hiv_diagnosis" />
+                        <xs:element ref="ocg_shared:year_of_hiv_diagnosis" />
+                    </xs:sequence>
+                    <xs:element ref="ocg_shared:days_to_hiv_diagnosis" />
+                </xs:choice>
+
+                <xs:element ref="ocg_shared:hbv_test" />
+                <xs:element ref="ocg_shared:hcv_test" />
+                <xs:element ref="ocg_shared:hpv_test" />
+                <xs:element ref="ocg_shared:kshv_hhv8_test" />
+                <xs:element ref="ocg_shared:nadir_cd4_counts" />
+                <xs:element ref="ocg_shared:hiv_rna_load_at_diagnosis" />
+                <xs:element ref="ocg_shared:on_haart_therapy_at_cancer_diagnosis" />
+                <xs:element ref="ocg_shared:on_haart_therapy_prior_to_cancer_diagnosis" />
+                <xs:element ref="ocg_shared:prior_aids_conditions" />
+                <xs:element ref="ocg_shared:cd4_counts_at_diagnosis" />
+                <xs:element ref="ocg_shared:cdc_hiv_risk_group" />
+                <xs:element ref="ocg_shared:history_of_other_malignancy" />
+                <xs:element ref="ocg_shared:history_immunological_disease" />
+                <xs:element ref="ocg_shared:history_immunological_disease_other" />
+                <xs:element ref="ocg_shared:history_immunosuppresive_rx" />
+                <xs:element ref="ocg_shared:history_immunosuppressive_rx_other" />
+                <xs:element ref="ocg_shared:history_relevant_infectious_dx" />
+                <xs:element ref="ocg_shared:history_relevant_infectious_dx_other" />
+			
+			</xs:sequence>
+	    </xs:complexType>    
+	</xs:element>
+	
+	<xs:element name="primary_pathology" nillable="true">
+		<xs:complexType>
+			<xs:sequence >
+				<xs:element ref="clin_shared:laterality"/>
+				<xs:element ref="clin_shared:primary_lymph_node_presentation_assessment"/>
+                <xs:element ref="clin_shared:initial_pathologic_diagnosis_method" />
+				<xs:element ref="clin_shared:lymph_node_examined_count" />
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_he" />
+				<xs:element ref="clin_shared:number_of_lymphnodes_positive_by_ihc" />
+				
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="shared:day_of_sample_procurement"/>
+						<xs:element ref="shared:month_of_sample_procurement"/>
+						<xs:element ref="shared:year_of_sample_procurement"/>
+					</xs:sequence>
+					<xs:element ref="shared:days_to_sample_procurement"/>
+				</xs:choice>
+				
+				<xs:element ref="clin_shared:init_pathology_dx_method_other" />
+				<xs:element ref="pos_lymph_node_locations" />
+				<xs:element ref="ocg_shared:pos_lymph_node_location_other" />
+				<!-- Start of LUAD import -->
+				<xs:element ref="lung_shared:first_surgical_procedure" minOccurs="0" />
+				<xs:element ref="lung_shared:first_surgical_procedure_other" minOccurs="0" />
+				<xs:element ref="clin_shared:margin_status" minOccurs="0" />
+				<xs:element ref="lung_shared:second_surgical_procedure_to_negative_margins" minOccurs="0" />
+				<xs:element ref="lung_shared:second_surgical_procedure_to_negative_margins_other" minOccurs="0" />
+				<xs:element ref="lung_shared:margin_status_after_second_surgical_procedure" minOccurs="0" />
+				<xs:element ref="metastatic_site_at_diagnosis_list" minOccurs="0" />
+				<xs:element ref="clin_shared:metastatic_site_at_diagnosis_other" minOccurs="0" />
+				<!-- END of LUAD import -->
+			</xs:sequence >		
+        </xs:complexType>
+	</xs:element>
+	
+<!-- 	TODO: Check the issue	 -->
+	<xs:element name="follow_ups">
+	   <xs:annotation>
+		  <xs:documentation>We are using namespaces and version numbers to distinguish one version of followup from another.</xs:documentation>
+	   </xs:annotation>
+	   <xs:complexType>
+		  <xs:sequence>
+             <xs:element ref="follow_up_v4.0:follow_up" minOccurs="0" maxOccurs="unbounded" />
+		  </xs:sequence>
+	   </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="pos_lymph_node_locations">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ocg_shared:pos_lymph_node_location" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="molecular_markers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="molecular_marker" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="molecular_marker">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:molecular_abnormality_results" />
+                <xs:element ref="clin_shared:molecular_abnormality_results_other" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="anatomic_neoplasm_subdivision_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="clin_shared:anatomic_neoplasm_subdivision" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!--                 Elements exported from LUSC End -->
+    <!--                 Elements exported from LUAD START -->
+    <xs:element name="comorbidities">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:comorbidity" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="blood_relative_cancer_history_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="blood_relative_cancer_history" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="blood_relative_cancer_history">
+		<xs:complexType>
+			<xs:sequence>
+	               	<xs:element ref="clin_shared:family_member_relationship_type"/>
+	        	 	<xs:element ref="clin_shared:cancer_diagnosis_cancer_type_icd9_text_name" minOccurs ="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="followup_history_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="followup_history" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="followup_history">
+		<xs:complexType>
+			<xs:sequence>	               	
+				<xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="clin_shared:day_of_last_followup" />
+                        <xs:element ref="clin_shared:month_of_last_followup" />
+                        <xs:element ref="clin_shared:year_of_last_followup" />
+                    </xs:sequence>
+
+                    <xs:element ref="clin_shared:days_to_last_followup" />
+                </xs:choice>
+                <xs:element ref="clin_shared:person_neoplasm_cancer_status" minOccurs="0"  maxOccurs="1" />
+                <xs:element ref="clin_shared:vital_status" minOccurs="0"  maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="prior_systemic_therapy_types">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:prior_systemic_therapy_type" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="metastatic_site_at_diagnosis_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="clin_shared:metastatic_site_at_diagnosis" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="kras_mutation_result_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="lung_shared:kras_mutation_result" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stage_event_info">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="shared_stage:stage_event"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+   <!--                 Elements exported from LUAD End -->
 </xs:schema>
