@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <xs:schema elementFormDefault="qualified" version="2.7.10"
-   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7"
-   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
-   xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
-   xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
-   xmlns:coad_nte="http://tcga.nci/bcr/xml/clinical/coad/shared/new_tumor_event/2.7/1.0"
-   xmlns="http://tcga.nci/bcr/xml/clinical/coad/followup/2.7/4.0"
-   targetNamespace="http://tcga.nci/bcr/xml/clinical/coad/followup/2.7/4.0">
-
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:clin_shared="http://tcga.nci/bcr/xml/clinical/shared/2.7" 
+    xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7" 
+    xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7" 
+    xmlns:rad="http://tcga.nci/bcr/xml/clinical/radiation/2.7"
+    xmlns:lung_shared="http://tcga.nci/bcr/xml/clinical/lung/shared/2.7"
+    xmlns:lung_nte="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0"
+    xmlns="http://tcga.nci/bcr/xml/clinical/lung/followup/2.7/4.0"
+    targetNamespace="http://tcga.nci/bcr/xml/clinical/lung/followup/2.7/4.0">
+    
     <xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/radiation/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/radiation/2.7/TCGA_BCR.Radiation.xsd" />
     <xs:import namespace="http://tcga.nci/bcr/xml/clinical/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/shared/2.7/TCGA_BCR.Shared_Clinical_Elements.xsd" />
-    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/coad/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/coad/shared/2.7/TCGA_BCR.COAD_Clinical_NTEs_v1.0.xsd" />
-
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/shared/2.7/TCGA_BCR.LUNG_Clinical_Shared_Datatypes.xsd" />
+    <xs:import namespace="http://tcga.nci/bcr/xml/clinical/lung/shared/new_tumor_event/2.7/1.0" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/clinical/lung/shared/2.7/TCGA_BCR.LUNG_Clinical_NTEs_v1.0.xsd" />
+    
     <xs:annotation>
-        <xs:documentation xml:lang="en">Schema to define the elements of the Clinical Data Follow-up Form within the COAD study.</xs:documentation>
+        <xs:documentation xml:lang="en">Schema to define the elements of the Clinical Data Follow-up Form within the LUNG study.</xs:documentation>
     </xs:annotation>
     <xs:element name="follow_up">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="clin_shared:bcr_followup_barcode" />
                 <xs:element ref="clin_shared:bcr_followup_uuid" />
-
+            
                 <xs:element ref="clin_shared:lost_follow_up" />
                 <xs:element ref="clin_shared:radiation_therapy" />
                 <xs:element ref="clin_shared:postoperative_rx_tx" />
@@ -60,8 +62,8 @@
                 <xs:element ref="clin_shared:death_cause_text" />
                 <xs:element ref="clin_shared:primary_therapy_outcome_success" />
 
-                <xs:element ref="coad_nte:new_tumor_events" />
-
+                <xs:element ref="lung_nte:new_tumor_events" />
+                
                 <xs:choice>
                     <xs:annotation>
                         <xs:documentation>
