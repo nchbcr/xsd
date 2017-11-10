@@ -6,7 +6,7 @@
  xmlns="http://tcga.nci/bcr/xml/clinical/shared/coad_read/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/clinical/shared/coad_read/2.7" 
  elementFormDefault="qualified" 
- version="2.7.10">
+ version="2.7.11">
  
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 

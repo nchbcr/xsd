@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.10"
+<xs:schema elementFormDefault="qualified" version="2.7.11"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -121,6 +121,7 @@
                 <xs:restriction base="admin_res_attribute">
                     <xs:enumeration value="ACC" />    <!-- Adrenocortical carcinoma -->
                     <xs:enumeration value="ALL" />    <!-- Acute Lymphoblastic Leukemia -->
+					<xs:enumeration value="ANAL" />
                     <xs:enumeration value="BLCA" />   <!-- Urothelial carcinoma -->
                     <xs:enumeration value="BRAIN" />  <!-- Brain cancer -->
                     <xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
