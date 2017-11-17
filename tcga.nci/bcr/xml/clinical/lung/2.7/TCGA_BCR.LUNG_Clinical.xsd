@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.11"
+<xs:schema elementFormDefault="qualified" version="2.7.12"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"
@@ -421,7 +421,7 @@
 	
 <!--                 Elements exported from LUSC start -->
 
-<xs:element name="history_of_disease" nillable="true">
+	<xs:element name="history_of_disease" nillable="true">
 		<xs:complexType>
 			<xs:sequence>
                 <xs:element ref="shared:hiv_status" />
@@ -430,10 +430,10 @@
                     <xs:sequence>
                         <xs:element ref="ocg_shared:day_of_hiv_diagnosis" />
                         <xs:element ref="ocg_shared:month_of_hiv_diagnosis" />
-                        <xs:element ref="ocg_shared:year_of_hiv_diagnosis" />
                     </xs:sequence>
                     <xs:element ref="ocg_shared:days_to_hiv_diagnosis" />
                 </xs:choice>
+				<xs:element ref="ocg_shared:year_of_hiv_diagnosis" minOccurs="0" />
 
                 <xs:element ref="ocg_shared:hbv_test" />
                 <xs:element ref="ocg_shared:hcv_test" />
