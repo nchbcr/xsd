@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.12"
+<xs:schema elementFormDefault="qualified" version="2.7.13"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -4919,6 +4919,9 @@
                     <xs:enumeration value="BACOP" />
 					<xs:enumeration value="C-MOPP" />
                     <xs:enumeration value="CAP-BOP" />
+					<xs:enumeration value="Carboplatin + Paclitaxel" />
+					<xs:enumeration value="CAV (Cyclophosphamide, Adriamycin and Vincristin)" />
+					<xs:enumeration value="CE (Cisplatin and Etoposide)" />
                     <xs:enumeration value="CHOP + Bleomycin" />
                     <xs:enumeration value="CHOP + Etoposide" />
                     <xs:enumeration value="CHOP-14 + Rituximab" />
@@ -4940,9 +4943,10 @@
                     <xs:enumeration value="M-BACOP" />
 					<xs:enumeration value="MACOP-B" />
                     <xs:enumeration value="Other Pharmaceutical Regimen (please specify)" />
+					<xs:enumeration value="Paclitaxel + Cisplatin" />
                     <xs:enumeration value="ProMace-CytaBOM" />
                     <xs:enumeration value="ProMace-MOPP" />
-                    <xs:enumeration value="Single Agent Therapy (please specify)" />
+					<xs:enumeration value="Single Agent Therapy (please specify)" />
 					<xs:enumeration value="VACOP-B" />
 					<xs:enumeration value="Vanderbilt regimen + Rituximab" />
                     <xs:attribute name="cde" type="xs:string" default="3366758" />
@@ -5214,6 +5218,7 @@
                     <xs:enumeration value="Leg" />
                     <xs:enumeration value="Lung" />
                     <xs:enumeration value="Lymph node, distant (specify site)" />
+					<xs:enumeration value="Lymph Node, Hilar" />
                     <xs:enumeration value="Lymph node, locoregional (specify site)" />
                     <xs:enumeration value="Lymph Nodes" />
                     <xs:enumeration value="Mantle" />
