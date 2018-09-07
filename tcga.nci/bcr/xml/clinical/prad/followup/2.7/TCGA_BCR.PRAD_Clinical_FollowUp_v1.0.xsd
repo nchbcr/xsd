@@ -10,7 +10,7 @@
  xmlns:prad_shared="http://tcga.nci/bcr/xml/clinical/prad/shared/2.7"
  xmlns="http://tcga.nci/bcr/xml/clinical/prad/followup/2.7/1.0" 
  targetNamespace="http://tcga.nci/bcr/xml/clinical/prad/followup/2.7/1.0" 
- elementFormDefault="qualified" version="2.7.13">
+ elementFormDefault="qualified" version="2.7.14">
  
 	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd"/>
 	<xs:import namespace="http://tcga.nci/bcr/xml/administration/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/administration/2.7/TCGA_BCR.Administration.xsd"/>

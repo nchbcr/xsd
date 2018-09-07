@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.13"
+<xs:schema elementFormDefault="qualified" version="2.7.14"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -121,7 +121,7 @@
                 <xs:restriction base="admin_res_attribute">
                     <xs:enumeration value="ACC" />    <!-- Adrenocortical carcinoma -->
                     <xs:enumeration value="ALL" />    <!-- Acute Lymphoblastic Leukemia -->
-					<xs:enumeration value="ANAL" />
+					<xs:enumeration value="ANAL" />   <!-- ANAL -->
                     <xs:enumeration value="BLCA" />   <!-- Urothelial carcinoma -->
                     <xs:enumeration value="BRAIN" />  <!-- Brain cancer -->
                     <xs:enumeration value="BURK" />   <!-- BLGSP - Burkitt Lymphoma -->
@@ -131,10 +131,12 @@
                     <xs:enumeration value="CHOL" />   <!-- Cholangiocarcinoma -->
                     <xs:enumeration value="COAD" />   <!-- Colon/Rectal adenocarcinoma -->
                     <xs:enumeration value="DLBC" />   <!-- Diffuse Large B-Cell Lymphoma -->
+					<xs:enumeration value="EOMI" />   <!-- Early Onset Malignancy Initiative -->
                     <xs:enumeration value="ESCA" />   <!-- Esophageal -->
                     <xs:enumeration value="FPPP"/>    <!-- Formalin Paraffin Pilot Project  -->
                     <xs:enumeration value="GBM" />    <!-- Glioblastoma multiforme -->
                     <xs:enumeration value="GIST" />   <!-- Gastrointestinal Stromal Tumor -->
+					<xs:enumeration value="HCMI" />   <!-- Human Cancer Model Initiative -->
                     <xs:enumeration value="HNSC" />   <!-- Heand and neck squamous cell carcinoma -->
                     <xs:enumeration value="KIRC" />   <!-- Kidney renal cell carcinoma -->
                     <xs:enumeration value="KIRP" />   <!-- Kidney renal papillary cell carcinoma -->
@@ -168,9 +170,10 @@
                     <xs:enumeration value="THYM" />   <!-- Thymoma -->
                     <xs:enumeration value="UCEC" />   <!-- Uterine Corpus Endometrioid Carcinoma  -->
                     <xs:enumeration value="UCS" />    <!-- Uterine Carcinosarcoma -->
+					<xs:enumeration value="UTCW" />   <!-- Utah Case/Western  -->
                     <xs:enumeration value="UVM" />    <!-- Uveal Melanoma  -->
                     <xs:enumeration value="WILMS" />  <!-- Wilms' tumor  -->
-                    <xs:enumeration value="CNTL" />
+                    <xs:enumeration value="CNTL" />   <!-- CNTL -->
 					<xs:enumeration value="CUP" />    <!-- Carcinoma Unknown Primary -->
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
                 </xs:restriction>

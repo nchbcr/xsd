@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<xs:schema elementFormDefault="qualified" version="2.7.14"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
+  xmlns:bio="http://tcga.nci/bcr/xml/biospecimen/2.7" 
+  xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
+  xmlns="http://tcga.nci/bcr/xml/biospecimen/bio_model/2.7" 
+  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/bio_model/2.7">
+
+	<xs:import namespace="http://tcga.nci/bcr/xml/utility/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/utility/2.7/TCGA_BCR.Utility.xsd" />
+	<xs:import namespace="http://tcga.nci/bcr/xml/shared/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/shared/2.7/TCGA_BCR.Shared_Elements.xsd"/>
+	<xs:import namespace="http://tcga.nci/bcr/xml/biospecimen/2.7" schemaLocation="https://raw.githubusercontent.com/nchbcr/xsd/2.7/tcga.nci/bcr/xml/biospecimen/2.7/TCGA_BCR.Biospecimen.xsd" />
+    
+	<xs:element name="sample">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bio:sample_type_id"/>
+				<xs:element ref="bio:vial_number"/>
+				<xs:element ref="bio:biospecimen_sequence" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="bio:sample_type"/>
+				<xs:element ref="bio:initial_weight"/>
+				<xs:element ref="bio:tissue_type" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="bio:composition" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="bio:tumor_descriptor" minOccurs="0" maxOccurs="1"/>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="bio:day_of_collection"/>
+						<xs:element ref="bio:month_of_collection"/>
+						<xs:element ref="bio:year_of_collection"/>
+					</xs:sequence>
+					<xs:element ref="bio:days_to_collection"/>
+				</xs:choice>
+				<xs:element ref="bio:preservation_method" />
+				<xs:element ref="bio:bcr_sample_barcode"/>
+				<xs:element ref="bio:bcr_sample_uuid"/>
+				<xs:element ref="ref_uuid"/>
+				<xs:element ref="bio:analytes"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ref_uuid">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="utility:common_ext_attribute_group"/>
+					<xs:attribute name="cde" type="xs:string" default=""/>
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.7"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>
