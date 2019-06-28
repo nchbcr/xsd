@@ -15,7 +15,7 @@
 	 xmlns="http://tcga.nci/bcr/xml/clinical/hnsc/2.7" 
 	 targetNamespace="http://tcga.nci/bcr/xml/clinical/hnsc/2.7" 
 	 elementFormDefault="qualified" 
-	 version="2.7.15">
+	 version="2.7.16">
 	
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the HNSC study.</xs:documentation>

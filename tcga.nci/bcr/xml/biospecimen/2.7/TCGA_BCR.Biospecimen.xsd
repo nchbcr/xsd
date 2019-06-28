@@ -10,7 +10,7 @@
  xmlns="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  elementFormDefault="qualified" 
- version="2.7.15">
+ version="2.7.16">
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the biospecimen xml.</xs:documentation>
@@ -75,7 +75,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="bio_model:sample" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="sample" maxOccurs="unbounded"/>
+				<xs:element ref="sample" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -161,6 +161,7 @@
 					<xs:enumeration value="60"/>
 					<xs:enumeration value="61"/>
 					<xs:enumeration value="85"/>
+					<xs:enumeration value="86"/>
 					<xs:enumeration value="99"/>
 					<xs:attribute name="cde" type="xs:string" default=""/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
@@ -232,6 +233,7 @@
 					<xs:enumeration value="Blood Derived Cancer - Bone Marrow, Post-treatment"/>
 					<xs:enumeration value="Lymphoid Normal"/>
 					<xs:enumeration value="Next Generation Cancer Model"/>
+					<xs:enumeration value="Expanded Next Generation Cancer Model"/>
 					<xs:attribute name="cde" type="xs:string" default=""/>
 					<xs:attribute name="xsd_ver" type="xs:string" default="2.4"/>
 				</xs:restriction>
@@ -1886,6 +1888,7 @@
 					<xs:enumeration value="3D Air-Liquid Interface Organoid"/>
 					<xs:enumeration value="3D Neurosphere"/>
 					<xs:enumeration value="3D Organoid"/>
+					<xs:enumeration value="3D Suspension"/>
 					<xs:enumeration value="Adherent Cell Line"/>
                     <xs:enumeration value="Bone Marrow Components"/>
                     <xs:enumeration value="Bone Marrow Components NOS"/>
