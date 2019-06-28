@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.15"
+<xs:schema elementFormDefault="qualified" version="2.7.16"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
            xmlns:admin="http://tcga.nci/bcr/xml/administration/2.7"

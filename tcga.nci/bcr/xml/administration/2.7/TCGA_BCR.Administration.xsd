@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.15"
+<xs:schema elementFormDefault="qualified" version="2.7.16"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns="http://tcga.nci/bcr/xml/administration/2.7"
@@ -130,6 +130,8 @@
                     <xs:enumeration value="CESC" />   <!-- Cervical Squamous cell carcinoma -->
                     <xs:enumeration value="CHOL" />   <!-- Cholangiocarcinoma -->
                     <xs:enumeration value="COAD" />   <!-- Colon/Rectal adenocarcinoma -->
+					<xs:enumeration value="CUP" />    <!-- Carcinoma Unknown Primary -->
+					<xs:enumeration value="CUPP" />   <!-- CUPP - Cancers of Unknown Primaries -->
                     <xs:enumeration value="DLBC" />   <!-- Diffuse Large B-Cell Lymphoma -->
 					<xs:enumeration value="EOMI" />   <!-- Early Onset Malignancy Initiative -->
                     <xs:enumeration value="ESCA" />   <!-- Esophageal -->
@@ -174,8 +176,7 @@
                     <xs:enumeration value="UVM" />    <!-- Uveal Melanoma  -->
                     <xs:enumeration value="WILMS" />  <!-- Wilms' tumor  -->
                     <xs:enumeration value="CNTL" />   <!-- CNTL -->
-					<xs:enumeration value="CUP" />    <!-- Carcinoma Unknown Primary -->
-                    <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
+					<xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
                 </xs:restriction>
             </xs:simpleContent>
         </xs:complexType>
