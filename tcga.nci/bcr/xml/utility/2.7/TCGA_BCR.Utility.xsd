@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.16" 
+<xs:schema elementFormDefault="qualified" version="2.7.17" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns="http://tcga.nci/bcr/xml/utility/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/utility/2.7">
@@ -204,9 +204,11 @@
 			<xs:enumeration value="CDDP" />
 			<xs:enumeration value="CTSP" />
 			<xs:enumeration value="ER" />
+			<xs:enumeration value="HOCA" />
 			<xs:enumeration value="HTMCP" />
 			<xs:enumeration value="REBC" />
 			<xs:enumeration value="TCGA" />
+			<xs:enumeration value="TDI" />
 		</xs:restriction>          
 	</xs:simpleType>
 	

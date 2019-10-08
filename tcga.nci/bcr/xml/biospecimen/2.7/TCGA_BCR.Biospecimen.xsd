@@ -10,7 +10,7 @@
  xmlns="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  targetNamespace="http://tcga.nci/bcr/xml/biospecimen/2.7" 
  elementFormDefault="qualified" 
- version="2.7.16">
+ version="2.7.17">
 
 	<xs:annotation>
 		<xs:documentation xml:lang="en">Schema to define the elements of the biospecimen xml.</xs:documentation>
@@ -156,6 +156,7 @@
 					<xs:enumeration value="16"/>
 					<xs:enumeration value="17"/>
 					<xs:enumeration value="20"/>
+					<xs:enumeration value="31"/>
 					<xs:enumeration value="41"/>
 					<xs:enumeration value="50"/>
 					<xs:enumeration value="60"/>
@@ -203,6 +204,7 @@
 					<xs:enumeration value="EBV Immortalized Normal"/>
 					<xs:enumeration value="GenomePlex (Rubicon) Amplified DNA"/>
 					<xs:enumeration value="Granulocytes"/>
+					<xs:enumeration value="Neoplasms of Uncertain and Unknown Behavior"/>
 					<xs:enumeration value="Primary Blood Derived Cancer - Peripheral Blood"/>
 					<xs:enumeration value="Recurrent Blood Derived Cancer - Peripheral Blood"/>
 					<xs:enumeration value="Primary Tumor"/>
@@ -1930,6 +1932,7 @@
                     <xs:enumeration value="Metastatic"/>
                     <xs:enumeration value="Not Applicable"/>
                     <xs:enumeration value="Not Otherwise Specified"/>
+					<xs:enumeration value="Premalignant"/>
                     <xs:enumeration value="Primary"/>
                     <xs:enumeration value="Recurrence"/>
                     <xs:enumeration value="Xenograft"/>
