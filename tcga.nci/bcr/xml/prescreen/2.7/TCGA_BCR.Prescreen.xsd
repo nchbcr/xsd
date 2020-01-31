@@ -8,7 +8,7 @@
   xmlns="http://tcga.nci/bcr/xml/prescreen/2.7"
   targetNamespace="http://tcga.nci/bcr/xml/prescreen/2.7"
   elementFormDefault="qualified"
-  version="2.7.17">
+  version="2.7.18">
 
     <xs:annotation>
         <xs:documentation xml:lang="en">Schema to define the elements of the pathology prescreen forms.</xs:documentation>
@@ -38,14 +38,16 @@
                 <xs:element ref="shared:patient_id" />
                 <xs:element ref="shared:bcr_patient_barcode" />
                 <xs:element ref="shared:bcr_patient_uuid" />
-                <xs:element ref="prescreen"/>
-            </xs:sequence>
+                <xs:element ref="prescreen" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
         </xs:complexType>
     </xs:element>
 
 	<xs:element name="prescreen">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="bcr_pps_barcode" minOccurs="0"/>
+				<xs:element ref="bcr_pps_uuid" minOccurs="0"/>
                 <xs:element ref="tumor_histologies" minOccurs="0"/>
 				<xs:element ref="histological_types" minOccurs="0"/>
 				<xs:element ref="shared:histological_type" minOccurs="0"/>
@@ -61,6 +63,29 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="bcr_pps_barcode">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NCName">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+  
+    <xs:element name="bcr_pps_uuid">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attributeGroup ref="utility:common_ext_attribute_group" />
+                    <xs:attribute name="cde" type="xs:string" default="" />
+                    <xs:attribute name="xsd_ver" type="xs:string" default="2.7" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+	
     <xs:element name="tumor_histologies">
         <xs:complexType>
             <xs:sequence>
