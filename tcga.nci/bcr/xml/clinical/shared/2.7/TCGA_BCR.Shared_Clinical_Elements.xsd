@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xs:schema elementFormDefault="qualified" version="2.7.17"
+<xs:schema elementFormDefault="qualified" version="2.7.18"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:utility="http://tcga.nci/bcr/xml/utility/2.7"
   xmlns:shared="http://tcga.nci/bcr/xml/shared/2.7"
@@ -1224,6 +1224,7 @@
 					<xs:enumeration value="Alive" />
 					<xs:enumeration value="Dead" />
 					<xs:enumeration value="Lost to follow-up" />
+					<xs:enumeration value="Unknown" />
                     <xs:attribute name="cde" type="xs:string" default="5" />
                     <xs:attribute name="xsd_ver" type="xs:string" default="2.6" />
                     <xs:attribute name="tier" type="xs:string" default="2" />
